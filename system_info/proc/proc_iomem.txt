@@ -1,0 +1,71 @@
+00110000-0014ffff : persistent_ram
+00150000-001cffff : persistent_ram
+00200000-083fffff : System RAM
+  00280000-0119ffff : Kernel code
+  012b0000-015eefff : Kernel data
+0a200000-7fffffff : System RAM
+fe300000-fe30ffff : /ethernet@fe300000
+fe310000-fe313fff : /dwmmc@fe310000
+fe320000-fe323fff : /dwmmc@fe320000
+fe330000-fe33ffff : mmc1
+fe380000-fe39ffff : /usb@fe380000
+fe3a0000-fe3bffff : /usb@fe3a0000
+fe3c0000-fe3dffff : /usb@fe3c0000
+fe3e0000-fe3fffff : /usb@fe3e0000
+fe800000-fe807fff : /usb0/dwc3@fe800000
+  fe800000-fe807fff : /usb0/dwc3@fe800000
+fe80c100-fe8fffff : /usb0/dwc3@fe800000
+fe900000-fe907fff : /usb1/dwc3@fe900000
+  fe900000-fe907fff : /usb1/dwc3@fe900000
+fe90c100-fe9fffff : /usb1/dwc3@fe900000
+fec00000-fecfffff : /dp@fec00000
+ff100000-ff1000ff : /saradc@ff100000
+ff110000-ff110fff : /i2c@ff110000
+ff120000-ff120fff : /i2c@ff120000
+ff160000-ff160fff : /i2c@ff160000
+ff180000-ff18001f : serial
+ff260000-ff2600ff : /tsadc@ff260000
+ff370000-ff37001f : serial
+ff3c0000-ff3c0fff : /i2c@ff3c0000
+ff3d0000-ff3d0fff : /i2c@ff3d0000
+ff630000-ff633fff : /dfi@ff630000
+ff650000-ff6507ff : /vpu_service@ff650000
+ff650800-ff65083f : /iommu@ff650800
+ff660000-ff6603ff : /rkvdec@ff660000
+ff660480-ff6604bf : /iommu@ff660480
+ff6604c0-ff6604ff : /iommu@ff660480
+ff690000-ff69007f : /efuse@ff690000
+ff6d0000-ff6d3fff : /amba/dma-controller@ff6d0000
+  ff6d0000-ff6d3fff : /amba/dma-controller@ff6d0000
+ff6e0000-ff6e3fff : /amba/dma-controller@ff6e0000
+  ff6e0000-ff6e3fff : /amba/dma-controller@ff6e0000
+ff720000-ff7200ff : /pinctrl/gpio0@ff720000
+ff730000-ff7300ff : /pinctrl/gpio1@ff730000
+ff780000-ff7800ff : /pinctrl/gpio2@ff780000
+ff788000-ff7880ff : /pinctrl/gpio3@ff788000
+ff790000-ff7900ff : /pinctrl/gpio4@ff790000
+ff7c0000-ff7fffff : /phy@ff7c0000
+ff800000-ff83ffff : /phy@ff800000
+ff848000-ff8480ff : /watchdog@ff848000
+ff870000-ff870fff : /spdif@ff870000
+ff880000-ff880fff : /i2s@ff880000
+ff890000-ff890fff : /i2s@ff890000
+ff8a0000-ff8a0fff : /i2s@ff8a0000
+ff8f0000-ff8f05ff : regs
+ff8f1c00-ff8f1dff : cabc_lut
+ff8f2000-ff8f23ff : gamma_lut
+ff8f3f00-ff8f3fff : /iommu@ff8f3f00
+ff900000-ff9005ff : regs
+ff901c00-ff901dff : cabc_lut
+ff902000-ff902fff : gamma_lut
+ff903f00-ff903fff : /iommu@ff903f00
+ff910000-ff913fff : /rkisp1@ff910000
+ff914000-ff9140ff : /iommu@ff914000
+ff915000-ff9150ff : /iommu@ff914000
+ff920000-ff923fff : /rkisp1@ff920000
+ff924000-ff9240ff : /iommu@ff924000
+ff925000-ff9250ff : /iommu@ff924000
+ff940000-ff95ffff : /hdmi@ff940000
+ff968000-ff96ffff : /mipi-dphy-tx1rx1@ff968000
+ff970000-ff977fff : /edp@ff970000
+ff9a0000-ff9affff : ff9a0000.gpu
