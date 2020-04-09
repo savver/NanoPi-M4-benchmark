@@ -8,6 +8,8 @@ eth0 link down
 
 SD card: 
 see "system_info\linux_sdcard"
+USB flash:
+see "system_info\usb_flash_for_tests"
 
 ~# apt search hdparm
 
