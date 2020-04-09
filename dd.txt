@@ -1,0 +1,97 @@
+===========================================================================
+insert USB HDD (not SDD), Seagate Maxtor 2Tb usb3.0
+===========================================================================
+dmesg has error, sometimes speed may be low
+AC-DC USB 5V/3A
+
+dmesg:
+[ 4994.037749] sd 2:0:0:0: [sda] Attached SCSI disk
+[ 5088.877499] usb 4-1.4: USB disconnect, device number 5
+[ 5088.881909] sd 2:0:0:0: [sda] Synchronizing SCSI cache
+[ 5088.972149] sd 2:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=0x07 driverbyte=0x00
+[ 5091.452210] usb 4-1.4: new SuperSpeed USB device number 6 using xhci-hcd
+[ 5091.464736] usb 4-1.4: New USB device found, idVendor=0bc2, idProduct=61b5
+[ 5091.464750] usb 4-1.4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[ 5091.464757] usb 4-1.4: Product: M3 Portable
+[ 5091.464765] usb 4-1.4: Manufacturer: Seagate
+[ 5091.464772] usb 4-1.4: SerialNumber: NM163AMW
+[ 5091.474220] scsi host3: uas
+[ 5091.476154] scsi 3:0:0:0: Direct-Access     Seagate  M3 Portable      0710 PQ: 0 ANSI: 6
+[ 5091.479293] sd 3:0:0:0: Attached scsi generic sg0 type 0
+[ 5095.156252] sd 3:0:0:0: [sda] 3907029167 512-byte logical blocks: (2.00 TB/1.82 TiB)
+[ 5095.156277] sd 3:0:0:0: [sda] 4096-byte physical blocks
+[ 5095.157238] sd 3:0:0:0: [sda] Write Protect is off
+[ 5095.157249] sd 3:0:0:0: [sda] Mode Sense: 53 00 00 08
+[ 5095.157718] sd 3:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[ 5095.158046] xhci-hcd xhci-hcd.9.auto: ERROR Transfer event for disabled endpoint slot 5 ep 6 or incorrect stream ring
+[ 5095.158984] xhci-hcd xhci-hcd.9.auto: @0000000004f64320 00000000 00000000 1b000000 05078000
+[ 5095.189129]  sda: sda1
+[ 5095.194734] sd 3:0:0:0: [sda] Attached SCSI disk
+
+
+--- bs=8k count=10000 ---
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 3.03041 s, 27.0 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 2.93912 s, 27.9 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 2.79174 s, 29.3 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 2.73352 s, 30.0 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 2.75669 s, 29.7 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile2 bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 3.57819 s, 22.9 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile3 bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 2.89839 s, 28.3 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile4 bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 2.96539 s, 27.6 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile5 bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 3.58711 s, 22.8 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile4 bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 2.96539 s, 27.6 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile5 bs=8k count=10000
+	10000+0 records in
+	10000+0 records out
+		81920000 bytes (82 MB, 78 MiB) copied, 3.58711 s, 22.8 MB/s
+		
+--- bs=8k, 50000 ---
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile5 bs=8k count=50000
+	50000+0 records in
+	50000+0 records out
+		409600000 bytes (410 MB, 391 MiB) copied, 14.1912 s, 28.9 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile6 bs=8k count=50000
+	50000+0 records in
+	50000+0 records out
+		409600000 bytes (410 MB, 391 MiB) copied, 15.4816 s, 26.5 MB/s
