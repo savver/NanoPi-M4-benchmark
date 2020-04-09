@@ -1,0 +1,148 @@
+~# uname -a
+Linux NanoPi-M4 4.4.179 #1 SMP Tue Mar 17 16:51:26 CST 2020 aarch64 aarch64 aarch64 GNU/Linux
+
+connections:
+usb keyboard,
+usb mouse
+eth0 link down
+
+SD card: 
+see "system_info\linux_sdcard"
+
+~# apt search hdparm
+
+		Sorting... Done
+		Full Text Search... Done
+		blktool/bionic 4-7build1 arm64
+		  tune low-level block device parameters
+
+		hdparm/bionic 9.54+ds-1 arm64
+		  tune hard disk parameters for high performance
+
+root@NanoPi-M4:~# apt install hdparm
+
+		Reading package lists... Done
+		Building dependency tree       
+		Reading state information... Done
+		Suggested packages:
+		  apmd
+		The following NEW packages will be installed:
+		  hdparm
+		0 upgraded, 1 newly installed, 0 to remove and 3 not upgraded.
+		Need to get 89.6 kB of archives.
+		After this operation, 231 kB of additional disk space will be used.
+		Get:1 http://ports.ubuntu.com bionic/main arm64 hdparm arm64 9.54+ds-1 [89.6 kB]
+		Fetched 89.6 kB in 0s (206 kB/s)
+		debconf: delaying package configuration, since apt-utils is not installed
+		Selecting previously unselected package hdparm.
+		(Reading database ... 124061 files and directories currently installed.)
+		Preparing to unpack .../hdparm_9.54+ds-1_arm64.deb ...
+		Unpacking hdparm (9.54+ds-1) ...
+		Setting up hdparm (9.54+ds-1) ...
+		Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+
+-------------------------------------------------------------------------------------------
+root@NanoPi-M4:~# hdparm -V
+hdparm v9.54
+
+root@NanoPi-M4:~# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            976M     0  976M   0% /dev
+tmpfs           197M  984K  196M   1% /run
+overlay         8.3G  192M  8.1G   3% /
+tmpfs           981M     0  981M   0% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           981M     0  981M   0% /sys/fs/cgroup
+tmpfs           197M   12K  197M   1% /run/user/1000
+/dev/mmcblk0p2  8.3G  192M  8.1G   3% /media/pi/userdata
+
+
+/dev/mmcblk0p2:
+ Timing buffered disk reads: 198 MB in  3.03 seconds =  65.45 MB/sec
+root@NanoPi-M4:~# hdparm -Tt /dev/mmcblk0p2
+
+/dev/mmcblk0p2:
+ Timing cached reads:   2398 MB in  2.00 seconds = 1199.29 MB/sec
+ Timing buffered disk reads: 198 MB in  3.03 seconds =  65.41 MB/sec
+----------------------------------------------------------------------------
+ Timing cached reads:   2376 MB in  2.00 seconds = 1187.85 MB/sec
+ Timing buffered disk reads: 196 MB in  3.00 seconds =  65.26 MB/sec
+----------------------------------------------------------------------------
+ Timing cached reads:   2434 MB in  2.00 seconds = 1217.51 MB/sec
+ Timing buffered disk reads: 194 MB in  3.01 seconds =  64.36 MB/sec
+----------------------------------------------------------------------------
+ Timing cached reads:   2570 MB in  2.00 seconds = 1285.19 MB/sec
+ Timing buffered disk reads: 196 MB in  3.03 seconds =  64.76 MB/sec
+----------------------------------------------------------------------------
+ Timing cached reads:   2480 MB in  2.00 seconds = 1239.76 MB/sec
+ Timing buffered disk reads: 196 MB in  3.02 seconds =  64.86 MB/sec
+ 
+ 
+===========================================================================
+insert USB flash, ADATA USB3.0 16Gb
+===========================================================================
+root@NanoPi-M4:~# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            976M     0  976M   0% /dev
+tmpfs           197M 1004K  196M   1% /run
+overlay         8.3G  192M  8.1G   3% /
+tmpfs           981M     0  981M   0% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           981M     0  981M   0% /sys/fs/cgroup
+tmpfs           197M   16K  197M   1% /run/user/1000
+/dev/mmcblk0p2  8.3G  192M  8.1G   3% /media/pi/userdata
+/dev/sda1        15G   32K   15G   1% /media/pi/RIGOL_
+
+dmesg:
+[   18.291052] tty_port_close_start: tty->count = 1 port count = 2.
+[  264.954419] usb 4-1.4: new SuperSpeed USB device number 3 using xhci-hcd
+[  264.972851] usb 4-1.4: New USB device found, idVendor=125f, idProduct=db8a
+[  264.972877] usb 4-1.4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  264.972886] usb 4-1.4: Product: ADATA USB Flash Drive
+[  264.972892] usb 4-1.4: Manufacturer: ADATA
+[  264.972899] usb 4-1.4: SerialNumber: 279251623023011F
+[  264.983399] usb-storage 4-1.4:1.0: USB Mass Storage device detected
+[  264.986280] scsi host0: usb-storage 4-1.4:1.0
+[  266.104708] scsi 0:0:0:0: Direct-Access     ADATA    USB Flash Drive  1100 PQ: 0 ANSI: 6
+[  266.109473] sd 0:0:0:0: [sda] 30310400 512-byte logical blocks: (15.5 GB/14.5 GiB)
+[  266.112532] sd 0:0:0:0: [sda] Write Protect is off
+[  266.112566] sd 0:0:0:0: [sda] Mode Sense: 43 00 00 00
+[  266.113980] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[  266.120680]  sda: sda1
+[  266.125810] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[  266.144059] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[  266.755493] FAT-fs (sda1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+[  266.759428] FAT-fs (sda1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+
+
+root@NanoPi-M4:~# hdparm -Tt /dev/sda1
+
+/dev/sda1:
+ Timing cached reads:   2326 MB in  2.00 seconds = 1163.31 MB/sec
+ Timing buffered disk reads: 260 MB in  3.00 seconds =  86.64 MB/sec
+----------------------------------------------------------------------------
+ Timing cached reads:   2566 MB in  2.00 seconds = 1283.38 MB/sec
+ Timing buffered disk reads: 270 MB in  3.02 seconds =  89.54 MB/sec
+----------------------------------------------------------------------------
+ Timing cached reads:   2452 MB in  2.00 seconds = 1226.00 MB/sec
+ Timing buffered disk reads: 266 MB in  3.01 seconds =  88.50 MB/sec
+----------------------------------------------------------------------------
+ Timing cached reads:   1860 MB in  2.00 seconds = 929.46 MB/sec
+ Timing buffered disk reads: 260 MB in  3.01 seconds =  86.49 MB/sec
+----------------------------------------------------------------------------
+ Timing cached reads:   2518 MB in  2.00 seconds = 1259.03 MB/sec
+ Timing buffered disk reads: 252 MB in  3.00 seconds =  83.94 MB/sec
+----------------------------------------------------------------------------
+ Timing cached reads:   2502 MB in  2.00 seconds = 1251.50 MB/sec
+ Timing buffered disk reads: 264 MB in  3.01 seconds =  87.62 MB/sec
+----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
