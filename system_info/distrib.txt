@@ -8,3 +8,5 @@ Linux NanoPi-M4 4.4.179 #1 SMP Tue Mar 17 16:51:26 CST 2020 aarch64 aarch64 aarc
 links:
 http://wiki.friendlyarm.com/wiki/index.php/NanoPi_M4 
 https://drive.google.com/drive/folders/1nFyaZ8mnfjuoXtK6gzpxVhyrdyqKtJfC 
+
+all system settings/config by default
