@@ -1,0 +1,192 @@
+root@NanoPi-M4:~# cpu_freq; cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq
+	INFO: HARDWARE=
+	CPU0 online=1 temp=38750 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=38750 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=38125 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=39375 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=39375 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=39375 governor=interactive cur_freq=1200000
+	
+	1416000
+	1416000
+	1416000
+	1416000
+	1200000
+	1200000
+	
+root@NanoPi-M4:~# cpu_freq; cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq
+	INFO: HARDWARE=
+	CPU0 online=1 temp=38750 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=38750 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=38750 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=38750 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=38750 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=38750 governor=interactive cur_freq=1200000
+	
+	1416000
+	1416000
+	1416000
+	1416000
+	1200000
+	1200000
+	
+root@NanoPi-M4:~# cpu_freq; cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq
+	INFO: HARDWARE=
+	CPU0 online=1 temp=38750 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=38750 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=39375 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=38750 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=38750 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=38750 governor=interactive cur_freq=1008000
+	
+	1416000
+	1416000
+	1416000
+	1416000
+	1008000
+	1008000
+================================================================================
+root@NanoPi-M4:~#  cat /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state
+	408000 1092
+	600000 318
+	816000 217
+	1008000 375
+	1200000 122
+	1416000 199223
+	
+root@NanoPi-M4:~# cat /sys/devices/system/cpu/cpu*/cpufreq/stats/time_in_state
+	408000 1092
+	600000 318
+	816000 217
+	1008000 375
+	1200000 122
+	1416000 203490
+	
+	408000 1092
+	600000 318
+	816000 217
+	1008000 375
+	1200000 122
+	1416000 203490
+	
+	408000 1092
+	600000 318
+	816000 217
+	1008000 375
+	1200000 122
+	1416000 203490
+	
+	408000 1092
+	600000 318
+	816000 217
+	1008000 375
+	1200000 122
+	1416000 203490
+	
+	408000 203564
+	600000 254
+	816000 599
+	1008000 366
+	1200000 400
+	1416000 109
+	1608000 72
+	1800000 248
+
+	408000 203564
+	600000 254
+	816000 599
+	1008000 366
+	1200000 400
+	1416000 109
+	1608000 72
+	1800000 248
+================================================================================
+root@NanoPi-M4:~# cpufreq-info
+
+	cpufrequtils 008: cpufreq-info (C) Dominik Brodowski 2004-2009
+	Report errors and bugs to cpufreq@vger.kernel.org, please.
+	
+	analyzing CPU 0:
+	  driver: cpufreq-dt
+	  CPUs which run at the same hardware frequency: 0 1 2 3
+	  CPUs which need to have their frequency coordinated by software: 0 1 2 3
+	  maximum transition latency: 40.0 us.
+	  hardware limits: 408 MHz - 1.42 GHz
+	  available frequency steps: 408 MHz, 600 MHz, 816 MHz, 1.01 GHz, 1.20 GHz, 1.42 GHz
+	  available cpufreq governors: conservative, ondemand, userspace, powersave, interactive, performance, schedutil
+	  current policy: frequency should be within 408 MHz and 1.42 GHz.
+					  The governor "performance" may decide which speed to use
+					  within this range.
+	  current CPU frequency is 1.42 GHz (asserted by call to hardware).
+	  cpufreq stats: 408 MHz:0.46%, 600 MHz:0.13%, 816 MHz:0.09%, 1.01 GHz:0.16%, 1.20 GHz:0.05%, 1.42 GHz:99.11%  (209)
+	  
+	analyzing CPU 1:
+	  driver: cpufreq-dt
+	  CPUs which run at the same hardware frequency: 0 1 2 3
+	  CPUs which need to have their frequency coordinated by software: 0 1 2 3
+	  maximum transition latency: 40.0 us.
+	  hardware limits: 408 MHz - 1.42 GHz
+	  available frequency steps: 408 MHz, 600 MHz, 816 MHz, 1.01 GHz, 1.20 GHz, 1.42 GHz
+	  available cpufreq governors: conservative, ondemand, userspace, powersave, interactive, performance, schedutil
+	  current policy: frequency should be within 408 MHz and 1.42 GHz.
+					  The governor "performance" may decide which speed to use
+					  within this range.
+	  current CPU frequency is 1.42 GHz (asserted by call to hardware).
+	  cpufreq stats: 408 MHz:0.46%, 600 MHz:0.13%, 816 MHz:0.09%, 1.01 GHz:0.16%, 1.20 GHz:0.05%, 1.42 GHz:99.11%  (209)
+	  
+	analyzing CPU 2:
+	  driver: cpufreq-dt
+	  CPUs which run at the same hardware frequency: 0 1 2 3
+	  CPUs which need to have their frequency coordinated by software: 0 1 2 3
+	  maximum transition latency: 40.0 us.
+	  hardware limits: 408 MHz - 1.42 GHz
+	  available frequency steps: 408 MHz, 600 MHz, 816 MHz, 1.01 GHz, 1.20 GHz, 1.42 GHz
+	  available cpufreq governors: conservative, ondemand, userspace, powersave, interactive, performance, schedutil
+	  current policy: frequency should be within 408 MHz and 1.42 GHz.
+					  The governor "performance" may decide which speed to use
+					  within this range.
+	  current CPU frequency is 1.42 GHz (asserted by call to hardware).
+	  cpufreq stats: 408 MHz:0.46%, 600 MHz:0.13%, 816 MHz:0.09%, 1.01 GHz:0.16%, 1.20 GHz:0.05%, 1.42 GHz:99.11%  (209)
+	  
+	analyzing CPU 3:
+	  driver: cpufreq-dt
+	  CPUs which run at the same hardware frequency: 0 1 2 3
+	  CPUs which need to have their frequency coordinated by software: 0 1 2 3
+	  maximum transition latency: 40.0 us.
+	  hardware limits: 408 MHz - 1.42 GHz
+	  available frequency steps: 408 MHz, 600 MHz, 816 MHz, 1.01 GHz, 1.20 GHz, 1.42 GHz
+	  available cpufreq governors: conservative, ondemand, userspace, powersave, interactive, performance, schedutil
+	  current policy: frequency should be within 408 MHz and 1.42 GHz.
+					  The governor "performance" may decide which speed to use
+					  within this range.
+	  current CPU frequency is 1.42 GHz (asserted by call to hardware).
+	  cpufreq stats: 408 MHz:0.46%, 600 MHz:0.13%, 816 MHz:0.09%, 1.01 GHz:0.16%, 1.20 GHz:0.05%, 1.42 GHz:99.11%  (209)
+	  
+	analyzing CPU 4:
+	  driver: cpufreq-dt
+	  CPUs which run at the same hardware frequency: 4 5
+	  CPUs which need to have their frequency coordinated by software: 4 5
+	  maximum transition latency: 465 us.
+	  hardware limits: 408 MHz - 1.80 GHz
+	  available frequency steps: 408 MHz, 600 MHz, 816 MHz, 1.01 GHz, 1.20 GHz, 1.42 GHz, 1.61 GHz, 1.80 GHz
+	  available cpufreq governors: conservative, ondemand, userspace, powersave, interactive, performance, schedutil
+	  current policy: frequency should be within 408 MHz and 1.80 GHz.
+					  The governor "interactive" may decide which speed to use
+					  within this range.
+	  current CPU frequency is 408 MHz (asserted by call to hardware).
+	  cpufreq stats: 408 MHz:99.05%, 600 MHz:0.11%, 816 MHz:0.28%, 1.01 GHz:0.17%, 1.20 GHz:0.19%, 1.42 GHz:0.06%, 1.61 GHz:0.03%, 1.80 GHz:0.10%  (421)
+	  
+	analyzing CPU 5:
+	  driver: cpufreq-dt
+	  CPUs which run at the same hardware frequency: 4 5
+	  CPUs which need to have their frequency coordinated by software: 4 5
+	  maximum transition latency: 465 us.
+	  hardware limits: 408 MHz - 1.80 GHz
+	  available frequency steps: 408 MHz, 600 MHz, 816 MHz, 1.01 GHz, 1.20 GHz, 1.42 GHz, 1.61 GHz, 1.80 GHz
+	  available cpufreq governors: conservative, ondemand, userspace, powersave, interactive, performance, schedutil
+	  current policy: frequency should be within 408 MHz and 1.80 GHz.
+					  The governor "interactive" may decide which speed to use
+					  within this range.
+	  current CPU frequency is 408 MHz (asserted by call to hardware).
+	  cpufreq stats: 408 MHz:99.05%, 600 MHz:0.11%, 816 MHz:0.28%, 1.01 GHz:0.17%, 1.20 GHz:0.19%, 1.42 GHz:0.06%, 1.61 GHz:0.03%, 1.80 GHz:0.10%  (421)
+

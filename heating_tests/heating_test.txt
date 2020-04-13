@@ -1,0 +1,87 @@
+Heating test
+
+the board lies on a wooden table with the radiator down,
+use black insulating tape on board heater (left/rignt corners)
+
+ambient temperature:
++25 C
+
+IR pyrometer:
+	DT-820
+	use black insulating tape on board heater
+
+temperature:
+	cat /sys/class/thermal/thermal_zone1/temp 
+	cat /sys/class/thermal/thermal_zone0/temp
+	
+===============================================================================
+linux run, hdmi fullhd output, ssh connecting via eth1, no tests
+===============================================================================
+
+root@NanoPi-M4:~# uptime
+	21:08:33 up 1 min,  2 users,  load average: 1.11, 0.51, 0.19
+root@NanoPi-M4:~# cat /sys/class/thermal/thermal_zone0/temp
+	30555
+root@NanoPi-M4:~# cat /sys/class/thermal/thermal_zone1/temp
+	32777
+heater: 
+	27
+--------------------------------
+root@NanoPi-M4:~# uptime
+	21:17:36 up 10 min,  2 users,  load average: 0.00, 0.08, 0.09
+root@NanoPi-M4:~# cat /sys/class/thermal/thermal_zone0/temp
+	34444
+root@NanoPi-M4:~# cat /sys/class/thermal/thermal_zone1/temp
+	36250
+root@NanoPi-M4:~# cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq
+	1416000
+	1416000
+	1416000
+	1416000
+	408000
+	408000
+heater:
+	30.5
+--------------------------------	
+root@NanoPi-M4:~# uptime
+	21:22:36 up 15 min,  2 users,  load average: 0.00, 0.04, 0.07
+root@NanoPi-M4:~# cat /sys/class/thermal/thermal_zone0/temp
+	35625
+root@NanoPi-M4:~# cat /sys/class/thermal/thermal_zone1/temp
+	36875
+heater:
+	~32
+--------------------------------
+root@NanoPi-M4:~# uptime; cat  /sys/class/thermal/thermal_zone0/temp; cat /sys/class/thermal/thermal_zone1/temp; cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq
+	21:32:31 up 25 min,  2 users,  load average: 0.08, 0.02, 0.02
+	
+	38125
+	39375
+	
+	1416000
+	1416000
+	1416000
+	1416000
+	816000
+	816000
+heater:
+	~33
+--------------------------------
+root@NanoPi-M4:~# uptime; cat  /sys/class/thermal/thermal_zone0/temp; cat /sys/class/thermal/thermal_zone1/temp; cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq
+	21:43:10 up 35 min,  2 users,  load average: 0.02, 0.02, 0.00
+	
+	39375
+	40555
+
+	1416000
+	1416000
+	1416000
+	1416000
+	816000
+	816000
+heater:
+	~34
+--------------------------------
+
+
+

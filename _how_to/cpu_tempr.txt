@@ -1,0 +1,17 @@
+root@NanoPi-M4:~# cat /sys/class/thermal/thermal_zone0/temp
+	30555
+root@NanoPi-M4:~# cat /sys/class/thermal/thermal_zone1/temp
+	32777
+================================================================================
+root@NanoPi-M4:~#  cat  /sys/class/thermal/thermal_zone0/temp; cat /sys/class/thermal/thermal_zone1/temp; cpu_freq
+	38750
+	41111
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=39375 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=40000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=39375 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=39375 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=40000 governor=interactive cur_freq=1416000
+	CPU5 online=1 temp=40000 governor=interactive cur_freq=1416000
+================================================================================
