@@ -1,8 +1,16 @@
+short description:
+HDD usb3.0 --> up to 104Mb/s reading (bs=8k/1M)
+               up to 27Mb/s writing (bs=8k)
+			   up to 35Mb/s writing (bs=1M)
+			   
+linux SDHC --> up to 10Mb/s writing (bs=8k)
+
 ===========================================================================
-insert USB HDD (not SDD), Seagate Maxtor 2Tb usb3.0
+insert USB HDD (not SSD), Seagate Maxtor 2Tb usb3.0
 ===========================================================================
 dmesg has error, sometimes speed may be low
-AC-DC USB 5V/3A
+only 1st message in dmesg, no other messages during hdd tests
+power: AC-DC USB 5V/3A
 
 dmesg:
 [ 4994.037749] sd 2:0:0:0: [sda] Attached SCSI disk
@@ -28,8 +36,8 @@ dmesg:
 [ 5095.189129]  sda: sda1
 [ 5095.194734] sd 3:0:0:0: [sda] Attached SCSI disk
 
-
---- bs=8k count=10000 ---
+=== HDD Writing ===============================================================
+--- bs=8k count=10000 ---------------------------------------------------------
 root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile bs=8k count=10000
 	10000+0 records in
 	10000+0 records out
@@ -85,7 +93,6 @@ root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile5 bs=8k count=100
 	10000+0 records out
 		81920000 bytes (82 MB, 78 MiB) copied, 3.58711 s, 22.8 MB/s
 		
---- bs=8k, 50000 ---
 root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile5 bs=8k count=50000
 	50000+0 records in
 	50000+0 records out
@@ -95,3 +102,89 @@ root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile6 bs=8k count=500
 	50000+0 records in
 	50000+0 records out
 		409600000 bytes (410 MB, 391 MiB) copied, 15.4816 s, 26.5 MB/s
+	
+--- bs=1M ---------------------------------------------------------
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile2 bs=1M count=10500
+	10500+0 records in
+	10500+0 records out
+		11010048000 bytes (11 GB, 10 GiB) copied, 301.367 s, 36.5 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile2 bs=1M count=10500
+	10500+0 records in
+	10500+0 records out
+		11010048000 bytes (11 GB, 10 GiB) copied, 313.588 s, 35.1 MB/s
+		
+root@NanoPi-M4:/media/pi/Maxtor# dd if=/dev/zero of=./largefile3 bs=1M count=10500
+	10500+0 records in
+	10500+0 records out
+		11010048000 bytes (11 GB, 10 GiB) copied, 313.464 s, 35.1 MB/s
+	
+=== HDD Reading ===============================================================
+--- bs=1M ---------------------------------------------------------------------	
+root@NanoPi-M4:/media/pi/Maxtor/backup# dd if=./asus.tib of=/dev/null bs=1M count=50000
+	50000+0 records in
+	50000+0 records out
+		52428800000 bytes (52 GB, 49 GiB) copied, 507.643 s, 103 MB/s
+
+root@NanoPi-M4:/media/pi/Maxtor/backup# sync
+root@NanoPi-M4:/media/pi/Maxtor/backup# dd if=./asus.tib of=/dev/null bs=1M count=10000
+	10000+0 records in
+	10000+0 records out
+		10485760000 bytes (10 GB, 9.8 GiB) copied, 101.308 s, 104 MB/s
+
+root@NanoPi-M4:/media/pi/Maxtor/backup# sync
+root@NanoPi-M4:/media/pi/Maxtor/backup# dd if=./asus.tib of=/dev/null bs=1M count=20000
+	20000+0 records in
+	20000+0 records out
+		20971520000 bytes (21 GB, 20 GiB) copied, 201.477 s, 104 MB/s
+
+root@NanoPi-M4:/media/pi/Maxtor/backup# sync
+root@NanoPi-M4:/media/pi/Maxtor/backup# dd if=./asus_2.tib of=/dev/null bs=1M count=20000
+	20000+0 records in
+	20000+0 records out
+		20971520000 bytes (21 GB, 20 GiB) copied, 198.349 s, 106 MB/s
+
+--- bs=8k ---------------------------------------------------------------------	
+root@NanoPi-M4:/media/pi/Maxtor/backup# sync
+root@NanoPi-M4:/media/pi/Maxtor/backup# dd if=./asus_2.tib of=/dev/null bs=8k count=300000
+	300000+0 records in
+	300000+0 records out
+		2457600000 bytes (2.5 GB, 2.3 GiB) copied, 23.1509 s, 106 MB/s
+
+root@NanoPi-M4:/media/pi/Maxtor/backup# sync
+root@NanoPi-M4:/media/pi/Maxtor/backup# dd if=./asus.tib of=/dev/null bs=8k count=300000
+	300000+0 records in
+	300000+0 records out
+		2457600000 bytes (2.5 GB, 2.3 GiB) copied, 23.5547 s, 104 MB/s
+
+root@NanoPi-M4:/media/pi/Maxtor/backup# sync
+root@NanoPi-M4:/media/pi/Maxtor/backup# dd if=./asus_2.tib of=/dev/null bs=8k count=300000
+	300000+0 records in
+	300000+0 records out
+		2457600000 bytes (2.5 GB, 2.3 GiB) copied, 20.1632 s, 122 MB/s
+		
+===========================================================================
+linux SD card
+===========================================================================
+Transend 16Gb (see "system_info\linux_sdcard")
+
+=== Writing ===============================================================
+root@NanoPi-M4:~# dd if=/dev/zero of=./largefile4 bs=8k count=300500
+	300500+0 records in
+	300500+0 records out
+		2461696000 bytes (2.5 GB, 2.3 GiB) copied, 282.844 s, 8.7 MB/s
+
+root@NanoPi-M4:~# dd if=/dev/zero of=./largefile3 bs=8k count=300500
+	300500+0 records in
+	300500+0 records out
+		2461696000 bytes (2.5 GB, 2.3 GiB) copied, 231.268 s, 10.6 MB/s
+
+root@NanoPi-M4:~# dd if=/dev/zero of=./largefile4 bs=8k count=300500
+	300500+0 records in
+	300500+0 records out
+		2461696000 bytes (2.5 GB, 2.3 GiB) copied, 246.726 s, 10.0 MB/s
+
+root@NanoPi-M4:~# dd if=/dev/zero of=./largefile5 bs=8k count=300500
+	300500+0 records in
+	300500+0 records out
+		2461696000 bytes (2.5 GB, 2.3 GiB) copied, 240.716 s, 10.2 MB/s

@@ -4,6 +4,10 @@ current distib:
 $ uname -a
 Linux NanoPi-M4 4.4.179 #1 SMP Tue Mar 17 16:51:26 CST 2020 aarch64 aarch64 aarch64 GNU/Linux
 
+$ cat proc/version
+Linux version 4.4.179 (root@jensen) (gcc version 6.4.0 (ctng-1.23.0-150g-FA) ) #1 SMP Tue Mar 17 16:51:26 CST 2020
+
+
 links:
 http://wiki.friendlyarm.com/wiki/index.php/NanoPi_M4 
 https://drive.google.com/drive/folders/1nFyaZ8mnfjuoXtK6gzpxVhyrdyqKtJfC 
