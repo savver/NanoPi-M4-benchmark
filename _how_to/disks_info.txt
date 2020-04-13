@@ -1,0 +1,132 @@
+root@NanoPi-M4:~# lsblk
+	NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+	mmcblk0     179:0    0 14.8G  0 disk
+	├─mmcblk0p1 179:1    0  6.3G  0 part
+	└─mmcblk0p2 179:2    0  8.4G  0 part /media/pi/userdata
+
+===================================================================
+root@NanoPi-M4:~# df -h
+
+	Filesystem      Size  Used Avail Use% Mounted on
+	udev            976M     0  976M   0% /dev
+	tmpfs           197M  996K  196M   1% /run
+	overlay         8.3G  256M  8.1G   4% /
+	tmpfs           981M     0  981M   0% /dev/shm
+	tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+	tmpfs           981M     0  981M   0% /sys/fs/cgroup
+	tmpfs           197M   12K  197M   1% /run/user/1000
+	/dev/mmcblk0p2  8.3G  256M  8.1G   4% /media/pi/userdata
+===================================================================
+root@NanoPi-M4:~# fdisk -l
+
+	Disk /dev/ram0: 4 MiB, 4194304 bytes, 8192 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 4096 bytes
+	I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+
+	Disk /dev/mmcblk0: 14.8 GiB, 15836643328 bytes, 30930944 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+	Disklabel type: dos
+	Disk identifier: 0xfb028b59
+
+	Device         Boot    Start      End  Sectors  Size Id Type
+	/dev/mmcblk0p1        196608 13320191 13123584  6.3G 83 Linux
+	/dev/mmcblk0p2      13320192 30930943 17610752  8.4G 83 Linux
+
+/////////////////////////////////////////////////////////////////////////
+connect usb flash and hdd
+
+root@NanoPi-M4:~# lsblk
+
+	NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+	sda           8:0    0  1.8T  0 disk
+	└─sda1        8:1    0  1.8T  0 part /media/pi/Maxtor
+	sdb           8:16   1 14.5G  0 disk
+	└─sdb1        8:17   1 14.5G  0 part /media/pi/RIGOL_
+	mmcblk0     179:0    0 14.8G  0 disk
+	├─mmcblk0p1 179:1    0  6.3G  0 part
+	└─mmcblk0p2 179:2    0  8.4G  0 part /media/pi/userdata
+===================================================================
+root@NanoPi-M4:~# df -h
+
+	Filesystem      Size  Used Avail Use% Mounted on
+	udev            976M     0  976M   0% /dev
+	tmpfs           197M  1.1M  196M   1% /run
+	overlay         8.3G  256M  8.1G   4% /
+	tmpfs           981M     0  981M   0% /dev/shm
+	tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+	tmpfs           981M     0  981M   0% /sys/fs/cgroup
+	tmpfs           197M   12K  197M   1% /run/user/1000
+	/dev/mmcblk0p2  8.3G  256M  8.1G   4% /media/pi/userdata
+	/dev/sda1       1.9T  1.7T  216G  89% /media/pi/Maxtor
+	/dev/sdb1        15G   40K   15G   1% /media/pi/RIGOL_
+===================================================================
+root@NanoPi-M4:~# fdisk -l
+
+	Disk /dev/ram0: 4 MiB, 4194304 bytes, 8192 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 4096 bytes
+	I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+
+	Disk /dev/mmcblk0: 14.8 GiB, 15836643328 bytes, 30930944 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+	Disklabel type: dos
+	Disk identifier: 0xfb028b59
+
+	Device         Boot    Start      End  Sectors  Size Id Type
+	/dev/mmcblk0p1        196608 13320191 13123584  6.3G 83 Linux
+	/dev/mmcblk0p2      13320192 30930943 17610752  8.4G 83 Linux
+
+
+	Disk /dev/sda: 1.8 TiB, 2000398933504 bytes, 3907029167 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 4096 bytes
+	I/O size (minimum/optimal): 4096 bytes / 33553920 bytes
+	Disklabel type: dos
+	Disk identifier: 0x5cdcd575
+
+	Device     Boot Start        End    Sectors  Size Id Type
+	/dev/sda1  *       64 3907024128 3907024065  1.8T  7 HPFS/NTFS/exFAT
+
+
+	Disk /dev/sdb: 14.5 GiB, 15518924800 bytes, 30310400 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+	Disklabel type: dos
+	Disk identifier: 0x0124e851
+
+	Device     Boot Start      End  Sectors  Size Id Type
+	/dev/sdb1  *     2048 30310399 30308352 14.5G  c W95 FAT32 (LBA)
+=================================================================
+root@NanoPi-M4:~# lshw -class storage
+
+  *-usb:0
+       description: Mass storage device
+       product: ADATA USB Flash Drive
+       vendor: ADATA
+       physical id: 1
+       bus info: usb@6:1.1
+       logical name: scsi1
+       version: 11.00
+       serial: 279251623023011F
+       capabilities: usb-3.00 scsi emulated scsi-host
+       configuration: driver=usb-storage maxpower=504mA speed=5000Mbit/s
+  *-usb:1
+       description: Mass storage device
+       product: M3 Portable
+       vendor: Seagate
+       physical id: 4
+       bus info: usb@6:1.4
+       logical name: scsi0
+       version: 7.10
+       serial: NM163AMW
+       capabilities: usb-3.00 scsi
+       configuration: driver=uas maxpower=896mA speed=5000Mbit/s
+		
+
+

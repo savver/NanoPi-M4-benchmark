@@ -1,0 +1,44 @@
+root@NanoPi-M4:~# sudo netstat -ntulp
+
+	Active Internet connections (only servers)
+	Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+	tcp        0      0 127.0.1.1:53            0.0.0.0:*               LISTEN      1074/dnsmasq
+	tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      742/dnsmasq
+	tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      473/systemd-resolve
+	tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      734/sshd
+	tcp6       0      0 ::1:53                  :::*                    LISTEN      742/dnsmasq
+	tcp6       0      0 :::22                   :::*                    LISTEN      734/sshd
+	udp        0      0 0.0.0.0:57737           0.0.0.0:*                           586/avahi-daemon: r
+	udp        0      0 0.0.0.0:52654           0.0.0.0:*                           1074/dnsmasq
+	udp        0      0 127.0.1.1:53            0.0.0.0:*                           1074/dnsmasq
+	udp        0      0 127.0.0.1:53            0.0.0.0:*                           742/dnsmasq
+	udp        0      0 127.0.0.53:53           0.0.0.0:*                           473/systemd-resolve
+	udp        0      0 0.0.0.0:68              0.0.0.0:*                           808/dhclient
+	udp        0      0 0.0.0.0:5353            0.0.0.0:*                           586/avahi-daemon: r
+	udp6       0      0 ::1:53                  :::*                                742/dnsmasq
+	udp6       0      0 :::36063                :::*                                586/avahi-daemon: r
+	udp6       0      0 :::5353                 :::*                                586/avahi-daemon: r
+=====================================================================
+root@NanoPi-M4:~# sudo lsof -i
+
+	COMMAND    PID            USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+	systemd-r  473 systemd-resolve   12u  IPv4  18274      0t0  UDP 127.0.0.53:domain
+	systemd-r  473 systemd-resolve   13u  IPv4  18275      0t0  TCP 127.0.0.53:domain (LISTEN)
+	avahi-dae  586           avahi   12u  IPv4  20000      0t0  UDP *:mdns
+	avahi-dae  586           avahi   13u  IPv6  20001      0t0  UDP *:mdns
+	avahi-dae  586           avahi   14u  IPv4  20002      0t0  UDP *:57737
+	avahi-dae  586           avahi   15u  IPv6  20003      0t0  UDP *:36063
+	sshd       734            root    3u  IPv4  26220      0t0  TCP *:ssh (LISTEN)
+	sshd       734            root    4u  IPv6  26222      0t0  TCP *:ssh (LISTEN)
+	dnsmasq    742         dnsmasq    4u  IPv4  13223      0t0  UDP localhost.localdomain:domain
+	dnsmasq    742         dnsmasq    5u  IPv4  13224      0t0  TCP localhost.localdomain:domain (LISTEN)
+	dnsmasq    742         dnsmasq    6u  IPv6  13225      0t0  UDP localhost:domain
+	dnsmasq    742         dnsmasq    7u  IPv6  13226      0t0  TCP localhost:domain (LISTEN)
+	dhclient   808            root    6u  IPv4  22821      0t0  UDP *:bootpc
+	dnsmasq   1074          nobody    4u  IPv4  26773      0t0  UDP NanoPi-M4:domain
+	dnsmasq   1074          nobody    5u  IPv4  26774      0t0  TCP NanoPi-M4:domain (LISTEN)
+	dnsmasq   1074          nobody   10u  IPv4  25959      0t0  UDP *:52654
+	sshd      1223            root    3u  IPv4  27090      0t0  TCP 192.168.1.56:ssh->192.168.1.54:51820 (ESTABLISHED)
+	sshd      1308              pi    3u  IPv4  27090      0t0  TCP 192.168.1.56:ssh->192.168.1.54:51820 (ESTABLISHED)
+=====================================================================
+
