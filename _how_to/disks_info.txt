@@ -128,5 +128,36 @@ root@NanoPi-M4:~# lshw -class storage
        capabilities: usb-3.00 scsi
        configuration: driver=uas maxpower=896mA speed=5000Mbit/s
 		
+=================================================================
+root@NanoPi-M4:~# parted -l
 
+	Model: Seagate M3 Portable (scsi)
+	Disk /dev/sda: 2000GB
+	Sector size (logical/physical): 512B/4096B
+	Partition Table: msdos
+	Disk Flags:
+
+	Number  Start   End     Size    Type     File system  Flags
+	 1      32.8kB  2000GB  2000GB  primary  ntfs         boot
+
+
+	Model: ADATA USB Flash Drive (scsi)
+	Disk /dev/sdb: 15.5GB
+	Sector size (logical/physical): 512B/512B
+	Partition Table: msdos
+	Disk Flags:
+
+	Number  Start   End     Size    Type     File system  Flags
+	 1      1049kB  15.5GB  15.5GB  primary  fat32        boot, lba
+
+
+	Model: SD USDU1 (sd/mmc)
+	Disk /dev/mmcblk0: 15.8GB
+	Sector size (logical/physical): 512B/512B
+	Partition Table: msdos
+	Disk Flags:
+
+	Number  Start   End     Size    Type     File system  Flags
+	 1      101MB   6820MB  6719MB  primary  ext4
+	 2      6820MB  15.8GB  9017MB  primary  ext4
 
