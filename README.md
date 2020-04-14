@@ -17,7 +17,8 @@ tests:
 
 	- ext HDD usb3.0, reading speed up to 104Mb/s (not bad usb3.0 bandwidth)
 	- sftp + ext HDD usb3.0: upload speed up to 40-43MiB/s, 
-	download speed up to 46-50MiB/s. Core temperature is not greater 54 degree.
+	download speed up to 46-50MiB/s. Core temperature is not greater 54 degree
+	- 2 core A72 have ~1.5x more performance than A53
 
 stability:
 
