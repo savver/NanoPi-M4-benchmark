@@ -15,11 +15,12 @@ linux distrib info:
 	
 tests:
 
-	- ext HDD usb3.0, reading speed up to 106Mb/s (not bad usb3.0 bandwidth)
-	- sftp + ext HDD usb3.0: transfer 100Gb+ in both sides, files correct (md5sum check), 
-	but some errors in dmesg about endpoints(?), upload speed up to 40-43MiB/s, 
+	- ext HDD usb3.0, reading speed up to 104Mb/s (not bad usb3.0 bandwidth)
+	- sftp + ext HDD usb3.0: upload speed up to 40-43MiB/s, 
 	download speed up to 46-50MiB/s. Core temperature is not greater 54 degree.
 
 stability:
 
 	- external usb3.0 HDD (2Tb), few hours test, without errors in dmesg (so usb hub power enought),
+	- sftp + ext HDD usb3.0: transfer 100Gb+ in both sides, files correct (md5sum check), 
+	but some errors in dmesg about endpoints(?)
