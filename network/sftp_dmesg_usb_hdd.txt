@@ -1,0 +1,14 @@
+[   57.805562] xhci-hcd xhci-hcd.9.auto: ERROR Transfer event for disabled endpoint slot 4 ep 6 or incorrect stream ring
+[   57.806517] xhci-hcd xhci-hcd.9.auto: @000000007a881960 00000000 00000000 1b000000 04078001
+[   80.639459] xhci-hcd xhci-hcd.9.auto: ERROR Transfer event for disabled endpoint slot 4 ep 6 or incorrect stream ring
+[   80.640416] xhci-hcd xhci-hcd.9.auto: @000000007a881a60 00000000 00000000 1b000000 04078001
+[  139.554915] xhci-hcd xhci-hcd.9.auto: ERROR Transfer event for disabled endpoint slot 4 ep 6 or incorrect stream ring
+[  139.555871] xhci-hcd xhci-hcd.9.auto: @000000007a881f80 00000000 00000000 1b000000 04078001
+[  404.419920] xhci-hcd xhci-hcd.9.auto: ERROR Transfer event for disabled endpoint slot 4 ep 6 or incorrect stream ring
+[  404.420875] xhci-hcd xhci-hcd.9.auto: @000000007a881690 00000000 00000000 1b000000 04078001
+[  404.421681] xhci-hcd xhci-hcd.9.auto: ERROR Transfer event for disabled endpoint slot 4 ep 6 or incorrect stream ring
+[  404.422615] xhci-hcd xhci-hcd.9.auto: @000000007a8816c0 00000000 00000000 1b000000 04078001
+[  570.443319] xhci-hcd xhci-hcd.9.auto: ERROR Transfer event for disabled endpoint slot 4 ep 6 or incorrect stream ring
+[  570.444274] xhci-hcd xhci-hcd.9.auto: @000000007a881a60 00000000 00000000 1b000000 04078001
+[  615.298573] xhci-hcd xhci-hcd.9.auto: ERROR Transfer event for disabled endpoint slot 4 ep 6 or incorrect stream ring
+[  615.299526] xhci-hcd xhci-hcd.9.auto: @000000007a881b60 00000000 00000000 1b000000 04078001
