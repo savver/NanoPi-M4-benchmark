@@ -16,6 +16,8 @@ linux distrib info:
 tests:
 
 	- ext HDD usb3.0, reading speed up to 106Mb/s (not bad usb3.0 bandwidth)
+	- sftp + ext HDD usb3.0: transfer 100Gb+ in both sides, files correct (md5sum check), but some errors in dmesg about endpoints(?), 
+	upload speed up to 40-43MiB/s, download speed up to 46-50MiB/s.
 
 stability:
 
