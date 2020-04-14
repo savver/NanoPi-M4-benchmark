@@ -19,7 +19,9 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX packets 175  bytes 14680 (14.6 KB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
---------------------------------------------------------------------------------------
+=================================================================================
+stress-ng --cpu 6/2 --cpu-method all --verify --metrics-brief -timeout 60s/5m
+=================================================================================
 root@NanoPi-M4:~# cpu_freq 
 	INFO: HARDWARE=
 	CPU0 online=1 temp=38125 governor=performance cur_freq=1416000
@@ -28,6 +30,7 @@ root@NanoPi-M4:~# cpu_freq
 	CPU3 online=1 temp=38125 governor=performance cur_freq=1416000
 	CPU4 online=1 temp=38750 governor=interactive cur_freq=1008000
 	CPU5 online=1 temp=38125 governor=interactive cur_freq=1008000
+	
 root@NanoPi-M4:~# stress-ng --cpu 6 --cpu-method all --verify --metrics-brief --timeout 60; cpu_freq
 	stress-ng: info:  [2064] dispatching hogs: 6 cpu
 	stress-ng: info:  [2064] cache allocate: using built-in defaults as unable to determine cache details
@@ -79,8 +82,8 @@ root@NanoPi-M4:~# cpu_freq
 	CPU3 online=1 temp=41666 governor=performance cur_freq=1416000
 	CPU4 online=1 temp=41666 governor=interactive cur_freq=816000
 	CPU5 online=1 temp=42222 governor=interactive cur_freq=1008000
+	
 root@NanoPi-M4:~# stress-ng --cpu 6 --cpu-method all --verify --metrics-brief --timeout 60; cpu_freq
-
 	stress-ng: info:  [2717] dispatching hogs: 6 cpu
 	stress-ng: info:  [2717] cache allocate: using built-in defaults as unable to determine cache details
 	stress-ng: info:  [2717] successful run completed in 60.19s (1 min, 0.19 secs)
@@ -353,5 +356,895 @@ INFO: HARDWARE=
 	CPU4 online=1 temp=55555 governor=interactive cur_freq=1200000
 	CPU5 online=1 temp=55000 governor=interactive cur_freq=1416000
 
+=================================================================================
+stress-ng --cpu 6/2 --cpu-method=int32  --verify --metrics-brief -timeout 60s/5m
+=================================================================================
+root@NanoPi-M4:~# cpu_freq 
+	INFO: HARDWARE=
+	CPU0 online=1 temp=41111 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=40555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=41111 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=41111 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=41111 governor=interactive cur_freq=816000
+	CPU5 online=1 temp=41111 governor=interactive cur_freq=1008000
+	
+root@NanoPi-M4:~# stress-ng --cpu 6 --cpu-method=int32  --verify --metrics-brief --timeout 60; cpu_freq
+	stress-ng: info:  [1438] dispatching hogs: 6 cpu
+	stress-ng: info:  [1438] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [1438] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [1438] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [1438]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [1438] cpu             8050185     60.00    359.18      0.02    134170.27     22411.43
+	
+INFO: HARDWARE=
+	CPU0 online=1 temp=55000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=52777 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=53333 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=51666 governor=interactive cur_freq=1008000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq 
+	INFO: HARDWARE=
+	CPU0 online=1 temp=42777 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=43333 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=43333 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=43333 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=42777 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=42777 governor=interactive cur_freq=1200000
+	
+root@NanoPi-M4:~# stress-ng --cpu 6 --cpu-method=int32  --verify --metrics-brief --timeout 60; cpu_freq
+	stress-ng: info:  [1701] dispatching hogs: 6 cpu
+	stress-ng: info:  [1701] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [1701] successful run completed in 60.02s (1 min, 0.02 secs)
+	stress-ng: info:  [1701] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [1701]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [1701] cpu             8049554     60.00    359.17      0.01    134159.74     22410.92
+	
+INFO: HARDWARE=
+	CPU0 online=1 temp=55555 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=55555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=55000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=55000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=54444 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=53333 governor=interactive cur_freq=1200000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq 
+	INFO: HARDWARE=
+	CPU0 online=1 temp=43888 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=43888 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=43333 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=43888 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=43888 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=43333 governor=interactive cur_freq=1200000
+	
+root@NanoPi-M4:~# stress-ng --cpu 6 --cpu-method=int32  --verify --metrics-brief --timeout 60; cpu_freq
+	stress-ng: info:  [1906] dispatching hogs: 6 cpu
+	stress-ng: info:  [1906] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [1906] successful run completed in 60.00s (1 min, 0.00 secs)
+	stress-ng: info:  [1906] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [1906]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [1906] cpu             8050882     60.00    359.18      0.02    134181.75     22413.37
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=57222 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=57222 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=56666 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=56666 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=55555 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=55000 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq 
+	INFO: HARDWARE=
+	CPU0 online=1 temp=45000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=45000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=45000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=44444 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=44444 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=44444 governor=interactive cur_freq=1200000
+	
+root@NanoPi-M4:~# stress-ng --cpu 6 --cpu-method=int32  --verify --metrics-brief --timeout 5m; cpu_freq
+	stress-ng: info:  [2099] dispatching hogs: 6 cpu
+	stress-ng: info:  [2099] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [2099] successful run completed in 300.01s (5 mins, 0.01 secs)
+	stress-ng: info:  [2099] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [2099]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [2099] cpu            40287703    300.00   1796.93      0.27    134292.43     22416.93
+	
+INFO: HARDWARE=
+	CPU0 online=1 temp=61875 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=61875 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=61250 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=60625 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=61250 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=61250 governor=interactive cur_freq=1800000
+	
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=int32  --verify --metrics-brief --timeout 60; cpu_freq
 
+	INFO: HARDWARE=
+	CPU0 online=1 temp=43888 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=44444 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=44444 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=44444 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=44444 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=44444 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [4525] dispatching hogs: 6 cpu
+	stress-ng: info:  [4525] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [4525] successful run completed in 9.30s
+	stress-ng: info:  [4525] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [4525]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [4525] cpu             1238848      9.28     55.33      0.05    133540.58     22369.95
 
+	INFO: HARDWARE=
+	CPU0 online=1 temp=55000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=55000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=55000 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=53333 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=int32  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=45625 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=45000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=44444 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=45000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=45000 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=45000 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [4623] dispatching hogs: 2 cpu
+	stress-ng: info:  [4623] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [4623] successful run completed in 60.00s (1 min, 0.00 secs)
+	stress-ng: info:  [4623] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [4623]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [4623] cpu             3860434     60.00    119.58      0.03     64340.79     32275.18
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=53333 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=53333 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=int32  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=45000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=45625 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=46250 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=45625 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=45625 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=45625 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [4775] dispatching hogs: 2 cpu
+	stress-ng: info:  [4775] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [4775] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [4775] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [4775]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [4775] cpu             3861766     59.99    119.65      0.01     64370.83     32272.82
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=55000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=53333 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=53333 governor=interactive cur_freq=1200000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=int32  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=46875 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=47500 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=46875 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=46250 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=46875 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=46875 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [4923] dispatching hogs: 2 cpu
+	stress-ng: info:  [4923] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [4923] successful run completed in 60.00s (1 min, 0.00 secs)
+	stress-ng: info:  [4923] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [4923]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [4923] cpu             3866224     60.00    119.77      0.00     64437.32     32280.40
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=56111 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=55555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=55555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=55000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=54444 governor=interactive cur_freq=1416000
+	CPU5 online=1 temp=55000 governor=interactive cur_freq=1416000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=int32  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=46875 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=46875 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=46875 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=46875 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=46250 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=46875 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [5079] dispatching hogs: 2 cpu
+	stress-ng: info:  [5079] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [5079] successful run completed in 300.01s (5 mins, 0.01 secs)
+	stress-ng: info:  [5079] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [5079]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [5079] cpu            19368437    299.99    599.72      0.02     64564.59     32294.72
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=58888 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=57777 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=57777 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=57222 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=56666 governor=interactive cur_freq=1416000
+	CPU5 online=1 temp=56666 governor=interactive cur_freq=1416000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=int32  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=50000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=50000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=50000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=50555 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=50000 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=50000 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [5469] dispatching hogs: 2 cpu
+	stress-ng: info:  [5469] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [5469] successful run completed in 300.00s (5 mins, 0.00 secs)
+	stress-ng: info:  [5469] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [5469]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [5469] cpu            19366103    300.00    599.73      0.00     64553.77     32291.37
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=60000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=60000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=58888 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=58888 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=58333 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=58888 governor=interactive cur_freq=1800000
+=================================================================================
+stress-ng --cpu 6/2 --cpu-method=float  --verify --metrics-brief -timeout 60s/5m
+=================================================================================
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=46875 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=48125 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=46875 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=47500 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=47500 governor=interactive cur_freq=816000
+	CPU5 online=1 temp=46875 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [6229] dispatching hogs: 6 cpu
+	stress-ng: info:  [6229] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [6229] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [6229] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [6229]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [6229] cpu             4815337     60.00    359.33      0.04     80255.80     13399.39
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=62500 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=61250 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=60625 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=59444 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=59444 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=60000 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=47500 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=47500 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=47500 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=48125 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=47500 governor=interactive cur_freq=816000
+	CPU5 online=1 temp=48125 governor=interactive cur_freq=1008000
+	stress-ng: info:  [6456] dispatching hogs: 6 cpu
+	
+	stress-ng: info:  [6456] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [6456] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [6456] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [6456]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [6456] cpu             4865352     60.00    359.02      0.02     81089.34     13551.00
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=62500 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=61250 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=61250 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=60625 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=60000 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=60000 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=48750 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=49375 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=48750 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=49375 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=48750 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=48750 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [6636] dispatching hogs: 6 cpu
+	stress-ng: info:  [6636] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [6636] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [6636] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [6636]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [6636] cpu             4744527     60.00    359.05      0.02     79076.37     13213.38
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=63750 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=63125 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=62500 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=61875 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=60625 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=61250 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 5m; cpu_freq
+	INFO: HARDWARE=
+	CPU0 online=1 temp=51111 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=51111 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=51111 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=50555 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=51111 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=50555 governor=interactive cur_freq=1416000
+	
+	stress-ng: info:  [6789] dispatching hogs: 6 cpu
+	stress-ng: info:  [6789] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [6789] successful run completed in 300.01s (5 mins, 0.01 secs)
+	stress-ng: info:  [6789] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [6789]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [6789] cpu            22570410    300.00   1793.50      0.13     75234.65     12583.65
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=63125 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=62500 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=62500 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=62500 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=61875 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=61875 governor=interactive cur_freq=1200000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=48750 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=48125 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=48125 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=48750 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=48750 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=49375 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [7491] dispatching hogs: 6 cpu
+	stress-ng: info:  [7491] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [7491] successful run completed in 300.01s (5 mins, 0.01 secs)
+	stress-ng: info:  [7491] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [7491]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [7491] cpu            23088886    300.00   1794.27      0.14     76962.97     12867.12
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=64375 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=63750 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=63750 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=62500 governor=interactive cur_freq=1416000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=50555 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=51111 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=51111 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=51666 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=51111 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=51666 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [7991] dispatching hogs: 6 cpu
+	stress-ng: info:  [7991] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [7991] successful run completed in 300.01s (5 mins, 0.01 secs)
+	stress-ng: info:  [7991] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [7991]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [7991] cpu            21682363    300.00   1788.00      0.47     72274.60     12123.41
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=64375 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=65000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=64375 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=64375 governor=interactive cur_freq=1608000
+	CPU5 online=1 temp=64375 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+//			use Cooller for Heater
+
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=27500 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=26875 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=27500 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=26875 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=27500 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=26875 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [12373] dispatching hogs: 6 cpu
+	stress-ng: info:  [12373] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [12373] successful run completed in 300.01s (5 mins, 0.01 secs)
+	stress-ng: info:  [12373] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [12373]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [12373] cpu            24361011    300.00   1797.02      0.10     81203.42     13555.58
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=41666 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=40555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=40555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=40000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=40000 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=39375 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+//			use Cooller for Heater
+
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=30000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=30000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=30000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=29375 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=30000 governor=interactive cur_freq=816000
+	CPU5 online=1 temp=29375 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [12767] dispatching hogs: 6 cpu
+	stress-ng: info:  [12767] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [12767] successful run completed in 300.02s (5 mins, 0.02 secs)
+	stress-ng: info:  [12767] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [12767]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [12767] cpu            22673419    299.98   1796.69      0.28     75582.82     12617.58
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=40555 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=40000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=39375 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=39375 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=39375 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=38750 governor=interactive cur_freq=1800000
+=================================================================================
+stress-ng --cpu 6/2 --cpu-method=double  --verify --metrics-brief -timeout 60s/5m
+=================================================================================
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=double  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=37500 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=37500 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=38125 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=38125 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=37500 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=38125 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [14392] dispatching hogs: 6 cpu
+	stress-ng: info:  [14392] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [14392] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [14392] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [14392]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [14392] cpu              954318     60.00    358.73      0.12     15905.28      2659.38
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=51111 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=51111 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=50555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=50555 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=49375 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=49375 governor=interactive cur_freq=1008000
+=================================================================================
+stress-ng --cpu 6/2 --cpu-method=fft  --verify --metrics-brief -timeout 60s/5m
+=================================================================================
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=fft  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=52777 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=52777 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=53333 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=53333 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=52777 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=53333 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [8507] dispatching hogs: 6 cpu
+	stress-ng: info:  [8507] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [8507] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [8507] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [8507]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [8507] cpu               56686     60.00    358.27      0.08       944.82       158.19
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=67222 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=65000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=64375 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=65000 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=64375 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=fft  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=50555 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=50555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=50555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=51111 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=51111 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=51111 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [8802] dispatching hogs: 6 cpu
+	stress-ng: info:  [8802] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [8802] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [8802] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [8802]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [8802] cpu               57606     60.00    359.01      0.02       960.05       160.45
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=66111 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=65000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=65000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=63750 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=63125 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=63125 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=fft  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=52222 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=52222 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=51666 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=52222 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=52222 governor=interactive cur_freq=816000
+	CPU5 online=1 temp=52222 governor=interactive cur_freq=816000
+	
+	stress-ng: info:  [8971] dispatching hogs: 6 cpu
+	stress-ng: info:  [8971] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [8971] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [8971] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [8971]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [8971] cpu               57665     60.00    358.79      0.02       961.03       160.71
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=66111 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=66666 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=64375 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=64375 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=65000 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=fft  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=52777 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=53333 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=53333 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=53333 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [9367] dispatching hogs: 2 cpu
+	stress-ng: info:  [9367] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [9367] successful run completed in 60.00s (1 min, 0.00 secs)
+	stress-ng: info:  [9367] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [9367]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [9367] cpu               32122     60.00    119.66      0.01       535.36       268.42
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=63125 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=62500 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=63125 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=62500 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=62500 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=61875 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=fft  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=54444 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=55000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=54444 governor=interactive cur_freq=816000
+	CPU5 online=1 temp=54444 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [9510] dispatching hogs: 2 cpu
+	stress-ng: info:  [9510] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [9510] successful run completed in 60.00s (1 min, 0.00 secs)
+	stress-ng: info:  [9510] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [9510]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [9510] cpu               32082     60.00    119.43      0.02       534.70       268.58
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=63125 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=63125 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=63750 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=63125 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=63125 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=63125 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=fft  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=52777 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=52777 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=53333 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=53333 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=53333 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=53333 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [9666] dispatching hogs: 2 cpu
+	stress-ng: info:  [9666] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [9666] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [9666] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [9666]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [9666] cpu               32094     60.00    119.68      0.02       534.94       268.12
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=63750 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=63750 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=62500 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=63125 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=63125 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=63125 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=fft  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=53333 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=53333 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=53888 governor=interactive cur_freq=1416000
+	CPU5 online=1 temp=53888 governor=interactive cur_freq=1416000
+	
+	stress-ng: info:  [9815] dispatching hogs: 6 cpu
+	stress-ng: info:  [9815] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [9815] successful run completed in 300.04s (5 mins, 0.04 secs)
+	stress-ng: info:  [9815] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [9815]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [9815] cpu              264900    299.99   1785.04      0.48       883.03       148.36
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=67222 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=66111 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=66111 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=65555 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=fft  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=53888 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=53888 governor=interactive cur_freq=816000
+	CPU5 online=1 temp=53888 governor=interactive cur_freq=816000
+	
+	stress-ng: info:  [10258] dispatching hogs: 6 cpu
+	stress-ng: info:  [10258] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [10258] successful run completed in 300.01s (5 mins, 0.01 secs)
+	stress-ng: info:  [10258] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [10258]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [10258] cpu              256114    300.00   1777.90      0.42       853.71       144.02
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=65000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=65000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=63750 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=63750 governor=interactive cur_freq=1200000
+--------------------------------------------------------------------------------------
+// use cooller with heater
+
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=fft  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=33888 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=33888 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=33888 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=33888 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=33888 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=34444 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [10869] dispatching hogs: 6 cpu
+	stress-ng: info:  [10869] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [10869] successful run completed in 300.01s (5 mins, 0.01 secs)
+	stress-ng: info:  [10869] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [10869]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [10869] cpu              288344    299.99   1795.78      0.51       961.19       160.52
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=41666 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=40555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=40555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=41111 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=40555 governor=interactive cur_freq=1608000
+	CPU5 online=1 temp=40000 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=fft  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=30000 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=30555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=30000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=30555 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=30555 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=30555 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [11265] dispatching hogs: 6 cpu
+	stress-ng: info:  [11265] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [11265] successful run completed in 300.02s (5 mins, 0.02 secs)
+	stress-ng: info:  [11265] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [11265]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [11265] cpu              288287    300.00   1796.47      0.12       960.95       160.46
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=41666 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=40555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=40000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=40000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=40555 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=40555 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=fft  --verify --metrics-brief --timeout 5m; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=27500 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=28125 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=28125 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=27500 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=28125 governor=interactive cur_freq=816000
+	CPU5 online=1 temp=28125 governor=interactive cur_freq=816000
+	
+	stress-ng: info:  [11757] dispatching hogs: 6 cpu
+	stress-ng: info:  [11757] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [11757] successful run completed in 300.01s (5 mins, 0.01 secs)
+	stress-ng: info:  [11757] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [11757]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [11757] cpu              288338    300.00   1795.69      0.49       961.11       160.53
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=41111 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=40000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=40555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=40000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=40000 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=40555 governor=interactive cur_freq=1800000
+=================================================================================
+stress-ng --cpu 6/2 --cpu-method=callfunc  --verify --metrics-brief -timeout 60s/5m
+=================================================================================
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=callfunc  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=28750 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=28750 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=28125 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=28750 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=28750 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=29375 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [13319] dispatching hogs: 6 cpu
+	stress-ng: info:  [13319] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [13319] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [13319] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [13319]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [13319] cpu            33544403     60.00    358.72      0.26    559075.62     93443.65
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=43333 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=42777 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=41666 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=41666 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=41111 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=40555 governor=interactive cur_freq=1200000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=callfunc  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=31666 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=31111 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=31666 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=31666 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=31111 governor=interactive cur_freq=816000
+	CPU5 online=1 temp=31666 governor=interactive cur_freq=816000
+	
+	stress-ng: info:  [13587] dispatching hogs: 6 cpu
+	stress-ng: info:  [13587] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [13587] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [13587] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [13587]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [13587] cpu            35023998     59.99    359.11      0.07    583839.37     97510.99
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=46250 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=45625 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=44444 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=45000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=44444 governor=interactive cur_freq=1416000
+	CPU5 online=1 temp=43888 governor=interactive cur_freq=1416000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=callfunc  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=34444 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=34444 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=34444 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=34444 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=34444 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=33888 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [13746] dispatching hogs: 6 cpu
+	stress-ng: info:  [13746] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [13746] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [13746] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [13746]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [13746] cpu            34977494     59.99    358.88      0.07    583046.98     97443.92
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=48750 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=48125 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=47500 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=47500 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=47500 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=48125 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=callfunc  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=36250 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=36875 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=36250 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=36875 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=36875 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=36250 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [13901] dispatching hogs: 2 cpu
+	stress-ng: info:  [13901] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [13901] successful run completed in 60.00s (1 min, 0.00 secs)
+	stress-ng: info:  [13901] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [13901]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [13901] cpu            17243168     60.00    119.75      0.00    287386.81    143993.05
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=45625 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=45000 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=45625 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=45000 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=45000 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=43888 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=callfunc  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=36250 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=36250 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=36250 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=36875 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=36875 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=36875 governor=interactive cur_freq=1416000
+	
+	stress-ng: info:  [14162] dispatching hogs: 2 cpu
+	stress-ng: info:  [14162] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [14162] successful run completed in 60.01s (1 min, 0.01 secs)
+	stress-ng: info:  [14162] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [14162]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [14162] cpu            15832106     59.98    119.73      0.02    263947.85    132209.65
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=47500 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=46875 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=46250 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=46250 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=45625 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=46250 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------
