@@ -1,0 +1,55 @@
+https://github.com/ThomasKaiser/sbc-bench
+
+You need an armhf or arm64 Debian Stretch or Ubuntu Bionic install. 
+Older variants are not supported (due to distro packages being way too outdated). Then it's
+	wget https://raw.githubusercontent.com/ThomasKaiser/sbc-bench/master/sbc-bench.sh
+	sudo /bin/bash ./sbc-bench.sh -c
+	
+----------------------------------------------------------------------
+root@NanoPi-M4:/home/pi# mkdir sbc-bench
+root@NanoPi-M4:/home/pi# cd sbc-bench
+root@NanoPi-M4:/home/pi/sbc-bench# wget https://raw.githubusercontent.com/ThomasKaiser/sbc-bench/master/sbc-bench.sh
+	--2020-04-14 23:39:52--  https://raw.githubusercontent.com/ThomasKaiser/sbc-bench/master/sbc-bench.sh
+	Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.244.133
+	Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.244.133|:443... connected.
+	HTTP request sent, awaiting response... 200 OK
+	Length: 36477 (36K) [text/plain]
+	Saving to: ‘sbc-bench.sh’
+
+	sbc-bench.sh                                         100%[=====================================================================================================================>]  35.62K  --.-KB/s    in 0.03s   
+
+	2020-04-14 23:39:52 (1.07 MB/s) - ‘sbc-bench.sh’ saved [36477/36477]
+
+----------------------------------------------------------------------
+pi@NanoPi-M4:~/sbc-bench$ sudo /bin/bash ./sbc-bench.sh -c
+
+	Average load is 0.1 or higher (way too much background activity). Waiting...
+
+	System too busy for benchmarking: 23:47:38 up 5 min,  1 user,  load average: 0.14, 0.27, 0.16
+	System too busy for benchmarking: 23:47:43 up 5 min,  1 user,  load average: 0.13, 0.27, 0.16
+	System too busy for benchmarking: 23:47:48 up 5 min,  1 user,  load average: 0.12, 0.26, 0.16
+	System too busy for benchmarking: 23:47:53 up 5 min,  1 user,  load average: 0.11, 0.26, 0.16
+	System too busy for benchmarking: 23:47:58 up 5 min,  1 user,  load average: 0.10, 0.25, 0.16
+
+	sbc-bench v0.7.1
+
+	Installing needed tools. This may take some time..../sbc-bench.sh: line 430: cd: tinymembench: No such file or directory
+	Not able to build necessary tools. Aborting.
+	Most probably gcc and make packages are missing.
+
+----------------------------------------------------------------------
+try again wirh Internet:
+
+pi@NanoPi-M4:~/sbc-bench$ sudo /bin/bash ./sbc-bench.sh -c
+
+	Average load is 0.1 or higher (way too much background activity). Waiting...
+
+	System too busy for benchmarking: 01:32:40 up  1:01,  1 user,  load average: 0.14, 2.25, 3.05
+	System too busy for benchmarking: 01:32:45 up  1:01,  1 user,  load average: 0.12, 2.21, 3.03
+	System too busy for benchmarking: 01:32:50 up  1:01,  1 user,  load average: 0.11, 2.18, 3.01
+	System too busy for benchmarking: 01:32:55 up  1:01,  1 user,  load average: 0.10, 2.14, 3.00
+	System too busy for benchmarking: 01:33:00 up  1:01,  1 user,  load average: 0.10, 2.10, 2.98
+
+	sbc-bench v0.7.1
+
+	Installing needed tools. This may take some time... Done.
