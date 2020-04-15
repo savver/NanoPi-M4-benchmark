@@ -1,0 +1,525 @@
+short:
+	sysbench cpu --threads=1 --cpu-max-prime=20000 --validate run
+	sysbench cpu --threads=2 --cpu-max-prime=20000 --validate run
+	sysbench cpu --threads=6 --cpu-max-prime=20000 --validate run
+	sysbench cpu --threads=1 --test=memory --validate run
+	sysbench cpu --threads=2 --test=memory --validate run
+	sysbench cpu --threads=6 --test=memory --validate run
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=1 --cpu-max-prime=20000 --validate run
+
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 1
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Prime numbers limit: 20000
+
+	Initializing worker threads...
+
+	Threads started!
+
+	CPU speed:
+		events per second:   702.72
+
+	General statistics:
+		total time:                          10.0005s
+		total number of events:              7030
+
+	Latency (ms):
+			 min:                                  1.42
+			 avg:                                  1.42
+			 max:                                  2.05
+			 95th percentile:                      1.42
+			 sum:                               9992.80
+
+	Threads fairness:
+		events (avg/stddev):           7030.0000/0.00
+		execution time (avg/stddev):   9.9928/0.00
+		
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=1 --cpu-max-prime=20000 --validate run
+
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 1
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Prime numbers limit: 20000
+
+	Initializing worker threads...
+
+	Threads started!
+
+	CPU speed:
+		events per second:   702.40
+
+	General statistics:
+		total time:                          10.0007s
+		total number of events:              7027
+
+	Latency (ms):
+			 min:                                  1.42
+			 avg:                                  1.42
+			 max:                                  1.47
+			 95th percentile:                      1.42
+			 sum:                               9992.79
+
+	Threads fairness:
+		events (avg/stddev):           7027.0000/0.00
+		execution time (avg/stddev):   9.9928/0.00
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=2 --cpu-max-prime=20000 --validate run
+
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 2
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Prime numbers limit: 20000
+
+	Initializing worker threads...
+
+	Threads started!
+
+	CPU speed:
+		events per second:  1403.82
+
+	General statistics:
+		total time:                          10.0012s
+		total number of events:              14045
+
+	Latency (ms):
+			 min:                                  1.42
+			 avg:                                  1.42
+			 max:                                  7.47
+			 95th percentile:                      1.42
+			 sum:                              19988.95
+
+	Threads fairness:
+		events (avg/stddev):           7022.5000/8.50
+		execution time (avg/stddev):   9.9945/0.00
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=2 --cpu-max-prime=20000 --validate run
+
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 2
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Prime numbers limit: 20000
+
+	Initializing worker threads...
+
+	Threads started!
+
+	CPU speed:
+		events per second:  1400.32
+
+	General statistics:
+		total time:                          10.0009s
+		total number of events:              14014
+
+	Latency (ms):
+			 min:                                  1.42
+			 avg:                                  1.43
+			 max:                                  5.75
+			 95th percentile:                      1.42
+			 sum:                              19988.30
+
+	Threads fairness:
+		events (avg/stddev):           7007.0000/3.00
+		execution time (avg/stddev):   9.9942/0.00
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=6 --cpu-max-prime=20000 --validate run
+
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 6
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Prime numbers limit: 20000
+
+	Initializing worker threads...
+
+	Threads started!
+
+	CPU speed:
+		events per second:  2509.59
+
+	General statistics:
+		total time:                          10.0028s
+		total number of events:              25112
+
+	Latency (ms):
+			 min:                                  1.42
+			 avg:                                  2.39
+			 max:                                  7.05
+			 95th percentile:                      3.62
+			 sum:                              59978.10
+
+	Threads fairness:
+		events (avg/stddev):           4185.3333/1982.51
+		execution time (avg/stddev):   9.9963/0.00
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=6 --cpu-max-prime=20000 --validate run
+
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 6
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Prime numbers limit: 20000
+
+	Initializing worker threads...
+
+	Threads started!
+
+	CPU speed:
+		events per second:  2509.15
+
+	General statistics:
+		total time:                          10.0022s
+		total number of events:              25106
+
+	Latency (ms):
+			 min:                                  1.42
+			 avg:                                  2.39
+			 max:                                 13.64
+			 95th percentile:                      3.62
+			 sum:                              59977.78
+
+	Threads fairness:
+		events (avg/stddev):           4184.3333/1978.99
+		execution time (avg/stddev):   9.9963/0.00
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --test=memory --validate run
+
+	WARNING: the --test option is deprecated. You can pass a script name or path on the command line without any options.
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 1
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Running memory speed test with the following options:
+	  block size: 1KiB
+	  total size: 102400MiB
+	  operation: write
+	  scope: global
+
+	Initializing worker threads...
+
+	Threads started!
+
+	Total operations: 8329022 (832588.48 per second)
+
+	8133.81 MiB transferred (813.07 MiB/sec)
+
+
+	General statistics:
+		total time:                          10.0002s
+		total number of events:              8329022
+
+	Latency (ms):
+			 min:                                  0.00
+			 avg:                                  0.00
+			 max:                                  0.06
+			 95th percentile:                      0.00
+			 sum:                               3825.63
+
+	Threads fairness:
+		events (avg/stddev):           8329022.0000/0.00
+		execution time (avg/stddev):   3.8256/0.00
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --test=memory --validate run
+
+	WARNING: the --test option is deprecated. You can pass a script name or path on the command line without any options.
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 1
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Running memory speed test with the following options:
+	  block size: 1KiB
+	  total size: 102400MiB
+	  operation: write
+	  scope: global
+
+	Initializing worker threads...
+
+	Threads started!
+
+	Total operations: 8352577 (834942.51 per second)
+
+	8156.81 MiB transferred (815.37 MiB/sec)
+
+
+	General statistics:
+		total time:                          10.0002s
+		total number of events:              8352577
+
+	Latency (ms):
+			 min:                                  0.00
+			 avg:                                  0.00
+			 max:                                  0.04
+			 95th percentile:                      0.00
+			 sum:                               3694.13
+
+	Threads fairness:
+		events (avg/stddev):           8352577.0000/0.00
+		execution time (avg/stddev):   3.6941/0.00
+
+	root@NanoPi-M4:~# sysbench cpu --threads=1 --test=memory --validate run
+	WARNING: the --test option is deprecated. You can pass a script name or path on the command line without any options.
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 1
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Running memory speed test with the following options:
+	  block size: 1KiB
+	  total size: 102400MiB
+	  operation: write
+	  scope: global
+
+	Initializing worker threads...
+
+	Threads started!
+
+	Total operations: 8251390 (824821.71 per second)
+
+	8058.00 MiB transferred (805.49 MiB/sec)
+
+
+	General statistics:
+		total time:                          10.0002s
+		total number of events:              8251390
+
+	Latency (ms):
+			 min:                                  0.00
+			 avg:                                  0.00
+			 max:                                  0.04
+			 95th percentile:                      0.00
+			 sum:                               3810.82
+
+	Threads fairness:
+		events (avg/stddev):           8251390.0000/0.00
+		execution time (avg/stddev):   3.8108/0.00
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=2 --test=memory --validate run
+
+	WARNING: the --test option is deprecated. You can pass a script name or path on the command line without any options.
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 2
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Running memory speed test with the following options:
+	  block size: 1KiB
+	  total size: 102400MiB
+	  operation: write
+	  scope: global
+
+	Initializing worker threads...
+
+	Threads started!
+
+	Total operations: 16517714 (1651159.41 per second)
+
+	16130.58 MiB transferred (1612.46 MiB/sec)
+
+
+	General statistics:
+		total time:                          10.0002s
+		total number of events:              16517714
+
+	Latency (ms):
+			 min:                                  0.00
+			 avg:                                  0.00
+			 max:                                  0.66
+			 95th percentile:                      0.00
+			 sum:                               7545.04
+
+	Threads fairness:
+		events (avg/stddev):           8258857.0000/924.00
+		execution time (avg/stddev):   3.7725/0.02
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=2 --test=memory --validate run
+
+	WARNING: the --test option is deprecated. You can pass a script name or path on the command line without any options.
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 2
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Running memory speed test with the following options:
+	  block size: 1KiB
+	  total size: 102400MiB
+	  operation: write
+	  scope: global
+
+	Initializing worker threads...
+
+	Threads started!
+
+	Total operations: 16424248 (1641284.67 per second)
+
+	16039.30 MiB transferred (1602.82 MiB/sec)
+
+
+	General statistics:
+		total time:                          10.0003s
+		total number of events:              16424248
+
+	Latency (ms):
+			 min:                                  0.00
+			 avg:                                  0.00
+			 max:                                  1.49
+			 95th percentile:                      0.00
+			 sum:                               7543.65
+
+	Threads fairness:
+		events (avg/stddev):           8212124.0000/870.00
+		execution time (avg/stddev):   3.7718/0.00
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=6 --test=memory --validate run
+
+	WARNING: the --test option is deprecated. You can pass a script name or path on the command line without any options.
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 6
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Running memory speed test with the following options:
+	  block size: 1KiB
+	  total size: 102400MiB
+	  operation: write
+	  scope: global
+
+	Initializing worker threads...
+
+	Threads started!
+
+	Total operations: 33571585 (3355050.52 per second)
+
+	32784.75 MiB transferred (3276.42 MiB/sec)
+
+
+	General statistics:
+		total time:                          10.0002s
+		total number of events:              33571585
+
+	Latency (ms):
+			 min:                                  0.00
+			 avg:                                  0.00
+			 max:                                 10.41
+			 95th percentile:                      0.00
+			 sum:                              26779.52
+
+	Threads fairness:
+		events (avg/stddev):           5595264.1667/265726.36
+		execution time (avg/stddev):   4.4633/0.18
+
+--------------------------------------------------------------------------------------
+root@NanoPi-M4:~# sysbench cpu --threads=6 --test=memory --validate run
+
+	WARNING: the --test option is deprecated. You can pass a script name or path on the command line without any options.
+	sysbench 1.0.11 (using system LuaJIT 2.1.0-beta3)
+
+	Running the test with following options:
+	Number of threads: 6
+	Additional request validation enabled.
+
+	Initializing random number generator from current time
+
+
+	Running memory speed test with the following options:
+	  block size: 1KiB
+	  total size: 102400MiB
+	  operation: write
+	  scope: global
+
+	Initializing worker threads...
+
+	Threads started!
+
+	Total operations: 32756439 (3274253.36 per second)
+
+	31988.71 MiB transferred (3197.51 MiB/sec)
+
+
+	General statistics:
+		total time:                          10.0007s
+		total number of events:              32756439
+
+	Latency (ms):
+			 min:                                  0.00
+			 avg:                                  0.00
+			 max:                                  4.86
+			 95th percentile:                      0.00
+			 sum:                              27131.72
+
+	Threads fairness:
+		events (avg/stddev):           5459406.5000/298104.66
+		execution time (avg/stddev):   4.5220/0.21
+
+--------------------------------------------------------------------------------------
+
