@@ -23,6 +23,7 @@ stability:
 
 	- external usb3.0 HDD (2Tb), few hours test, without errors in dmesg (so usb hub power enought),
 	- sftp + ext HDD usb3.0: transfer 100Gb+ in both sides, files correct (md5sum check), 
-	but some errors in dmesg about endpoints(?)
+	but some errors in dmesg about endpoints(?) (maybe problems with ACDC, very seldom
+	disk 'restarts')
 	- on some long stress tests (ex. stress-ng 5m) standart heater isn't enought, performance may be less, 
 	than in short tests (60s), or cooller using.
