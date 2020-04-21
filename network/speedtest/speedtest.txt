@@ -1,0 +1,36 @@
+Internet channel 400Mbit
+
+-------------------------------------------------------------
+pi@NanoPi-M4:~/Downloads$ speedtest
+
+   Speedtest by Ookla
+
+     Server: MTS - Moscow (id = 1907)
+        ISP: Lovitel Ltd
+    Latency:     6.57 ms   (0.14 ms jitter)
+   Download:   398.53 Mbps (data used: 541.6 MB)
+     Upload:   416.48 Mbps (data used: 691.4 MB)
+Packet Loss:     0.0%
+-------------------------------------------------------------
+pi@NanoPi-M4:~/Downloads$ speedtest
+
+   Speedtest by Ookla
+
+     Server: RETN - Moscow (id = 22050)
+        ISP: Lovitel Ltd
+    Latency:     2.10 ms   (0.12 ms jitter)
+   Download:   397.82 Mbps (data used: 554.6 MB)
+     Upload:   407.02 Mbps (data used: 647.2 MB)
+Packet Loss:     0.0%
+-------------------------------------------------------------
+pi@NanoPi-M4:~/Downloads$ speedtest
+
+   Speedtest by Ookla
+
+     Server: MTS - Moscow (id = 1907)
+        ISP: Lovitel Ltd
+    Latency:     6.74 ms   (0.14 ms jitter)
+   Download:   401.88 Mbps (data used: 538.7 MB)
+     Upload:   412.28 Mbps (data used: 646.6 MB)
+Packet Loss:     0.0%
+-------------------------------------------------------------

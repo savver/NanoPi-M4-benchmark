@@ -1,0 +1,98 @@
+https://www.speedtest.net/apps/cli
+-------------------------------------------------------------------------------
+sudo apt-get install gnupg1 apt-transport-https dirmngr
+export INSTALL_KEY=379CE192D401AB61
+# Ubuntu versions supported: xenial, bionic
+# Debian versions supported: jessie, stretch, buster
+export DEB_DISTRO=$(lsb_release -sc)
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
+echo "deb https://ookla.bintray.com/debian ${DEB_DISTRO} main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
+sudo apt-get update
+# Other non-official binaries will conflict with Speedtest CLI
+# Example how to remove using apt-get
+# sudo apt-get remove speedtest-cli
+sudo apt-get install speedtest
+-------------------------------------------------------------------------------
+
+pi@NanoPi-M4:~/Downloads$ sudo apt-get install gnupg1 apt-transport-https dirmngr
+
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	dirmngr is already the newest version (2.2.4-1ubuntu1.2).
+	dirmngr set to manually installed.
+	Suggested packages:
+	  parcimonie xloadimage | imagemagick | eog
+	The following NEW packages will be installed:
+	  apt-transport-https gnupg1 gnupg1-l10n
+	0 upgraded, 3 newly installed, 0 to remove and 422 not upgraded.
+	Need to get 1,017 kB of archives.
+	After this operation, 4,972 kB of additional disk space will be used.
+	Get:1 http://ports.ubuntu.com bionic-updates/universe arm64 apt-transport-https all 1.6.12 [1,692 B]
+	Get:2 http://ports.ubuntu.com bionic/universe arm64 gnupg1 arm64 1.4.22-3ubuntu2 [506 kB]
+	Get:3 http://ports.ubuntu.com bionic/universe arm64 gnupg1-l10n all 1.4.22-3ubuntu2 [509 kB]
+	Fetched 1,017 kB in 1s (1,475 kB/s)
+	debconf: delaying package configuration, since apt-utils is not installed
+	Selecting previously unselected package apt-transport-https.
+	(Reading database ... 124417 files and directories currently installed.)
+	Preparing to unpack .../apt-transport-https_1.6.12_all.deb ...
+	Unpacking apt-transport-https (1.6.12) ...
+	Selecting previously unselected package gnupg1.
+	Preparing to unpack .../gnupg1_1.4.22-3ubuntu2_arm64.deb ...
+	Unpacking gnupg1 (1.4.22-3ubuntu2) ...
+	Selecting previously unselected package gnupg1-l10n.
+	Preparing to unpack .../gnupg1-l10n_1.4.22-3ubuntu2_all.deb ...
+	Unpacking gnupg1-l10n (1.4.22-3ubuntu2) ...
+	Setting up apt-transport-https (1.6.12) ...
+	Setting up gnupg1 (1.4.22-3ubuntu2) ...
+	Setting up gnupg1-l10n (1.4.22-3ubuntu2) ...
+	Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+
+
+pi@NanoPi-M4:~/Downloads$ export INSTALL_KEY=379CE192D401AB61
+
+
+pi@NanoPi-M4:~/Downloads$ export DEB_DISTRO=$(lsb_release -sc)
+
+
+pi@NanoPi-M4:~/Downloads$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
+
+	Executing: /tmp/apt-key-gpghome.L4m6lppyOX/gpg.1.sh --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
+	gpg: key 379CE192D401AB61: public key "Bintray (by JFrog) <bintray@bintray.com>" imported
+	gpg: Total number processed: 1
+	gpg:               imported: 1
+
+
+pi@NanoPi-M4:~/Downloads$ echo "deb https://ookla.bintray.com/debian ${DEB_DISTRO} main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
+	
+	deb https://ookla.bintray.com/debian bionic main
+
+pi@NanoPi-M4:~/Downloads$ sudo apt-get update
+
+	Hit:1 http://ports.ubuntu.com bionic InRelease
+	Get:2 http://ports.ubuntu.com bionic-backports InRelease [74.6 kB]
+	Get:3 http://ports.ubuntu.com bionic-proposed InRelease [242 kB]
+	...
+	Fetched 215 MB in 1min 33s (2,307 kB/s)
+	Reading package lists... Done
+
+
+pi@NanoPi-M4:~/Downloads$ sudo apt-get install speedtest
+
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	The following NEW packages will be installed:
+	  speedtest
+	0 upgraded, 1 newly installed, 0 to remove and 422 not upgraded.
+	Need to get 915 kB of archives.
+	After this operation, 2,259 kB of additional disk space will be used.
+	Get:1 https://ookla.bintray.com/debian bionic/main arm64 speedtest arm64 1.0.0.2-1.5ae238b [915 kB]
+	Fetched 915 kB in 2s (522 kB/s)
+	debconf: delaying package configuration, since apt-utils is not installed
+	Selecting previously unselected package speedtest.
+	(Reading database ... 124483 files and directories currently installed.)
+	Preparing to unpack .../speedtest_1.0.0.2-1.5ae238b_arm64.deb ...
+	Unpacking speedtest (1.0.0.2-1.5ae238b) ...
+	Setting up speedtest (1.0.0.2-1.5ae238b) ...
+	Processing triggers for man-db (2.8.3-2ubuntu0.1) ...

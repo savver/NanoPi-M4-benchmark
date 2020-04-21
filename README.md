@@ -18,6 +18,9 @@ tests:
 	- ext HDD usb3.0, reading speed up to 104Mb/s (not bad usb3.0 bandwidth)
 	- sftp + ext HDD usb3.0: upload speed up to 40-43MiB/s, 
 	download speed up to 46-50MiB/s. Core temperature is not greater 54 degree
+	- transmission/transmission-daemon has less speed than qBittorrent,
+	qBittorrent can download up to 30-40MiB/s (Internet channel is not 
+	better than 400Mbit)
 
 stability:
 
