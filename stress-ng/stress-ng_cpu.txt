@@ -1,3 +1,5 @@
+stress-ng, version 0.09.25
+
 short description:
 	cpu_freq --> see cpu temperature
 	stress-ng --cpu 6 --cpu-method all --verify --metrics-brief --timeout 60
@@ -814,6 +816,34 @@ root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 6 --cpu-method=float  --ver
 	CPU3 online=1 temp=39375 governor=performance cur_freq=1416000
 	CPU4 online=1 temp=39375 governor=interactive cur_freq=1800000
 	CPU5 online=1 temp=38750 governor=interactive cur_freq=1800000
+	
+--------------------------------------------------------------------------------------
+//			use Cooller for Heater
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --cpu 2 --cpu-method=float  --verify --metrics-brief --timeout 60; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=40555 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=41111 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=41111 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=41111 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=40555 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=40555 governor=interactive cur_freq=1008000
+	
+	stress-ng: info:  [7588] dispatching hogs: 2 cpu
+	stress-ng: info:  [7588] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [7588] successful run completed in 60.00s (1 min, 0.00 secs)
+	stress-ng: info:  [7588] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [7588]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [7588] cpu             3031917     60.00    119.63      0.02     50532.22     25339.88
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=53333 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=52222 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=51666 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=51666 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=52222 governor=interactive cur_freq=1800000
+	CPU5 online=1 temp=52777 governor=interactive cur_freq=1800000
+
 =================================================================================
 stress-ng --cpu 6/2 --cpu-method=double  --verify --metrics-brief -timeout 60s/5m
 =================================================================================

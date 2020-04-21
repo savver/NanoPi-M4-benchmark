@@ -1,0 +1,485 @@
+stress-ng, version 0.09.25
+
+// 6 cores, no/with cooller
+stress-ng --sequential 0 --class memory --timeout 60 --metrics-brief
+
+//2 cores, with cooller
+stress-ng --sequential 0 --class memory --timeout 60 --metrics-brief
+
+--------------------------------------------------------------------------------------------------------------------
+// no cooller -> temperature is big after test (trotling?)
+//
+root@NanoPi-M4:~# cpu_freq; sleep 2; stress-ng --sequential 0 --class memory --timeout 60 --metrics-brief; cpu_freq
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=41666 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=41666 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=41666 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=41666 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=42222 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=42222 governor=interactive cur_freq=1008000
+
+	stress-ng: info:  [7936] disabled 'oom-pipe' as it may hang the machine (enable it with the --pathological option)
+	stress-ng: info:  [7936] dispatching hogs: 6 atomic, 6 bsearch, 6 context, 6 full, 6 heapsort, 6 hsearch, 6 lockbus, 6 lsearch, 6 malloc, 6 matrix, 6 mcontend, 6 membarrier, 6 memcpy, 6 memfd, 6 memrate, 6 memthrash, 6 mergesort, 6 mincore, 6 null, 6 numa, 6 pipe, 6 qsort, 6 radixsort, 6 remap, 6 resources, 6 rmap, 6 stack, 6 stackmmap, 6 str, 6 stream, 6 tlb-shootdown, 6 tmpfs, 6 tree, 6 tsearch, 6 vm, 6 vm-addr, 6 vm-rw, 6 wcs, 6 zero, 6 zlib
+	stress-ng: info:  [7936] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [8934] stress-ng-memrate: write64: 1575.54 MB/sec
+	stress-ng: info:  [8934] stress-ng-memrate:  read64: 930.04 MB/sec
+	stress-ng: info:  [8934] stress-ng-memrate: write32: 1289.48 MB/sec
+	stress-ng: info:  [8934] stress-ng-memrate:  read32: 845.77 MB/sec
+	stress-ng: info:  [8934] stress-ng-memrate: write16: 1386.04 MB/sec
+	stress-ng: info:  [8934] stress-ng-memrate:  read16: 873.48 MB/sec
+	stress-ng: info:  [8934] stress-ng-memrate:  write8: 1104.85 MB/sec
+	stress-ng: info:  [8934] stress-ng-memrate:   read8: 787.95 MB/sec
+	stress-ng: info:  [8933] stress-ng-memrate: write64: 1304.20 MB/sec
+	stress-ng: info:  [8933] stress-ng-memrate:  read64: 671.58 MB/sec
+	stress-ng: info:  [8933] stress-ng-memrate: write32: 1386.83 MB/sec
+	stress-ng: info:  [8933] stress-ng-memrate:  read32: 714.01 MB/sec
+	stress-ng: info:  [8933] stress-ng-memrate: write16: 1354.46 MB/sec
+	stress-ng: info:  [8933] stress-ng-memrate:  read16: 639.26 MB/sec
+	stress-ng: info:  [8933] stress-ng-memrate:  write8: 960.66 MB/sec
+	stress-ng: info:  [8933] stress-ng-memrate:   read8: 580.33 MB/sec
+	stress-ng: info:  [8930] stress-ng-memrate: write64: 1339.22 MB/sec
+	stress-ng: info:  [8930] stress-ng-memrate:  read64: 756.20 MB/sec
+	stress-ng: info:  [8930] stress-ng-memrate: write32: 1421.40 MB/sec
+	stress-ng: info:  [8930] stress-ng-memrate:  read32: 845.81 MB/sec
+	stress-ng: info:  [8930] stress-ng-memrate: write16: 1393.32 MB/sec
+	stress-ng: info:  [8930] stress-ng-memrate:  read16: 792.54 MB/sec
+	stress-ng: info:  [8930] stress-ng-memrate:  write8: 1011.48 MB/sec
+	stress-ng: info:  [8930] stress-ng-memrate:   read8: 708.23 MB/sec
+	stress-ng: info:  [8929] stress-ng-memrate: write64: 1373.88 MB/sec
+	stress-ng: info:  [8929] stress-ng-memrate:  read64: 754.78 MB/sec
+	stress-ng: info:  [8929] stress-ng-memrate: write32: 1352.01 MB/sec
+	stress-ng: info:  [8929] stress-ng-memrate:  read32: 784.96 MB/sec
+	stress-ng: info:  [8929] stress-ng-memrate: write16: 1458.71 MB/sec
+	stress-ng: info:  [8929] stress-ng-memrate:  read16: 771.20 MB/sec
+	stress-ng: info:  [8929] stress-ng-memrate:  write8: 1064.76 MB/sec
+	stress-ng: info:  [8929] stress-ng-memrate:   read8: 634.98 MB/sec
+	stress-ng: info:  [8931] stress-ng-memrate: write64: 1717.41 MB/sec
+	stress-ng: info:  [8931] stress-ng-memrate:  read64: 1083.37 MB/sec
+	stress-ng: info:  [8931] stress-ng-memrate: write32: 1735.10 MB/sec
+	stress-ng: info:  [8931] stress-ng-memrate:  read32: 965.13 MB/sec
+	stress-ng: info:  [8931] stress-ng-memrate: write16: 1649.15 MB/sec
+	stress-ng: info:  [8931] stress-ng-memrate:  read16: 991.49 MB/sec
+	stress-ng: info:  [8931] stress-ng-memrate:  write8: 1197.96 MB/sec
+	stress-ng: info:  [8931] stress-ng-memrate:   read8: 923.15 MB/sec
+	stress-ng: info:  [8932] stress-ng-memrate: write64: 1457.28 MB/sec
+	stress-ng: info:  [8932] stress-ng-memrate:  read64: 902.58 MB/sec
+	stress-ng: info:  [8932] stress-ng-memrate: write32: 1348.81 MB/sec
+	stress-ng: info:  [8932] stress-ng-memrate:  read32: 892.32 MB/sec
+	stress-ng: info:  [8932] stress-ng-memrate: write16: 1447.80 MB/sec
+	stress-ng: info:  [8932] stress-ng-memrate:  read16: 987.18 MB/sec
+	stress-ng: info:  [8932] stress-ng-memrate:  write8: 1081.94 MB/sec
+	stress-ng: info:  [8932] stress-ng-memrate:   read8: 834.52 MB/sec
+	stress-ng: fail:  [9345] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: fail:  [9347] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: fail:  [9346] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: fail:  [9344] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: info:  [9342] stress-ng-numa: system has 1 of a maximum 4 memory NUMA nodes
+	stress-ng: fail:  [9343] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: fail:  [9342] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: error: [7936] process 9342 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: error: [7936] process 9343 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: error: [7936] process 9344 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: error: [7936] process 9345 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: error: [7936] process 9346 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: error: [7936] process 9347 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: info:  [22121] stress-ng-stream: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [22121] stress-ng-stream: stressor loosely based on a variant of the STREAM benchmark code
+	stress-ng: info:  [22121] stress-ng-stream: do NOT submit any of these results to the STREAM benchmark results
+	stress-ng: info:  [22121] stress-ng-stream: Using CPU cache size of 2048K
+	stress-ng: info:  [22124] stress-ng-stream: memory rate: 780.87 MB/sec, 312.35 Mflop/sec (instance 3)
+	stress-ng: info:  [22125] stress-ng-stream: memory rate: 1242.39 MB/sec, 496.96 Mflop/sec (instance 4)
+	stress-ng: info:  [22121] stress-ng-stream: memory rate: 1180.75 MB/sec, 472.30 Mflop/sec (instance 0)
+	stress-ng: info:  [22122] stress-ng-stream: memory rate: 785.72 MB/sec, 314.29 Mflop/sec (instance 1)
+	stress-ng: info:  [22126] stress-ng-stream: memory rate: 690.97 MB/sec, 276.39 Mflop/sec (instance 5)
+	stress-ng: info:  [22123] stress-ng-stream: memory rate: 736.09 MB/sec, 294.44 Mflop/sec (instance 2)
+	stress-ng: info:  [32625] stress-ng-zlib: instance 3: compression ratio: 34.37%
+	stress-ng: info:  [32623] stress-ng-zlib: instance 1: compression ratio: 37.16%
+	stress-ng: info:  [32627] stress-ng-zlib: instance 5: compression ratio: 38.59%
+	stress-ng: info:  [32624] stress-ng-zlib: instance 2: compression ratio: 34.57%
+	stress-ng: info:  [32622] stress-ng-zlib: instance 0: compression ratio: 36.58%
+	stress-ng: info:  [32626] stress-ng-zlib: instance 4: compression ratio: 35.76%
+
+	stress-ng: info:  [7936] unsuccessful run completed in 2343.45s (39 mins, 3.45 secs)
+
+	stress-ng: info:  [7936] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [7936]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [7936] atomic          3465635     49.99    299.05      0.26     69332.55     11578.75
+	stress-ng: info:  [7936] bsearch           52071     59.99    359.16      0.13       867.94       144.93
+	stress-ng: info:  [7936] context          861119     59.99    160.27    199.00     14355.23      2396.86
+	stress-ng: info:  [7936] full           18149520     59.99    167.66    186.88    302548.71     51191.74
+	stress-ng: info:  [7936] heapsort            421     59.98    358.78      0.26         7.02         1.17
+	stress-ng: info:  [7936] hsearch          176466     59.99    358.69      0.21      2941.83       491.69
+	stress-ng: info:  [7936] lockbus       205494514     59.99    358.44      0.54   3425484.38    572440.01
+	stress-ng: info:  [7936] lsearch             730     59.99    359.17      0.16        12.17         2.03
+	stress-ng: info:  [7936] malloc        255535437     60.02    357.58      1.49   4257176.27    711659.11
+	stress-ng: info:  [7936] matrix           208905     59.99    359.05      0.14      3482.26       581.60
+	stress-ng: info:  [7936] mcontend         807113     59.99    346.69      6.20     13453.96      2287.15
+	stress-ng: info:  [7936] membarrier        58757     60.00      0.00      2.01       979.34     29232.34
+	stress-ng: info:  [7936] memcpy            11084     59.99    356.99      0.33       184.77        31.02
+	stress-ng: info:  [7936] memfd              3234     60.01      2.17    354.98        53.89         9.06
+	stress-ng: info:  [7936] memrate             121     60.08    268.45     63.50         2.01         0.36
+	stress-ng: info:  [7936] memthrash          3254     60.16    261.75     60.81        54.09        10.09
+	stress-ng: info:  [7936] mergesort          1822     59.97    353.12      0.46        30.38         5.15
+	stress-ng: info:  [7936] mincore         4233912     59.99     44.10    313.59     70572.54     11836.82
+	stress-ng: info:  [7936] null           30564274     59.98     28.45    330.79    509538.88     85080.38
+	stress-ng: info:  [7936] pipe           33913921     59.98     39.67    268.53    565380.72    110038.68
+	stress-ng: info:  [7936] qsort               648     59.99    352.93      0.21        10.80         1.83
+	stress-ng: info:  [7936] radixsort           580     59.98    359.01      0.13         9.67         1.61
+	stress-ng: info:  [7936] remap             23899     60.00     13.02    341.74       398.32        67.37
+	stress-ng: info:  [7936] resources          6540     60.18      5.36     81.03       108.67        75.70
+	stress-ng: info:  [7936] rmap                 96     59.99      0.07      2.00         1.60        46.38
+	stress-ng: info:  [7936] stack              1997     60.10     33.47    129.71        33.23        12.24
+	stress-ng: info:  [7936] stackmmap           556     60.12      0.11      0.96         9.25       519.63
+	stress-ng: info:  [7936] str             1858631     59.99    354.41      0.10     30982.10      5242.82
+	stress-ng: info:  [7936] stream            24353     59.98    346.12      0.95       406.01        70.17
+	stress-ng: info:  [7936] tlb-shootdown      7010     60.00     90.38    226.48       116.84        22.12
+	stress-ng: info:  [7936] tmpfs               717     60.01    211.83    136.26        11.95         2.06
+	stress-ng: info:  [7936] tree                 78     59.97    358.63      0.36         1.30         0.22
+	stress-ng: info:  [7936] tsearch             707     60.15    359.77      0.19        11.75         1.96
+	stress-ng: info:  [7936] vm              1330950     60.00    350.64      3.16     22184.25      3761.87
+	stress-ng: info:  [7936] vm-addr             125     59.99    355.54      2.50         2.08         0.35
+	stress-ng: info:  [7936] vm-rw             26781     60.00      0.38    356.74       446.37        74.99
+	stress-ng: info:  [7936] wcs              633448     59.99    290.10      0.14     10559.16      2182.50
+	stress-ng: info:  [7936] zero           56722399     59.98     30.64    320.25    945694.71    161652.94
+	stress-ng: info:  [7936] zlib               1721     60.66    348.65      0.40        28.37         4.93
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=66666 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=65555 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=66111 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=65555 governor=interactive cur_freq=1800000
+--------------------------------------------------------------------------------------------------------------------
+//with coller
+//
+root@NanoPi-M4:~# uptime; cpu_freq; sleep 2; stress-ng --sequential 0 --class memory --timeout 60 --metrics-brief; cpu_freq; uptime
+
+	 10:12:03 up  1:53,  1 user,  load average: 0.00, 0.02, 0.18
+	INFO: HARDWARE=
+	CPU0 online=1 temp=29375 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=29375 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=30000 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=29375 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=30555 governor=interactive cur_freq=1200000
+	CPU5 online=1 temp=30000 governor=interactive cur_freq=1200000
+	
+	stress-ng: info:  [4031] disabled 'oom-pipe' as it may hang the machine (enable it with the --pathological option)
+	stress-ng: info:  [4031] dispatching hogs: 6 atomic, 6 bsearch, 6 context, 6 full, 6 heapsort, 6 hsearch, 6 lockbus, 6 lsearch, 6 malloc, 6 matrix, 6 mcontend, 6 membarrier, 6 memcpy, 6 memfd, 6 memrate, 6 memthrash, 6 mergesort, 6 mincore, 6 null, 6 numa, 6 pipe, 6 qsort, 6 radixsort, 6 remap, 6 resources, 6 rmap, 6 stack, 6 stackmmap, 6 str, 6 stream, 6 tlb-shootdown, 6 tmpfs, 6 tree, 6 tsearch, 6 vm, 6 vm-addr, 6 vm-rw, 6 wcs, 6 zero, 6 zlib
+	stress-ng: info:  [4031] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [5030] stress-ng-memrate: write64: 840.24 MB/sec
+	stress-ng: info:  [5030] stress-ng-memrate:  read64: 722.85 MB/sec
+	stress-ng: info:  [5030] stress-ng-memrate: write32: 1243.72 MB/sec
+	stress-ng: info:  [5035] stress-ng-memrate: write64: 1031.17 MB/sec
+	stress-ng: info:  [5035] stress-ng-memrate:  read64: 935.20 MB/sec
+	stress-ng: info:  [5032] stress-ng-memrate: write64: 1158.33 MB/sec
+	stress-ng: info:  [5035] stress-ng-memrate: write32: 1370.20 MB/sec
+	stress-ng: info:  [5035] stress-ng-memrate:  read32: 834.53 MB/sec
+	stress-ng: info:  [5035] stress-ng-memrate: write16: 1320.74 MB/sec
+	stress-ng: info:  [5035] stress-ng-memrate:  read16: 804.73 MB/sec
+	stress-ng: info:  [5035] stress-ng-memrate:  write8: 1046.27 MB/sec
+	stress-ng: info:  [5035] stress-ng-memrate:   read8: 679.08 MB/sec
+	stress-ng: info:  [5032] stress-ng-memrate:  read64: 700.68 MB/sec
+	stress-ng: info:  [5032] stress-ng-memrate: write32: 1336.75 MB/sec
+	stress-ng: info:  [5032] stress-ng-memrate:  read32: 706.79 MB/sec
+	stress-ng: info:  [5032] stress-ng-memrate: write16: 791.79 MB/sec
+	stress-ng: info:  [5032] stress-ng-memrate:  read16: 656.28 MB/sec
+	stress-ng: info:  [5032] stress-ng-memrate:  write8: 929.96 MB/sec
+	stress-ng: info:  [5032] stress-ng-memrate:   read8: 654.48 MB/sec
+	stress-ng: info:  [5033] stress-ng-memrate: write64: 879.46 MB/sec
+	stress-ng: info:  [5033] stress-ng-memrate:  read64: 764.79 MB/sec
+	stress-ng: info:  [5033] stress-ng-memrate: write32: 1266.44 MB/sec
+	stress-ng: info:  [5033] stress-ng-memrate:  read32: 673.29 MB/sec
+	stress-ng: info:  [5033] stress-ng-memrate: write16: 1311.57 MB/sec
+	stress-ng: info:  [5033] stress-ng-memrate:  read16: 705.64 MB/sec
+	stress-ng: info:  [5033] stress-ng-memrate:  write8: 867.49 MB/sec
+	stress-ng: info:  [5033] stress-ng-memrate:   read8: 716.47 MB/sec
+	stress-ng: info:  [5031] stress-ng-memrate: write64: 895.32 MB/sec
+	stress-ng: info:  [5031] stress-ng-memrate:  read64: 749.44 MB/sec
+	stress-ng: info:  [5031] stress-ng-memrate: write32: 1240.72 MB/sec
+	stress-ng: info:  [5031] stress-ng-memrate:  read32: 711.47 MB/sec
+	stress-ng: info:  [5031] stress-ng-memrate: write16: 1165.63 MB/sec
+	stress-ng: info:  [5031] stress-ng-memrate:  read16: 715.86 MB/sec
+	stress-ng: info:  [5031] stress-ng-memrate:  write8: 957.76 MB/sec
+	stress-ng: info:  [5031] stress-ng-memrate:   read8: 713.46 MB/sec
+	stress-ng: info:  [5030] stress-ng-memrate:  read32: 701.58 MB/sec
+	stress-ng: info:  [5034] stress-ng-memrate: write64: 1303.76 MB/sec
+	stress-ng: info:  [5030] stress-ng-memrate: write16: 1202.02 MB/sec
+	stress-ng: info:  [5030] stress-ng-memrate:  read16: 769.19 MB/sec
+	stress-ng: info:  [5030] stress-ng-memrate:  write8: 958.55 MB/sec
+	stress-ng: info:  [5030] stress-ng-memrate:   read8: 629.00 MB/sec
+	stress-ng: info:  [5034] stress-ng-memrate:  read64: 745.00 MB/sec
+	stress-ng: info:  [5034] stress-ng-memrate: write32: 1262.45 MB/sec
+	stress-ng: info:  [5034] stress-ng-memrate:  read32: 738.11 MB/sec
+	stress-ng: info:  [5034] stress-ng-memrate: write16: 1161.94 MB/sec
+	stress-ng: info:  [5034] stress-ng-memrate:  read16: 546.67 MB/sec
+	stress-ng: info:  [5034] stress-ng-memrate:  write8: 957.29 MB/sec
+	stress-ng: info:  [5034] stress-ng-memrate:   read8: 704.60 MB/sec
+	stress-ng: info:  [5271] stress-ng-numa: system has 1 of a maximum 4 memory NUMA nodes
+	stress-ng: fail:  [5271] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: fail:  [5272] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: fail:  [5273] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: error: [4031] process 5271 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: fail:  [5276] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: fail:  [5275] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: error: [4031] process 5272 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: error: [4031] process 5273 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: fail:  [5274] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: error: [4031] process 5274 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: error: [4031] process 5275 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: error: [4031] process 5276 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: info:  [17466] stress-ng-stream: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [17466] stress-ng-stream: stressor loosely based on a variant of the STREAM benchmark code
+	stress-ng: info:  [17466] stress-ng-stream: do NOT submit any of these results to the STREAM benchmark results
+	stress-ng: info:  [17466] stress-ng-stream: Using CPU cache size of 2048K
+	stress-ng: info:  [17471] stress-ng-stream: memory rate: 1312.91 MB/sec, 525.17 Mflop/sec (instance 5)
+	stress-ng: info:  [17470] stress-ng-stream: memory rate: 1369.16 MB/sec, 547.66 Mflop/sec (instance 4)
+	stress-ng: info:  [17469] stress-ng-stream: memory rate: 659.86 MB/sec, 263.94 Mflop/sec (instance 3)
+	stress-ng: info:  [17466] stress-ng-stream: memory rate: 831.49 MB/sec, 332.59 Mflop/sec (instance 0)
+	stress-ng: info:  [17468] stress-ng-stream: memory rate: 657.77 MB/sec, 263.11 Mflop/sec (instance 2)
+	stress-ng: info:  [17467] stress-ng-stream: memory rate: 656.68 MB/sec, 262.67 Mflop/sec (instance 1)
+	stress-ng: info:  [26915] stress-ng-zlib: instance 4: compression ratio: 38.10%
+	stress-ng: info:  [26916] stress-ng-zlib: instance 5: compression ratio: 35.80%
+	stress-ng: info:  [26911] stress-ng-zlib: instance 1: compression ratio: 36.51%
+	stress-ng: info:  [26914] stress-ng-zlib: instance 3: compression ratio: 35.28%
+	stress-ng: info:  [26910] stress-ng-zlib: instance 0: compression ratio: 35.46%
+	stress-ng: info:  [26912] stress-ng-zlib: instance 2: compression ratio: 36.86%
+	
+	stress-ng: info:  [4031] unsuccessful run completed in 2348.08s (39 mins, 8.08 secs)
+	
+	stress-ng: info:  [4031] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [4031]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [4031] atomic          4970306     50.00    299.06      0.04     99406.75     16617.54
+	stress-ng: info:  [4031] bsearch           50067     60.00    359.31      0.01       834.41       139.34
+	stress-ng: info:  [4031] context          863739     60.00    161.38    197.96     14395.70      2403.68
+	stress-ng: info:  [4031] full           18122018     60.00    165.84    188.67    302034.48     51118.50
+	stress-ng: info:  [4031] heapsort            418     60.00    358.93      0.11         6.97         1.16
+	stress-ng: info:  [4031] hsearch          170876     60.00    358.69      0.22      2847.93       476.10
+	stress-ng: info:  [4031] lockbus       194248807     60.01    358.65      0.39   3236842.27    541022.75
+	stress-ng: info:  [4031] lsearch             737     60.00    358.87      0.23        12.28         2.05
+	stress-ng: info:  [4031] malloc        255897270     60.04    358.08      1.27   4262186.40    712111.51
+	stress-ng: info:  [4031] matrix           212207     60.00    359.29      0.00      3536.79       590.63
+	stress-ng: info:  [4031] mcontend         803969     60.01    347.42      6.23     13398.00      2273.35
+	stress-ng: info:  [4031] membarrier        58073     60.02      0.08      1.89       967.61     29478.68
+	stress-ng: info:  [4031] memcpy            10971     60.01    357.25      0.10       182.81        30.70
+	stress-ng: info:  [4031] memfd              3213     60.02      2.33    355.02        53.53         8.99
+	stress-ng: info:  [4031] memrate             136     61.60    274.17      8.31         2.21         0.48
+	stress-ng: info:  [4031] memthrash          2493     61.23    179.29      7.65        40.71        13.34
+	stress-ng: info:  [4031] mergesort          1953     59.99    358.25      0.05        32.55         5.45
+	stress-ng: info:  [4031] mincore         4393970     60.00     44.96    314.41     73232.99     12226.87
+	stress-ng: info:  [4031] null           30358746     60.00     28.53    330.75    505981.14     84498.85
+	stress-ng: info:  [4031] pipe           33942463     60.00     37.02    302.78    565690.54     99889.53
+	stress-ng: info:  [4031] qsort               757     60.00    359.02      0.03        12.62         2.11
+	stress-ng: info:  [4031] radixsort           610     60.00    359.12      0.03        10.17         1.70
+	stress-ng: info:  [4031] remap             27282     60.01     13.36    345.67       454.61        75.99
+	stress-ng: info:  [4031] resources          6620     60.62      3.24     37.36       109.20       163.05
+	stress-ng: info:  [4031] rmap                 96     60.01      0.15      1.05         1.60        80.00
+	stress-ng: info:  [4031] stack              2037     60.27     36.80    135.85        33.80        11.80
+	stress-ng: info:  [4031] stackmmap           630     60.12      0.13      1.08        10.48       520.66
+	stress-ng: info:  [4031] str             2199831     60.00    359.04      0.00     36664.09      6126.98
+	stress-ng: info:  [4031] stream            24687     60.01    357.07      0.07       411.38        69.12
+	stress-ng: info:  [4031] tlb-shootdown      6835     60.00     92.03    224.31       113.91        21.61
+	stress-ng: info:  [4031] tmpfs               770     60.03    213.86    144.70        12.83         2.15
+	stress-ng: info:  [4031] tree                 78     60.00    358.97      0.06         1.30         0.22
+	stress-ng: info:  [4031] tsearch             706     60.17    360.07      0.00        11.73         1.96
+	stress-ng: info:  [4031] vm              1418326     60.01    354.52      4.29     23636.46      3952.86
+	stress-ng: info:  [4031] vm-addr             110     60.00    356.86      1.93         1.83         0.31
+	stress-ng: info:  [4031] vm-rw             26546     60.01      0.38    356.65       442.39        74.35
+	stress-ng: info:  [4031] wcs              979745     60.00    359.37      0.00     16329.10      2726.28
+	stress-ng: info:  [4031] zero           67353506     60.00     33.54    325.68   1122561.07    187499.32
+	stress-ng: info:  [4031] zlib               2130     60.47    361.68      0.17        35.22         5.89
+	
+	INFO: HARDWARE=
+	CPU0 online=1 temp=38125 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=36875 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=37500 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=36875 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=36875 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=36875 governor=interactive cur_freq=1200000
+	 10:51:14 up  2:32,  1 user,  load average: 5.84, 6.59, 7.05
+	 
+again...
+	stress-ng: info:  [27734] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [27734]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [27734] atomic          4967142     50.00    299.21      0.03     99343.40     16599.19
+	stress-ng: info:  [27734] bsearch           51751     60.00    359.33      0.02       862.48       144.01
+	stress-ng: info:  [27734] context          862639     60.00    160.42    199.02     14377.36      2399.95
+	stress-ng: info:  [27734] full           18149913     60.00    165.79    188.73    302499.01     51195.74
+	stress-ng: info:  [27734] heapsort            418     60.00    359.08      0.09         6.97         1.16
+	stress-ng: info:  [27734] hsearch          175956     60.00    358.70      0.11      2932.63       490.39
+	stress-ng: info:  [27734] lockbus       207984994     60.01    358.84      0.35   3465710.53    579038.93
+	stress-ng: info:  [27734] lsearch             738     60.00    359.19      0.08        12.30         2.05
+	stress-ng: info:  [27734] malloc        256426507     60.04    358.17      1.23   4270668.20    713484.99
+	stress-ng: info:  [27734] matrix           213442     60.00    359.07      0.10      3557.38       594.26
+	stress-ng: info:  [27734] mcontend         799777     60.00    346.20      6.38     13328.85      2268.36
+	stress-ng: info:  [27734] membarrier        56638     60.01      0.12      1.78       943.85     29809.47
+	stress-ng: info:  [27734] memcpy            11091     60.01    357.09      0.10       184.81        31.05
+	stress-ng: info:  [27734] memfd              3206     60.02      2.34    354.97        53.42         8.97
+	stress-ng: info:  [27734] memrate             124     60.23    275.04     47.08         2.06         0.38
+	stress-ng: info:  [27734] memthrash          3470     60.05    267.69     47.44        57.78        11.01
+	stress-ng: info:  [27734] mergesort          1903     60.00    357.93      0.51        31.72         5.31
+	stress-ng: info:  [27734] mincore         4388910     60.00     44.95    314.49     73148.66     12210.41
+	stress-ng: info:  [27734] null           30584547     60.00     28.71    330.54    509743.86     85134.44
+	stress-ng: info:  [27734] pipe           34997756     60.00     39.37    294.52    583288.50    104818.22
+	stress-ng: info:  [27734] qsort               753     60.00    358.89      0.09        12.55         2.10
+	stress-ng: info:  [27734] radixsort           583     60.00    359.00      0.12         9.72         1.62
+	stress-ng: info:  [27734] remap             27362     60.01     13.38    345.66       455.98        76.21
+	stress-ng: info:  [27734] resources          6660     60.44      3.38     39.60       110.19       154.96
+	stress-ng: info:  [27734] rmap                 96     60.01      0.11      1.06         1.60        82.05
+	stress-ng: info:  [27734] stack              2118     60.08     37.63    134.84        35.26        12.28
+	stress-ng: info:  [27734] stackmmap           520     60.01      0.12      1.02         8.67       456.14
+	stress-ng: info:  [27734] str             2200205     60.00    358.96      0.04     36670.30      6128.70
+	stress-ng: info:  [27734] stream            24741     60.01    357.30      0.10       412.27        69.22
+	stress-ng: info:  [27734] tlb-shootdown      7081     60.01     91.63    228.08       118.00        22.15
+	stress-ng: info:  [27734] tmpfs               771     60.03    214.10    144.38        12.84         2.15
+	stress-ng: info:  [27734] tree                 78     60.00    358.98      0.18         1.30         0.22
+	stress-ng: info:  [27734] tsearch             704     60.11    359.78      0.03        11.71         1.96
+	stress-ng: info:  [27734] vm              1418326     60.00    354.32      4.52     23637.47      3952.53
+	stress-ng: info:  [27734] vm-addr             117     60.00    356.82      2.05         1.95         0.33
+	stress-ng: info:  [27734] vm-rw             26464     60.00      0.46    356.70       441.04        74.10
+	stress-ng: info:  [27734] wcs              979560     60.00    359.39      0.02     16326.04      2725.47
+	stress-ng: info:  [27734] zero           62524654     60.00     30.84    328.48   1042081.11    174008.28
+	stress-ng: info:  [27734] zlib               2064     60.52    362.17      0.19        34.10         5.70
+	
+--------------------------------------------------------------------------------------------------------------------
+// 2 cores, with cooler
+//
+root@NanoPi-M4:~# uptime; cpu_freq; sleep 2; stress-ng --sequential 2 --class memory --timeout 60 --metrics-brief; cpu_freq; uptime
+
+	 11:43:51 up  3:25,  1 user,  load average: 0.87, 4.05, 5.99
+	INFO: HARDWARE=
+	CPU0 online=1 temp=29375 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=28750 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=28750 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=28750 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=29375 governor=interactive cur_freq=1008000
+	CPU5 online=1 temp=28750 governor=interactive cur_freq=1008000
+
+	stress-ng: info:  [20408] disabled 'oom-pipe' as it may hang the machine (enable it with the --pathological option)
+	stress-ng: info:  [20408] dispatching hogs: 2 atomic, 2 bsearch, 2 context, 2 full, 2 heapsort, 2 hsearch, 2 lockbus, 2 lsearch, 2 malloc, 2 matrix, 2 mcontend, 2 membarrier, 2 memcpy, 2 memfd, 2 memrate, 2 memthrash, 2 mergesort, 2 mincore, 2 null, 2 numa, 2 pipe, 2 qsort, 2 radixsort, 2 remap, 2 resources, 2 rmap, 2 stack, 2 stackmmap, 2 str, 2 stream, 2 tlb-shootdown, 2 tmpfs, 2 tree, 2 tsearch, 2 vm, 2 vm-addr, 2 vm-rw, 2 wcs, 2 zero, 2 zlib
+	stress-ng: info:  [20408] cache allocate: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [21311] stress-ng-memrate: write64: 2227.14 MB/sec
+	stress-ng: info:  [21311] stress-ng-memrate:  read64: 2163.11 MB/sec
+	stress-ng: info:  [21311] stress-ng-memrate: write32: 2226.62 MB/sec
+	stress-ng: info:  [21311] stress-ng-memrate:  read32: 2165.93 MB/sec
+	stress-ng: info:  [21311] stress-ng-memrate: write16: 2209.74 MB/sec
+	stress-ng: info:  [21311] stress-ng-memrate:  read16: 2184.65 MB/sec
+	stress-ng: info:  [21311] stress-ng-memrate:  write8: 1707.78 MB/sec
+	stress-ng: info:  [21311] stress-ng-memrate:   read8: 1655.09 MB/sec
+	stress-ng: info:  [21310] stress-ng-memrate: write64: 2219.71 MB/sec
+	stress-ng: info:  [21310] stress-ng-memrate:  read64: 2162.50 MB/sec
+	stress-ng: info:  [21310] stress-ng-memrate: write32: 2224.06 MB/sec
+	stress-ng: info:  [21310] stress-ng-memrate:  read32: 2191.01 MB/sec
+	stress-ng: info:  [21310] stress-ng-memrate: write16: 2207.69 MB/sec
+	stress-ng: info:  [21310] stress-ng-memrate:  read16: 2196.00 MB/sec
+	stress-ng: info:  [21310] stress-ng-memrate:  write8: 1706.18 MB/sec
+	stress-ng: info:  [21310] stress-ng-memrate:   read8: 1643.47 MB/sec
+	stress-ng: fail:  [21631] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: info:  [21630] stress-ng-numa: system has 1 of a maximum 4 memory NUMA nodes
+	stress-ng: fail:  [21630] stress-ng-numa: get_mempolicy failed, errno=38 (Function not implemented)
+	stress-ng: error: [20408] process 21630 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: error: [20408] process 21631 (stress-ng-numa) terminated with an error, exit status=1 (stress-ng core failure)
+	stress-ng: info:  [457] stress-ng-stream: using built-in defaults as unable to determine cache details
+	stress-ng: info:  [457] stress-ng-stream: stressor loosely based on a variant of the STREAM benchmark code
+	stress-ng: info:  [457] stress-ng-stream: do NOT submit any of these results to the STREAM benchmark results
+	stress-ng: info:  [457] stress-ng-stream: Using CPU cache size of 2048K
+	stress-ng: info:  [458] stress-ng-stream: memory rate: 2384.02 MB/sec, 953.61 Mflop/sec (instance 1)
+	stress-ng: info:  [457] stress-ng-stream: memory rate: 2379.28 MB/sec, 951.71 Mflop/sec (instance 0)
+	stress-ng: info:  [24087] stress-ng-zlib: instance 1: compression ratio: 36.71%
+	stress-ng: info:  [24086] stress-ng-zlib: instance 0: compression ratio: 38.94%
+
+	stress-ng: info:  [20408] unsuccessful run completed in 2342.14s (39 mins, 2.14 secs)
+
+	stress-ng: info:  [20408] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [20408]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [20408] atomic          6076037     29.99     59.88      0.01    202604.92    101453.28
+	stress-ng: info:  [20408] bsearch           27291     59.98    119.95      0.04       454.99       227.44
+	stress-ng: info:  [20408] context          246647     59.98     46.33     73.65      4112.36      2055.73
+	stress-ng: info:  [20408] full           11731026     59.98     63.55     54.48    195591.54     99390.21
+	stress-ng: info:  [20408] heapsort            154     59.99    119.94      0.02         2.57         1.28
+	stress-ng: info:  [20408] hsearch          109285     59.99    119.95      0.02      1821.85       910.94
+	stress-ng: info:  [20408] lockbus        77440671     59.98    119.88      0.10   1291045.85    645446.50
+	stress-ng: info:  [20408] lsearch             338     59.98    119.94      0.04         5.64         2.82
+	stress-ng: info:  [20408] malloc         85602686     60.06    119.34      0.76   1425341.89    712761.75
+	stress-ng: info:  [20408] matrix            97455     59.98    119.94      0.04      1624.86       812.26
+	stress-ng: info:  [20408] mcontend         274705     59.98    260.98      3.96      4580.12      1036.86
+	stress-ng: info:  [20408] membarrier        19811     59.98      0.01      0.59       330.27     33018.33
+	stress-ng: info:  [20408] memcpy            10848     60.00    119.75      0.01       180.81        90.58
+	stress-ng: info:  [20408] memfd               536     60.00      0.46    119.21         8.93         4.48
+	stress-ng: info:  [20408] memrate             118     59.98    119.42      0.56         1.97         0.98
+	stress-ng: info:  [20408] memthrash          3669     59.97    357.35      0.47        61.18        10.25
+	stress-ng: info:  [20408] mergesort           997     59.98    119.92      0.04        16.62         8.31
+	stress-ng: info:  [20408] mincore         1795177     59.96     17.20    102.72     29938.13     14969.79
+	stress-ng: info:  [20408] null           19328404     59.96     17.82    102.14    322334.72    161123.74
+	stress-ng: info:  [20408] pipe           21379661     59.98     17.23    132.39    356467.24    142893.07
+	stress-ng: info:  [20408] qsort               396     59.96    119.90      0.04         6.60         3.30
+	stress-ng: info:  [20408] radixsort           221     59.97    119.89      0.06         3.69         1.84
+	stress-ng: info:  [20408] remap             14385     59.98      5.04    114.94       239.81       119.89
+	stress-ng: info:  [20408] resources          5484     60.69      8.51    122.48        90.36        41.87
+	stress-ng: info:  [20408] rmap                 32     59.99      0.03      0.59         0.53        51.61
+	stress-ng: info:  [20408] stack              2194     60.06      9.08     82.75        36.53        23.89
+	stress-ng: info:  [20408] stackmmap           653     59.99      0.14      1.12        10.89       518.25
+	stress-ng: info:  [20408] str             1214494     59.99    119.79      0.01     20243.78     10137.68
+	stress-ng: info:  [20408] stream             7139     59.99    119.90      0.06       119.01        59.51
+	stress-ng: info:  [20408] tlb-shootdown      3799     59.98     50.26    162.80        63.34        17.83
+	stress-ng: info:  [20408] tmpfs               119     60.04     68.77     51.29         1.98         0.99
+	stress-ng: info:  [20408] tree                 30     59.96    119.87      0.06         0.50         0.25
+	stress-ng: info:  [20408] tsearch             308     60.11    120.18      0.04         5.12         2.56
+	stress-ng: info:  [20408] vm              1067912     59.98    116.05      3.91     17805.28      8902.23
+	stress-ng: info:  [20408] vm-addr              68     59.97    118.88      1.07         1.13         0.57
+	stress-ng: info:  [20408] vm-rw              6966     59.98      0.06    119.75       116.14        58.14
+	stress-ng: info:  [20408] wcs              535802     59.98    119.94      0.04      8933.11      4465.76
+	stress-ng: info:  [20408] zero           31407192     59.98     15.48    104.50    523650.57    261770.23
+	stress-ng: info:  [20408] zlib                878     60.21    120.45      0.10        14.58         7.28
+
+	INFO: HARDWARE=
+	CPU0 online=1 temp=36875 governor=performance cur_freq=1416000
+	CPU1 online=1 temp=36250 governor=performance cur_freq=1416000
+	CPU2 online=1 temp=35625 governor=performance cur_freq=1416000
+	CPU3 online=1 temp=36250 governor=performance cur_freq=1416000
+	CPU4 online=1 temp=36250 governor=interactive cur_freq=1416000
+	CPU5 online=1 temp=36250 governor=interactive cur_freq=1608000
+	 12:22:55 up  4:04,  1 user,  load average: 2.08, 2.46, 3.36
+	 
+again...
+	stress-ng: info:  [24674] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+	stress-ng: info:  [24674]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+	stress-ng: info:  [24674] atomic          6752251     30.00     59.95      0.00    225077.41    112631.38
+	stress-ng: info:  [24674] bsearch           27324     60.00    119.96      0.00       455.38       227.78
+	stress-ng: info:  [24674] context          248278     60.00     47.26     72.68      4137.98      2070.02
+	stress-ng: info:  [24674] full           11727880     60.00     63.22     54.85    195465.12     99329.89
+	stress-ng: info:  [24674] heapsort            157     60.00    119.97      0.00         2.62         1.31
+	stress-ng: info:  [24674] hsearch          107582     60.00    119.95      0.00      1793.03       896.89
+	stress-ng: info:  [24674] lockbus        77463906     60.01    119.92      0.06   1290931.71    645640.16
+	stress-ng: info:  [24674] lsearch             315     60.00    119.98      0.00         5.25         2.63
+	stress-ng: info:  [24674] malloc         74477628     60.09    119.26      0.88   1239535.76    619923.66
+	stress-ng: info:  [24674] matrix           101394     60.00    119.99      0.00      1689.90       845.02
+	stress-ng: info:  [24674] mcontend         273395     60.00    261.05      3.84      4556.55      1032.11
+	stress-ng: info:  [24674] membarrier        19806     60.01      0.08      0.48       330.03     35367.86
+	stress-ng: info:  [24674] memcpy            10717     60.01    119.80      0.00       178.60        89.46
+	stress-ng: info:  [24674] memfd               536     60.04      0.42    119.31         8.93         4.48
+	stress-ng: info:  [24674] memrate             118     60.03    119.38      0.64         1.97         0.98
+	stress-ng: info:  [24674] memthrash          3841     60.03    356.96      0.69        63.99        10.74
+	stress-ng: info:  [24674] mergesort          1061     60.00    119.93      0.00        17.68         8.85
+	stress-ng: info:  [24674] mincore         1833209     60.00     18.47    101.51     30553.56     15279.29
+	stress-ng: info:  [24674] null           19321373     60.00     18.01    101.94    322023.11    161078.56
+	stress-ng: info:  [24674] pipe           15661532     60.00     12.68    107.30    261022.03    130534.52
+	stress-ng: info:  [24674] qsort               405     60.00    119.94      0.00         6.75         3.38
+	stress-ng: info:  [24674] radixsort           222     60.00    119.97      0.00         3.70         1.85
+	stress-ng: info:  [24674] remap             14507     60.01      4.62    115.30       241.76       120.97
+	stress-ng: info:  [24674] resources          6344     60.06      5.11     56.02       105.63       103.78
+	stress-ng: info:  [24674] rmap                 32     60.00      0.06      0.33         0.53        82.05
+	stress-ng: info:  [24674] stack              6113     60.08     55.89     37.90       101.74        65.18
+	stress-ng: info:  [24674] stackmmap           966     60.00      0.18      1.37        16.10       623.23
+	stress-ng: info:  [24674] str             1212253     60.00    119.97      0.00     20204.31     10104.63
+	stress-ng: info:  [24674] stream             7119     60.01    119.90      0.04       118.63        59.35
+	stress-ng: info:  [24674] tlb-shootdown      3827     60.00     50.75    162.72        63.78        17.93
+	stress-ng: info:  [24674] tmpfs               118     60.06     68.06     51.92         1.96         0.98
+	stress-ng: info:  [24674] tree                 30     60.00    119.92      0.02         0.50         0.25
+	stress-ng: info:  [24674] tsearch             306     60.11    120.12      0.00         5.09         2.55
+	stress-ng: info:  [24674] vm              1067912     60.00    117.66      2.27     17797.50      8904.46
+	stress-ng: info:  [24674] vm-addr              68     60.00    119.00      0.94         1.13         0.57
+	stress-ng: info:  [24674] vm-rw              6755     60.02      0.02    119.83       112.55        56.36
+	stress-ng: info:  [24674] wcs              534772     60.00    119.98      0.00      8912.89      4457.18
+	stress-ng: info:  [24674] zero           31076992     60.00     15.84    104.14    517950.76    259018.10
+	stress-ng: info:  [24674] zlib                801     60.38    120.77      0.03        13.26         6.63
