@@ -1,4 +1,5 @@
 no cooling for nanopi
+(!) sometimes option -b 0 ia better than -b 1000M
 
 root@NanoPi-M4:~# sudo apt install iperf3
 
@@ -109,7 +110,8 @@ root@NanoPi-M4:~# iperf3 -c 9x.xx.xx.51
 =====================================================================================
 home network, 
 1) nanopi, ethernet 1G (client)
-2) thinkpad t520, win7pro, (server)
+2) thinkpad t520, win7pro, ethernet 1G (server)
+3) Keenetic Giga router
 UDP test - ???
 TCP test - good!
 
@@ -252,12 +254,76 @@ root@NanoPi-M4:~# iperf3 -b 1000M -c 192.168.1.48 -t 300
 	[  4]   0.00-300.01 sec  27.9 GBytes   799 Mbits/sec   79             sender
 	[  4]   0.00-300.01 sec  27.9 GBytes   799 Mbits/sec                  receiver
 
+(!) -b 0 better than -b 1000M
+root@NanoPi-M4:~# iperf3 -c 192.168.1.48 -b 0
+
+	Connecting to host 192.168.1.48, port 5201
+	[  4] local 192.168.1.56 port 41992 connected to 192.168.1.48 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec  96.7 MBytes   810 Mbits/sec    0    214 KBytes
+	[  4]   1.00-2.01   sec  95.2 MBytes   791 Mbits/sec    0    214 KBytes
+	[  4]   2.01-3.00   sec  99.2 MBytes   839 Mbits/sec    0    214 KBytes
+	[  4]   3.00-4.00   sec  99.6 MBytes   838 Mbits/sec    0    214 KBytes
+	[  4]   4.00-5.00   sec   104 MBytes   873 Mbits/sec    0    214 KBytes
+	[  4]   5.00-6.01   sec   106 MBytes   881 Mbits/sec    0    214 KBytes
+	[  4]   6.01-7.00   sec   103 MBytes   877 Mbits/sec    0    214 KBytes
+	[  4]   7.00-8.01   sec   105 MBytes   872 Mbits/sec    0    214 KBytes
+	[  4]   8.01-9.00   sec   100 MBytes   847 Mbits/sec    0    214 KBytes
+	[  4]   9.00-10.00  sec   102 MBytes   858 Mbits/sec    0    214 KBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.00  sec  1012 MBytes   849 Mbits/sec    0             sender
+	[  4]   0.00-10.00  sec  1012 MBytes   849 Mbits/sec                  receiver
+
+
+root@NanoPi-M4:~# iperf3 -c 192.168.1.48 -b 0
+
+	Connecting to host 192.168.1.48, port 5201
+	[  4] local 192.168.1.56 port 41996 connected to 192.168.1.48 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec   102 MBytes   857 Mbits/sec    0    214 KBytes
+	[  4]   1.00-2.00   sec  99.0 MBytes   829 Mbits/sec    0    214 KBytes
+	[  4]   2.00-3.01   sec   101 MBytes   843 Mbits/sec    0    214 KBytes
+	[  4]   3.01-4.00   sec  99.1 MBytes   834 Mbits/sec    0    214 KBytes
+	[  4]   4.00-5.00   sec   103 MBytes   867 Mbits/sec    0    214 KBytes
+	[  4]   5.00-6.01   sec   101 MBytes   843 Mbits/sec    0    214 KBytes
+	[  4]   6.01-7.02   sec   101 MBytes   844 Mbits/sec    0    214 KBytes
+	[  4]   7.02-8.02   sec   106 MBytes   881 Mbits/sec    0    214 KBytes
+	[  4]   8.02-9.00   sec  99.4 MBytes   851 Mbits/sec    0    214 KBytes
+	[  4]   9.00-10.01  sec   105 MBytes   869 Mbits/sec    0    214 KBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.01  sec  1017 MBytes   852 Mbits/sec    0             sender
+	[  4]   0.00-10.01  sec  1017 MBytes   852 Mbits/sec                  receiver
+
+Lost packets !?
+root@NanoPi-M4:~# iperf3 -c 192.168.1.48 -b 0 -u
+
+	Connecting to host 192.168.1.48, port 5201
+	[  4] local 192.168.1.56 port 51003 connected to 192.168.1.48 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+	[  4]   0.00-1.00   sec  8.44 MBytes  70.7 Mbits/sec  1080
+	[  4]   1.00-2.00   sec  8.67 MBytes  72.8 Mbits/sec  1110
+	[  4]   2.00-3.00   sec  9.14 MBytes  76.6 Mbits/sec  1170
+	[  4]   3.00-4.00   sec  8.67 MBytes  72.7 Mbits/sec  1110
+	[  4]   4.00-5.00   sec  7.50 MBytes  62.8 Mbits/sec  960
+	[  4]   5.00-6.00   sec  9.77 MBytes  82.1 Mbits/sec  1250
+	[  4]   6.00-7.00   sec  10.1 MBytes  84.5 Mbits/sec  1290
+	[  4]   7.00-8.00   sec  7.73 MBytes  64.8 Mbits/sec  990
+	[  4]   8.00-9.00   sec  9.61 MBytes  80.7 Mbits/sec  1230
+	[  4]   9.00-10.00  sec  8.98 MBytes  75.3 Mbits/sec  1150
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+	[  4]   0.00-10.00  sec  88.6 MBytes  74.3 Mbits/sec  0.408 ms  4006/11237 (36%)
+	[  4] Sent 11237 datagrams
+
+
 =====================================================================================
 if server on Debian notebook 
 (acer, intel core i3-3120M, 4Gb DDR3 
 ...may be not fast network adapter
  "Broadcom and subsidiaries NetXtreme BCM57761")
-
+(!) -b 0 better than -b 1000M
 
 root@NanoPi-M4:~# iperf3 -b 1000M -c 192.168.1.49
 
@@ -279,6 +345,8 @@ root@NanoPi-M4:~# iperf3 -b 1000M -c 192.168.1.49
 	[  4]   0.00-10.02  sec   934 MBytes   782 Mbits/sec    0             sender
 	[  4]   0.00-10.02  sec   934 MBytes   782 Mbits/sec                  receiver
 
+
+
 root@NanoPi-M4:~# iperf3 -u -b 1000M -c 192.168.1.49
 
 	Connecting to host 192.168.1.49, port 5201
@@ -298,3 +366,114 @@ root@NanoPi-M4:~# iperf3 -u -b 1000M -c 192.168.1.49
 	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
 	[  4]   0.00-10.00  sec  18.6 MBytes  15.6 Mbits/sec  0.064 ms  0/2378 (0%)
 	[  4] Sent 2378 datagrams
+
+(!!!) -b 0 better than -b 1000M
+root@NanoPi-M4:~# iperf3 -c 192.168.1.49 -b 0
+
+	Connecting to host 192.168.1.49, port 5201
+	[  4] local 192.168.1.56 port 36688 connected to 192.168.1.49 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec   102 MBytes   851 Mbits/sec    0    800 KBytes
+	[  4]   1.00-2.00   sec   100 MBytes   840 Mbits/sec    0   1.14 MBytes
+	[  4]   2.00-3.00   sec  95.0 MBytes   796 Mbits/sec    0   1.60 MBytes
+	[  4]   3.00-4.01   sec  96.2 MBytes   802 Mbits/sec    0   2.27 MBytes
+	[  4]   4.01-5.00   sec   104 MBytes   882 Mbits/sec    0   2.74 MBytes
+	[  4]   5.00-6.07   sec  96.2 MBytes   757 Mbits/sec    0   3.07 MBytes
+	[  4]   6.07-7.01   sec  92.5 MBytes   823 Mbits/sec    0   3.07 MBytes
+	[  4]   7.01-8.00   sec  97.5 MBytes   824 Mbits/sec    0   3.07 MBytes
+	[  4]   8.00-9.00   sec  97.5 MBytes   816 Mbits/sec    0   3.07 MBytes
+	[  4]   9.00-10.05  sec   105 MBytes   845 Mbits/sec    0   3.07 MBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.05  sec   986 MBytes   823 Mbits/sec    0             sender
+	[  4]   0.00-10.05  sec   986 MBytes   823 Mbits/sec                  receiver
+
+
+root@NanoPi-M4:~# iperf3 -c 192.168.1.49 -b 0
+
+	Connecting to host 192.168.1.49, port 5201
+	[  4] local 192.168.1.56 port 36696 connected to 192.168.1.49 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.02   sec   101 MBytes   826 Mbits/sec    0   1.13 MBytes
+	[  4]   1.02-2.01   sec  98.8 MBytes   841 Mbits/sec    0   1.34 MBytes
+	[  4]   2.01-3.00   sec   102 MBytes   861 Mbits/sec    0   1.83 MBytes
+	[  4]   3.00-4.01   sec  96.2 MBytes   802 Mbits/sec    0   1.97 MBytes
+	[  4]   4.01-5.01   sec   100 MBytes   836 Mbits/sec    0   2.99 MBytes
+	[  4]   5.01-6.00   sec  93.8 MBytes   792 Mbits/sec    0   3.15 MBytes
+	[  4]   6.00-7.01   sec  97.5 MBytes   816 Mbits/sec  157   2.21 MBytes
+	[  4]   7.01-8.00   sec  97.5 MBytes   822 Mbits/sec    0   2.35 MBytes
+	[  4]   8.00-9.01   sec  98.8 MBytes   821 Mbits/sec    0   2.56 MBytes
+	[  4]   9.01-10.04  sec  97.5 MBytes   793 Mbits/sec    0   2.73 MBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.04  sec   983 MBytes   821 Mbits/sec  157             sender
+	[  4]   0.00-10.04  sec   983 MBytes   821 Mbits/sec                  receiver
+
+
+no Lost Packets, yee
+root@NanoPi-M4:~# iperf3 -u -c 192.168.1.49 -b 0
+
+	Connecting to host 192.168.1.49, port 5201
+	[  4] local 192.168.1.56 port 49977 connected to 192.168.1.49 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+	[  4]   0.00-1.00   sec  10.8 MBytes  90.3 Mbits/sec  1380
+	[  4]   1.00-2.00   sec  10.0 MBytes  83.9 Mbits/sec  1280
+	[  4]   2.00-3.00   sec  7.66 MBytes  64.2 Mbits/sec  980
+	[  4]   3.00-4.00   sec  11.2 MBytes  93.7 Mbits/sec  1430
+	[  4]   4.00-5.00   sec  7.97 MBytes  66.9 Mbits/sec  1020
+	[  4]   5.00-6.00   sec  8.20 MBytes  68.8 Mbits/sec  1050
+	[  4]   6.00-7.00   sec  11.2 MBytes  94.4 Mbits/sec  1440
+	[  4]   7.00-8.00   sec  8.98 MBytes  75.3 Mbits/sec  1150
+	[  4]   8.00-9.00   sec  9.92 MBytes  83.3 Mbits/sec  1270
+	[  4]   9.00-10.00  sec  8.91 MBytes  74.7 Mbits/sec  1140
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+	[  4]   0.00-10.00  sec  94.8 MBytes  79.5 Mbits/sec  0.073 ms  0/12140 (0%)
+	[  4] Sent 12140 datagrams
+
+
+
+root@NanoPi-M4:~# iperf3 -u -c 192.168.1.49 -b 0 -t 300
+
+	Connecting to host 192.168.1.49, port 5201
+	[  4] local 192.168.1.56 port 44640 connected to 192.168.1.49 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+	[  4]   0.00-1.00   sec  9.77 MBytes  81.8 Mbits/sec  1250
+	[  4]   1.00-2.00   sec  11.1 MBytes  93.1 Mbits/sec  1420
+	[  4]   2.00-3.00   sec  7.66 MBytes  64.2 Mbits/sec  980
+	[  4]   3.00-4.00   sec  8.75 MBytes  73.4 Mbits/sec  1120
+	[  4]   4.00-5.00   sec  11.2 MBytes  94.4 Mbits/sec  1440
+	[  4]   5.00-6.00   sec  10.0 MBytes  83.9 Mbits/sec  1280
+	...
+	[  4] 298.00-299.00 sec  7.50 MBytes  62.9 Mbits/sec  960
+	[  4] 299.00-300.00 sec  10.0 MBytes  83.9 Mbits/sec  1280
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+	[  4]   0.00-300.00 sec  2.70 GBytes  77.2 Mbits/sec  0.078 ms  1/353609 (0.00028%)
+	[  4] Sent 353609 datagrams
+	
+	
+reverse mode !!!
+but Lost Packets
+root@NanoPi-M4:~# iperf3 -u -c 192.168.1.49 -b 0 -R
+
+	Connecting to host 192.168.1.49, port 5201
+	Reverse mode, remote host 192.168.1.49 is sending
+	[  4] local 192.168.1.56 port 53366 connected to 192.168.1.49 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+	[  4]   0.00-1.00   sec   102 MBytes   857 Mbits/sec  0.083 ms  1638/14719 (11%)
+	[  4]   1.00-2.00   sec  99.5 MBytes   835 Mbits/sec  0.078 ms  1470/14211 (10%)
+	[  4]   2.00-3.00   sec  99.8 MBytes   838 Mbits/sec  0.102 ms  1394/14171 (9.8%)
+	[  4]   3.00-4.00   sec   100 MBytes   842 Mbits/sec  0.063 ms  1275/14117 (9%)
+	[  4]   4.00-5.00   sec   101 MBytes   846 Mbits/sec  0.072 ms  1182/14094 (8.4%)
+	[  4]   5.00-6.00   sec   102 MBytes   855 Mbits/sec  0.066 ms  1078/14130 (7.6%)
+	[  4]   6.00-7.00   sec   101 MBytes   850 Mbits/sec  0.132 ms  1152/14129 (8.2%)
+	[  4]   7.00-8.00   sec  98.3 MBytes   825 Mbits/sec  0.144 ms  1570/14152 (11%)
+	[  4]   8.00-9.00   sec  99.1 MBytes   831 Mbits/sec  0.065 ms  1512/14192 (11%)
+	[  4]   9.00-10.00  sec   101 MBytes   847 Mbits/sec  0.065 ms  1250/14171 (8.8%)
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+	[  4]   0.00-10.00  sec  1.08 GBytes   931 Mbits/sec  0.048 ms  13527/142130 (9.5%)
+	[  4] Sent 142130 datagrams
+
+
