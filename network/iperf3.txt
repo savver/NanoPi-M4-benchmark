@@ -1,0 +1,300 @@
+no cooling for nanopi
+
+root@NanoPi-M4:~# sudo apt install iperf3
+
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	The following additional packages will be installed:
+	  libiperf0
+	The following NEW packages will be installed:
+	  iperf3 libiperf0
+	0 upgraded, 2 newly installed, 0 to remove and 422 not upgraded.
+	Need to get 55.1 kB of archives.
+	After this operation, 184 kB of additional disk space will be used.
+	Do you want to continue? [Y/n] Y
+	Get:1 http://ports.ubuntu.com bionic/universe arm64 libiperf0 arm64 3.1.3-1 [46.3 kB]
+	Get:2 http://ports.ubuntu.com bionic/universe arm64 iperf3 arm64 3.1.3-1 [8,788 B]
+	Fetched 55.1 kB in 0s (120 kB/s)
+	debconf: delaying package configuration, since apt-utils is not installed
+	Selecting previously unselected package libiperf0:arm64.
+	(Reading database ... 124487 files and directories currently installed.)
+	Preparing to unpack .../libiperf0_3.1.3-1_arm64.deb ...
+	Unpacking libiperf0:arm64 (3.1.3-1) ...
+	Selecting previously unselected package iperf3.
+	Preparing to unpack .../iperf3_3.1.3-1_arm64.deb ...
+	Unpacking iperf3 (3.1.3-1) ...
+	Processing triggers for libc-bin (2.27-3ubuntu1) ...
+	Setting up libiperf0:arm64 (3.1.3-1) ...
+	Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+	Setting up iperf3 (3.1.3-1) ...
+	Processing triggers for libc-bin (2.27-3ubuntu1) ...
+	Error: Timeout was reached
+
+===================================================================================
+external server
+-----------------------------------------------------------------------------------
+root@NanoPi-M4:~# ping 9x.xx.xx.51
+
+	PING 9x.xx.xx.51 (9x.xx.xx.51) 56(84) bytes of data.
+	64 bytes from 9x.xx.xx.51: icmp_seq=1 ttl=58 time=4.27 ms
+	64 bytes from 9x.xx.xx.51: icmp_seq=2 ttl=58 time=4.33 ms
+	64 bytes from 9x.xx.xx.51: icmp_seq=3 ttl=58 time=4.21 ms
+	64 bytes from 9x.xx.xx.51: icmp_seq=4 ttl=58 time=4.15 ms
+
+
+-----------------------------------------------------------------------------------
+root@NanoPi-M4:~# iperf3 -c 9x.xx.xx.51
+
+	Connecting to host 9x.xx.xx.51, port 5201
+	[  4] local 192.168.1.56 port 60310 connected to 9x.xx.xx.51 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec  36.8 MBytes   308 Mbits/sec   32    181 KBytes
+	[  4]   1.00-2.00   sec  33.9 MBytes   284 Mbits/sec   24    170 KBytes
+	[  4]   2.00-3.00   sec  34.9 MBytes   292 Mbits/sec    6    192 KBytes
+	[  4]   3.00-4.00   sec  38.5 MBytes   323 Mbits/sec   15    136 KBytes
+	[  4]   4.00-5.00   sec  36.3 MBytes   304 Mbits/sec    8    206 KBytes
+	[  4]   5.00-6.00   sec  36.8 MBytes   309 Mbits/sec   18    188 KBytes
+	[  4]   6.00-7.00   sec  36.3 MBytes   304 Mbits/sec   10    214 KBytes
+	[  4]   7.00-8.00   sec  39.0 MBytes   328 Mbits/sec    7    150 KBytes
+	[  4]   8.00-9.00   sec  35.4 MBytes   297 Mbits/sec    5    212 KBytes
+	[  4]   9.00-10.00  sec  34.7 MBytes   291 Mbits/sec   13    212 KBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.00  sec   363 MBytes   304 Mbits/sec  138             sender
+	[  4]   0.00-10.00  sec   361 MBytes   303 Mbits/sec                  receiver
+
+-----------------------------------------------------------------------------------
+root@NanoPi-M4:~# iperf3 -c 9x.xx.xx.51
+
+	Connecting to host 9x.xx.xx.51, port 5201
+	[  4] local 192.168.1.56 port 60314 connected to 9x.xx.xx.51 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec  38.1 MBytes   319 Mbits/sec   56    119 KBytes
+	[  4]   1.00-2.00   sec  34.1 MBytes   286 Mbits/sec    6    170 KBytes
+	[  4]   2.00-3.01   sec  35.1 MBytes   293 Mbits/sec   21    195 KBytes
+	[  4]   3.01-4.00   sec  30.8 MBytes   260 Mbits/sec   85   99.0 KBytes
+	[  4]   4.00-5.00   sec  32.6 MBytes   273 Mbits/sec    0    214 KBytes
+	[  4]   5.00-6.01   sec  35.5 MBytes   295 Mbits/sec   34    197 KBytes
+	[  4]   6.01-7.00   sec  37.8 MBytes   320 Mbits/sec    3    214 KBytes
+	[  4]   7.00-8.00   sec  33.9 MBytes   284 Mbits/sec    8    136 KBytes
+	[  4]   8.00-9.01   sec  33.6 MBytes   280 Mbits/sec    1    212 KBytes
+	[  4]   9.01-10.00  sec  40.0 MBytes   337 Mbits/sec   13    214 KBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.00  sec   351 MBytes   295 Mbits/sec  227             sender
+	[  4]   0.00-10.00  sec   350 MBytes   294 Mbits/sec                  receiver
+
+-----------------------------------------------------------------------------------
+root@NanoPi-M4:~# iperf3 -c 9x.xx.xx.51
+
+	Connecting to host 9x.xx.xx.51, port 5201
+	[  4] local 192.168.1.56 port 60322 connected to 9x.xx.xx.51 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec  35.9 MBytes   301 Mbits/sec   45    147 KBytes
+	[  4]   1.00-2.00   sec  37.2 MBytes   312 Mbits/sec    5    192 KBytes
+	[  4]   2.00-3.00   sec  36.2 MBytes   304 Mbits/sec   19    164 KBytes
+	[  4]   3.00-4.00   sec  36.9 MBytes   310 Mbits/sec   14    133 KBytes
+	[  4]   4.00-5.00   sec  30.8 MBytes   259 Mbits/sec   21    146 KBytes
+	[  4]   5.00-6.00   sec  33.9 MBytes   285 Mbits/sec    7    178 KBytes
+	[  4]   6.00-7.00   sec  28.5 MBytes   239 Mbits/sec   31    163 KBytes
+	[  4]   7.00-8.00   sec  32.6 MBytes   273 Mbits/sec   10    201 KBytes
+	[  4]   8.00-9.00   sec  30.1 MBytes   253 Mbits/sec   13    110 KBytes
+	[  4]   9.00-10.00  sec  34.4 MBytes   289 Mbits/sec   14    158 KBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.00  sec   337 MBytes   282 Mbits/sec  179             sender
+	[  4]   0.00-10.00  sec   335 MBytes   281 Mbits/sec                  receiver
+
+=====================================================================================
+home network, 
+1) nanopi, ethernet 1G (client)
+2) thinkpad t520, win7pro, (server)
+UDP test - ???
+TCP test - good!
+
+C:\Users\x1x\Downloads\iperf-3.1.3-win64>iperf3.exe -s
+
+	-----------------------------------------------------------
+	Server listening on 5201
+	-----------------------------------------------------------
+	Accepted connection from 192.168.1.56, port 41914
+	[  5] local 192.168.1.48 port 5201 connected to 192.168.1.56 port 57157
+	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+	[  5]   0.00-1.00   sec  1.58 MBytes  13.2 Mbits/sec  0.132 ms  0/202 (0%)
+	[  5]   1.00-2.00   sec  1.75 MBytes  14.7 Mbits/sec  0.167 ms  0/224 (0%)
+	[  5]   2.00-3.00   sec  1.74 MBytes  14.6 Mbits/sec  0.184 ms  0/223 (0%)
+	[  5]   3.00-4.00   sec  2.34 MBytes  19.6 Mbits/sec  0.141 ms  0/299 (0%)
+	[  5]   4.00-5.00   sec  2.24 MBytes  18.8 Mbits/sec  0.175 ms  0/287 (0%)
+	[  5]   5.00-6.00   sec  1.75 MBytes  14.7 Mbits/sec  0.170 ms  0/224 (0%)
+	[  5]   6.00-7.00   sec  1.66 MBytes  14.0 Mbits/sec  0.179 ms  0/213 (0%)
+	[  5]   7.00-8.00   sec  1.75 MBytes  14.7 Mbits/sec  0.178 ms  0/224 (0%)
+	[  5]   8.00-9.00   sec  1.74 MBytes  14.6 Mbits/sec  0.151 ms  0/223 (0%)
+	[  5]   9.00-10.00  sec  1.75 MBytes  14.7 Mbits/sec  0.175 ms  0/224 (0%)
+	[  5]  10.00-10.03  sec  8.00 KBytes  1.93 Mbits/sec  0.195 ms  0/1 (0%)
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+	[  5]   0.00-10.03  sec  0.00 Bytes  0.00 bits/sec  0.195 ms  0/2344 (0%)
+	-----------------------------------------------------------
+	Server listening on 5201
+	-----------------------------------------------------------
+	
+	
+root@NanoPi-M4:~# iperf3 -u -b 1000M -c 192.168.1.48
+
+	Connecting to host 192.168.1.48, port 5201
+	[  4] local 192.168.1.56 port 57157 connected to 192.168.1.48 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+	[  4]   0.00-1.00   sec  1.59 MBytes  13.3 Mbits/sec  203
+	[  4]   1.00-2.00   sec  1.75 MBytes  14.7 Mbits/sec  224
+	[  4]   2.00-3.00   sec  1.74 MBytes  14.6 Mbits/sec  223
+	[  4]   3.00-4.00   sec  2.41 MBytes  20.3 Mbits/sec  309
+	[  4]   4.00-5.00   sec  2.16 MBytes  18.2 Mbits/sec  277
+	[  4]   5.00-6.00   sec  1.75 MBytes  14.7 Mbits/sec  224
+	[  4]   6.00-7.00   sec  1.66 MBytes  14.0 Mbits/sec  213
+	[  4]   7.00-8.00   sec  1.75 MBytes  14.7 Mbits/sec  224
+	[  4]   8.00-9.00   sec  1.74 MBytes  14.6 Mbits/sec  223
+	[  4]   9.00-10.00  sec  1.75 MBytes  14.7 Mbits/sec  224
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+	[  4]   0.00-10.00  sec  18.3 MBytes  15.4 Mbits/sec  0.195 ms  0/2344 (0%)
+	[  4] Sent 2344 datagrams
+
+	iperf Done.
+
+=====================================================================================
+C:\Users\x1x\Downloads\iperf-3.1.3-win64>iperf3.exe -s
+
+	-----------------------------------------------------------
+	Server listening on 5201
+	-----------------------------------------------------------
+	Accepted connection from 192.168.1.56, port 41916
+	[  5] local 192.168.1.48 port 5201 connected to 192.168.1.56 port 41918
+	[ ID] Interval           Transfer     Bandwidth
+	[  5]   0.00-1.00   sec  82.8 MBytes   695 Mbits/sec
+	[  5]   1.00-2.00   sec  85.5 MBytes   717 Mbits/sec
+	[  5]   2.00-3.00   sec  99.9 MBytes   838 Mbits/sec
+	[  5]   3.00-4.00   sec  99.2 MBytes   832 Mbits/sec
+	[  5]   4.00-5.00   sec   101 MBytes   844 Mbits/sec
+	[  5]   5.00-6.00   sec  96.7 MBytes   811 Mbits/sec
+	[  5]   6.00-7.00   sec  98.3 MBytes   825 Mbits/sec
+	[  5]   7.00-8.00   sec  98.8 MBytes   829 Mbits/sec
+	[  5]   8.00-9.00   sec  98.2 MBytes   824 Mbits/sec
+	[  5]   9.00-10.00  sec  98.5 MBytes   826 Mbits/sec
+	[  5]  10.00-10.04  sec  3.61 MBytes   841 Mbits/sec
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth
+	[  5]   0.00-10.04  sec  0.00 Bytes  0.00 bits/sec                  sender
+	[  5]   0.00-10.04  sec   962 MBytes   804 Mbits/sec                  receiver
+	-----------------------------------------------------------
+	Server listening on 5201
+	-----------------------------------------------------------
+
+root@NanoPi-M4:~# iperf3 -b 1000M -c 192.168.1.48
+
+	Connecting to host 192.168.1.48, port 5201
+	[  4] local 192.168.1.56 port 41918 connected to 192.168.1.48 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec  86.6 MBytes   726 Mbits/sec    0    218 KBytes
+	[  4]   1.00-2.00   sec  86.0 MBytes   720 Mbits/sec    0    218 KBytes
+	[  4]   2.00-3.00   sec  99.5 MBytes   835 Mbits/sec    0    218 KBytes
+	[  4]   3.00-4.01   sec  99.2 MBytes   826 Mbits/sec    0    218 KBytes
+	[  4]   4.01-5.00   sec   102 MBytes   859 Mbits/sec    0    218 KBytes
+	[  4]   5.00-6.00   sec  95.5 MBytes   801 Mbits/sec    0    218 KBytes
+	[  4]   6.00-7.00   sec  98.9 MBytes   828 Mbits/sec    0    218 KBytes
+	[  4]   7.00-8.00   sec  99.1 MBytes   831 Mbits/sec    0    218 KBytes
+	[  4]   8.00-9.00   sec  96.8 MBytes   814 Mbits/sec    0    218 KBytes
+	[  4]   9.00-10.00  sec  99.9 MBytes   838 Mbits/sec    0    218 KBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.00  sec   963 MBytes   808 Mbits/sec    0             sender
+	[  4]   0.00-10.00  sec   962 MBytes   807 Mbits/sec                  receiver
+	iperf Done.
+	
+root@NanoPi-M4:~# iperf3 -b 1000M -c 192.168.1.48
+
+	Connecting to host 192.168.1.48, port 5201
+	[  4] local 192.168.1.56 port 41922 connected to 192.168.1.48 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec  87.2 MBytes   731 Mbits/sec    0    221 KBytes
+	[  4]   1.00-2.00   sec  94.5 MBytes   794 Mbits/sec    0    221 KBytes
+	[  4]   2.00-3.00   sec  95.6 MBytes   802 Mbits/sec    0    221 KBytes
+	[  4]   3.00-4.00   sec   101 MBytes   842 Mbits/sec    0    221 KBytes
+	[  4]   4.00-5.00   sec  95.6 MBytes   804 Mbits/sec    0    221 KBytes
+	[  4]   5.00-6.00   sec  99.0 MBytes   831 Mbits/sec    0    221 KBytes
+	[  4]   6.00-7.00   sec  99.0 MBytes   828 Mbits/sec    0    221 KBytes
+	[  4]   7.00-8.00   sec  98.8 MBytes   831 Mbits/sec    0    221 KBytes
+	[  4]   8.00-9.00   sec  98.1 MBytes   823 Mbits/sec    0    221 KBytes
+	[  4]   9.00-10.00  sec  99.4 MBytes   834 Mbits/sec    0    221 KBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.00  sec   968 MBytes   812 Mbits/sec    0             sender
+	[  4]   0.00-10.00  sec   967 MBytes   811 Mbits/sec                  receiver
+
+root@NanoPi-M4:~# iperf3 -b 1000M -c 192.168.1.48 -t 300
+
+	Connecting to host 192.168.1.48, port 5201
+	[  4] local 192.168.1.56 port 41934 connected to 192.168.1.48 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec  87.7 MBytes   736 Mbits/sec    0    218 KBytes
+	[  4]   1.00-2.00   sec  95.9 MBytes   804 Mbits/sec    0    218 KBytes
+	[  4]   2.00-3.00   sec  97.0 MBytes   812 Mbits/sec    0    218 KBytes
+	[  4]   3.00-4.00   sec  96.8 MBytes   813 Mbits/sec    0    218 KBytes
+	[  4]   4.00-5.00   sec  98.1 MBytes   823 Mbits/sec    0    218 KBytes
+	[  4]   5.00-6.00   sec  98.1 MBytes   823 Mbits/sec    0    218 KBytes
+	...
+	[  4] 296.00-297.00 sec  99.0 MBytes   831 Mbits/sec    0    214 KBytes
+	[  4] 297.00-298.01 sec  98.0 MBytes   813 Mbits/sec    0    214 KBytes
+	[  4] 298.01-299.00 sec  96.4 MBytes   817 Mbits/sec    0    214 KBytes
+	[  4] 299.00-300.01 sec  97.0 MBytes   810 Mbits/sec    0    214 KBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-300.01 sec  27.9 GBytes   799 Mbits/sec   79             sender
+	[  4]   0.00-300.01 sec  27.9 GBytes   799 Mbits/sec                  receiver
+
+=====================================================================================
+if server on Debian notebook 
+(acer, intel core i3-3120M, 4Gb DDR3 
+...may be not fast network adapter
+ "Broadcom and subsidiaries NetXtreme BCM57761")
+
+
+root@NanoPi-M4:~# iperf3 -b 1000M -c 192.168.1.49
+
+	Connecting to host 192.168.1.49, port 5201
+	[  4] local 192.168.1.56 port 36664 connected to 192.168.1.49 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+	[  4]   0.00-1.00   sec  86.0 MBytes   721 Mbits/sec    0    411 KBytes
+	[  4]   1.00-2.00   sec  91.6 MBytes   769 Mbits/sec    0    987 KBytes
+	[  4]   2.00-3.00   sec  94.6 MBytes   793 Mbits/sec    0   1.19 MBytes
+	[  4]   3.00-4.03   sec  95.2 MBytes   780 Mbits/sec    0   1.74 MBytes
+	[  4]   4.03-5.00   sec  92.2 MBytes   794 Mbits/sec    0   2.32 MBytes
+	[  4]   5.00-6.00   sec  97.5 MBytes   816 Mbits/sec    0   2.59 MBytes
+	[  4]   6.00-7.01   sec  91.0 MBytes   762 Mbits/sec    0   2.86 MBytes
+	[  4]   7.01-8.00   sec  93.0 MBytes   784 Mbits/sec    0   2.86 MBytes
+	[  4]   8.00-9.00   sec  98.6 MBytes   827 Mbits/sec    0   2.86 MBytes
+	[  4]   9.00-10.02  sec  94.5 MBytes   780 Mbits/sec    0   2.86 MBytes
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-10.02  sec   934 MBytes   782 Mbits/sec    0             sender
+	[  4]   0.00-10.02  sec   934 MBytes   782 Mbits/sec                  receiver
+
+root@NanoPi-M4:~# iperf3 -u -b 1000M -c 192.168.1.49
+
+	Connecting to host 192.168.1.49, port 5201
+	[  4] local 192.168.1.56 port 33207 connected to 192.168.1.49 port 5201
+	[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+	[  4]   0.00-1.00   sec  1.85 MBytes  15.5 Mbits/sec  237
+	[  4]   1.00-2.00   sec  1.83 MBytes  15.3 Mbits/sec  234
+	[  4]   2.00-3.00   sec  1.75 MBytes  14.7 Mbits/sec  224
+	[  4]   3.00-4.00   sec  1.83 MBytes  15.3 Mbits/sec  234
+	[  4]   4.00-5.00   sec  1.91 MBytes  16.1 Mbits/sec  245
+	[  4]   5.00-6.00   sec  1.92 MBytes  16.1 Mbits/sec  246
+	[  4]   6.00-7.00   sec  1.99 MBytes  16.7 Mbits/sec  255
+	[  4]   7.00-8.00   sec  1.84 MBytes  15.4 Mbits/sec  235
+	[  4]   8.00-9.00   sec  1.83 MBytes  15.3 Mbits/sec  234
+	[  4]   9.00-10.00  sec  1.84 MBytes  15.4 Mbits/sec  235
+	- - - - - - - - - - - - - - - - - - - - - - - - -
+	[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+	[  4]   0.00-10.00  sec  18.6 MBytes  15.6 Mbits/sec  0.064 ms  0/2378 (0%)
+	[  4] Sent 2378 datagrams
