@@ -21,6 +21,10 @@ tests:
 	- transmission/transmission-daemon has less speed than qBittorrent,
 	qBittorrent can download up to 30-40MiB/s (Internet channel is not 
 	better than 400Mbit)
+	- iperf3 in home network (1Gb ethernet connections, Keenetic Giga as router)
+	800+MiB/s with TCP, but small speed with UDP(?) not greater 20MiB/s.
+	external server in the Internet 300+MiB/s TCP (Intenet channel not greater 400MiB/s),
+	and same small speed with UDP
 
 stability:
 
