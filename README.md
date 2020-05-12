@@ -22,7 +22,8 @@ tests:
 	qBittorrent can download up to 30-40 MiB/s (Internet channel is not 
 	better than 400Mbit)
 	- iperf3 in home network (1Gb ethernet connections, Keenetic Giga as router)
-	800+ Mb/s with TCP, but small speed with UDP(?) not greater 20 Mb/s.
+	800+ Mb/s with TCP, but small speed with UDP(?), it's not greater 20 Mb/s if -b 1000M, 
+	and 70-80 Mb/s if -b 0 (very strange).
 	external server in the Internet 300+ Mb/s TCP (Intenet channel not greater 400 Mb/s),
 	and same small speed with UDP
 
