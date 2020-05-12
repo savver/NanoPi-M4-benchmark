@@ -1,0 +1,436 @@
+brief:
+	stress-ng --cpu 2 --cpu-method all 		--verify --metrics-brief --timeout 60
+	stress-ng --cpu 2 --cpu-method=int32 	--verify --metrics-brief --timeout 60
+	stress-ng --cpu 2 --cpu-method=float 	--verify --metrics-brief --timeout 60
+	stress-ng --cpu 2 --cpu-method=double 	--verify --metrics-brief --timeout 60
+	stress-ng --cpu 2 --cpu-method=fft 		--verify --metrics-brief --timeout 60
+	stress-ng --cpu 2 --cpu-method=callfunc --verify --metrics-brief --timeout 60
+
+x1x@AcerD10:~$ lscpu
+
+	Architecture:        x86_64
+	CPU op-mode(s):      32-bit, 64-bit
+	Byte Order:          Little Endian
+	Address sizes:       36 bits physical, 48 bits virtual
+	CPU(s):              4
+	On-line CPU(s) list: 0-3
+	Thread(s) per core:  2
+	Core(s) per socket:  2
+	Socket(s):           1
+	NUMA node(s):        1
+	Vendor ID:           GenuineIntel
+	CPU family:          6
+	Model:               58
+	Model name:          Intel(R) Core(TM) i3-3120M CPU @ 2.50GHz
+	Stepping:            9
+	CPU MHz:             1650.143
+	CPU max MHz:         2500.0000
+	CPU min MHz:         1200.0000
+	BogoMIPS:            4988.55
+	Virtualization:      VT-x
+	L1d cache:           32K
+	L1i cache:           32K
+	L2 cache:            256K
+	L3 cache:            3072K
+	NUMA node0 CPU(s):   0-3
+	Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer xsave avx f16c lahf_lm cpuid_fault epb pti tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm arat pln pts
+
+x1x@AcerD10:~$ uname -a
+
+	Linux AcerD10 4.19.0-8-amd64 #1 SMP Debian 4.19.98-1 (2020-01-26) x86_64 GNU/Linux
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method all --verify --metrics-brief --timeout 60; sensors 
+	
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +39.0°C  (crit = +89.0°C)
+	temp2:        +38.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +41.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +39.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +41.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2370] dispatching hogs: 2 cpu
+		stress-ng: info:  [2370] successful run completed in 60.09s (1 min, 0.09 secs)
+		stress-ng: info:  [2370] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2370]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2370] cpu               24504     60.08    120.15      0.00       407.85       203.95
+		--------------------------------------------------------------------------
+	
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +71.0°C  (crit = +89.0°C)
+	temp2:        +42.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +69.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +64.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +63.0°C  (high = +72.0°C, crit = +90.0°C)
+	
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method all --verify --metrics-brief --timeout 60; sensors
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +45.0°C  (crit = +89.0°C)
+	temp2:        +42.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +47.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +45.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +47.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2376] dispatching hogs: 2 cpu
+		stress-ng: info:  [2376] successful run completed in 60.04s (1 min, 0.04 secs)
+		stress-ng: info:  [2376] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2376]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2376] cpu               24384     60.04    120.06      0.00       406.16       203.10
+		--------------------------------------------------------------------------
+		
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +72.0°C  (crit = +89.0°C)
+	temp2:        +44.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +73.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +67.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +70.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=int32 --verify --metrics-brief --timeout 60; sensors    
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +45.0°C  (crit = +89.0°C)
+	temp2:        +43.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +45.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +43.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +45.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2384] dispatching hogs: 2 cpu
+		stress-ng: info:  [2384] successful run completed in 60.00s (1 min, 0.00 secs)
+		stress-ng: info:  [2384] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2384]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2384] cpu             5921783     60.00    119.98      0.00     98698.45     49356.42
+		--------------------------------------------------------------------------
+		
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +76.0°C  (crit = +89.0°C)
+	temp2:        +45.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +75.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +70.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +74.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=int32 --verify --metrics-brief --timeout 60; sensors
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +42.0°C  (crit = +89.0°C)
+	temp2:        +40.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +44.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +43.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +42.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2501] dispatching hogs: 2 cpu
+		stress-ng: info:  [2501] successful run completed in 60.00s (1 min, 0.00 secs)
+		stress-ng: info:  [2501] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2501]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2501] cpu             5918202     60.00    119.97      0.00     98636.91     49330.68
+		--------------------------------------------------------------------------
+		
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +74.0°C  (crit = +89.0°C)
+	temp2:        +43.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +74.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +67.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +74.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=float --verify --metrics-brief --timeout 60; sensors   
+  
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +42.0°C  (crit = +89.0°C)
+	temp2:        +41.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +44.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +41.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +44.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2513] dispatching hogs: 2 cpu
+		stress-ng: info:  [2513] successful run completed in 60.00s (1 min, 0.00 secs)
+		stress-ng: info:  [2513] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2513]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2513] cpu             3633417     60.00    119.98      0.00     60558.19     30283.52
+		--------------------------------------------------------------------------
+		
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +75.0°C  (crit = +89.0°C)
+	temp2:        +44.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +74.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +69.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +74.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=float --verify --metrics-brief --timeout 60; sensors
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +39.0°C  (crit = +89.0°C)
+	temp2:        +38.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +42.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +39.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +42.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2521] dispatching hogs: 2 cpu
+		stress-ng: info:  [2521] successful run completed in 60.00s (1 min, 0.00 secs)
+		stress-ng: info:  [2521] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2521]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2521] cpu             3619357     60.00    119.97      0.00     60323.90     30168.85
+		--------------------------------------------------------------------------
+		
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +74.0°C  (crit = +89.0°C)
+	temp2:        +42.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +74.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +69.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +72.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=double --verify --metrics-brief --timeout 60; sensors 
+    
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +39.0°C  (crit = +89.0°C)
+	temp2:        +34.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +40.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +38.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +40.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2860] dispatching hogs: 2 cpu
+		stress-ng: info:  [2860] successful run completed in 60.00s (1 min, 0.00 secs)
+		stress-ng: info:  [2860] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2860]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2860] cpu              965636     60.00    119.98      0.00     16093.96      8048.31
+		--------------------------------------------------------------------------
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +73.0°C  (crit = +89.0°C)
+	temp2:        +42.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +74.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +67.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +74.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=double --verify --metrics-brief --timeout 60; sensors
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +51.0°C  (crit = +89.0°C)
+	temp2:        +42.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +52.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +51.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +51.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2866] dispatching hogs: 2 cpu
+		stress-ng: info:  [2866] successful run completed in 60.72s (1 min, 0.72 secs)
+		stress-ng: info:  [2866] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2866]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2866] cpu              965220     60.72    119.98      0.00     15895.93      8044.84
+		--------------------------------------------------------------------------
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +77.0°C  (crit = +89.0°C)
+	temp2:        +46.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +76.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +72.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +75.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=fft --verify --metrics-brief --timeout 60; sensors
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +46.0°C  (crit = +89.0°C)
+	temp2:        +43.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +47.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +45.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +46.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2872] dispatching hogs: 2 cpu
+		stress-ng: info:  [2872] successful run completed in 60.00s (1 min, 0.00 secs)
+		stress-ng: info:  [2872] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2872]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2872] cpu               97492     60.00    119.99      0.00      1624.85       812.50
+		--------------------------------------------------------------------------
+		
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +80.0°C  (crit = +89.0°C)
+	temp2:        +46.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +80.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +72.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +79.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=fft --verify --metrics-brief --timeout 60; sensors
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +46.0°C  (crit = +89.0°C)
+	temp2:        +44.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +48.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +45.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +47.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2922] dispatching hogs: 2 cpu
+		stress-ng: info:  [2922] successful run completed in 60.00s (1 min, 0.00 secs)
+		stress-ng: info:  [2922] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2922]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2922] cpu               98416     60.00    119.98      0.00      1640.29       820.27
+		--------------------------------------------------------------------------
+	
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +81.0°C  (crit = +89.0°C)
+	temp2:        +47.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +80.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +73.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +78.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=callfunc --verify --metrics-brief --timeout 60; sensors 
+   
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +45.0°C  (crit = +89.0°C)
+	temp2:        +43.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +46.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +44.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +47.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2928] dispatching hogs: 2 cpu
+		stress-ng: info:  [2928] successful run completed in 60.00s (1 min, 0.00 secs)
+		stress-ng: info:  [2928] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2928]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2928] cpu            26610391     60.00    119.98      0.00    443515.65    221790.22
+		--------------------------------------------------------------------------
+	
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +79.0°C  (crit = +89.0°C)
+	temp2:        +47.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +78.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +72.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +77.0°C  (high = +72.0°C, crit = +90.0°C)
+
+==============================================================================================
+root@AcerD10:~# sensors; sleep 2; stress-ng --cpu 2 --cpu-method=callfunc --verify --metrics-brief --timeout 60; sensors
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +50.0°C  (crit = +89.0°C)
+	temp2:        +47.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +53.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +50.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +52.0°C  (high = +72.0°C, crit = +90.0°C)
+
+		--------------------------------------------------------------------------
+		stress-ng: info:  [2934] dispatching hogs: 2 cpu
+		stress-ng: info:  [2934] successful run completed in 2.34s
+		stress-ng: info:  [2934] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2934]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2934] cpu             1025179      2.33      4.66      0.00    439085.22    219995.49
+		--------------------------------------------------------------------------
+
+	acpitz-acpi-0
+	Adapter: ACPI interface
+	temp1:        +72.0°C  (crit = +89.0°C)
+	temp2:        +47.0°C  (crit = +92.0°C)
+
+	coretemp-isa-0000
+	Adapter: ISA adapter
+	Package id 0:  +73.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 0:        +67.0°C  (high = +72.0°C, crit = +90.0°C)
+	Core 1:        +70.0°C  (high = +72.0°C, crit = +90.0°C)
