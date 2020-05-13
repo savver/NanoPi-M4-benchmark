@@ -1,0 +1,68 @@
+http://wiki.friendlyarm.com/wiki/index.php/WiringPi_for_RK3399
+
+root@NanoPi-M4:/home/pi/Downloads# wget http://112.124.9.243:8888/wiringpi/friendlyelec-rk3399/remove_oldversion_wiringPi.sh
+
+	--2020-05-13 17:12:24--  http://112.124.9.243:8888/wiringpi/friendlyelec-rk3399/remove_oldversion_wiringPi.sh
+	Connecting to 112.124.9.243:8888... connected.
+	HTTP request sent, awaiting response... 200 OK
+	Length: 1957 (1.9K) [text/x-sh]
+	Saving to: ‘remove_oldversion_wiringPi.sh’
+
+	remove_oldversion_wiringPi.sh   100%[======================================================>]   1.91K  --.-KB/s    in 0s
+
+	2020-05-13 17:12:25 (49.6 MB/s) - ‘remove_oldversion_wiringPi.sh’ saved [1957/1957]
+
+root@NanoPi-M4:/home/pi/Downloads# chmod 755 remove_oldversion_wiringPi.sh
+root@NanoPi-M4:/home/pi/Downloads# sudo ./remove_oldversion_wiringPi.sh
+	done.
+	
+root@NanoPi-M4:/home/pi/Downloads# wget http://112.124.9.243:8888/wiringpi/friendlyelec-rk3399/wiringpi-v2.44-friendlyelec-rk3399.deb
+
+	--2020-05-13 17:12:57--  http://112.124.9.243:8888/wiringpi/friendlyelec-rk3399/wiringpi-v2.44-friendlyelec-rk3399.deb
+	Connecting to 112.124.9.243:8888... connected.
+	HTTP request sent, awaiting response... 200 OK
+	Length: 57728 (56K) [application/x-debian-package]
+	Saving to: ‘wiringpi-v2.44-friendlyelec-rk3399.deb’
+
+	wiringpi-v2.44-friendlyelec-rk3 100%[======================================================>]  56.38K  66.2KB/s    in 0.9s
+
+	2020-05-13 17:13:02 (66.2 KB/s) - ‘wiringpi-v2.44-friendlyelec-rk3399.deb’ saved [57728/57728]
+
+root@NanoPi-M4:/home/pi/Downloads# sudo dpkg -i  wiringpi-v2.44-friendlyelec-rk3399.deb
+
+	(Reading database ... 124500 files and directories currently installed.)
+	Preparing to unpack wiringpi-v2.44-friendlyelec-rk3399.deb ...
+	Unpacking wiringpi (2.44) over (2.44) ...
+	Setting up wiringpi (2.44) ...
+	Processing triggers for libc-bin (2.27-3ubuntu1) ...
+
+
+root@NanoPi-M4:/home/pi/Downloads# gpio readall
+ +------+-----+----------+------+ Model  NanoPi-M4 +------+----------+-----+------+
+ | GPIO | wPi |   Name   | Mode | V | Physical | V | Mode |   Name   | wPi | GPIO |
+ +------+-----+----------+------+---+----++----+---+------+----------+-----+------+
+ |      |     |     3.3V |      |   |  1 || 2  |   |      | 5V       |     |      |
+ |      |     | I2C2_SDA |      |   |  3 || 4  |   |      | 5V       |     |      |
+ |      |     | I2C2_SCL |      |   |  5 || 6  |   |      | GND(0V)  |     |      |
+ |   32 |   7 | GPIO1_A0 |  OUT | 0 |  7 || 8  |   | ALT  | GPIO4_C1 | 15  |  145 |
+ |      |     |  GND(0V) |      |   |  9 || 10 |   | ALT  | GPIO4_C0 | 16  |  144 |
+ |   33 |   0 | GPIO1_A1 |   IN | 0 | 11 || 12 | 1 | IN   | GPIO1_C2 | 1   |  50  |
+ |   35 |   2 | GPIO1_A3 |   IN | 0 | 13 || 14 |   |      | GND(0V)  |     |      |
+ |   36 |   3 | GPIO1_A4 |   IN | 0 | 15 || 16 | 0 | IN   | GPIO1_C6 | 4   |  54  |
+ |      |     |     3.3V |      |   | 17 || 18 | 0 | IN   | GPIO1_C7 | 5   |  55  |
+ |      |     | UART4_TX |      |   | 19 || 20 |   |      | GND(0V)  |     |      |
+ |      |     | UART4_RX |      |   | 21 || 22 | 0 | IN   | GPIO1_D0 | 6   |  56  |
+ |      |     | SPI1_CLK |      |   | 23 || 24 |   |      | SPI1_CSn |     |      |
+ |      |     |  GND(0V) |      |   | 25 || 26 |   | ALT  | GPIO4_C5 | 11  |  149 |
+ |      |     | I2C2_SDA |      |   | 27 || 28 |   |      | I2C2_SCL |     |      |
+ |      |     | I2S0_LRX |      |   | 29 || 30 |   |      | GND(0V)  |     |      |
+ |      |     | I2S0_LTX |      |   | 31 || 32 |   |      | I2S_CLK  |     |      |
+ |      |     | I2S0_SCL |      |   | 33 || 34 |   |      | GND(0V)  |     |      |
+ |      |     | I2S0SDI0 |      |   | 35 || 36 |   |      | I2S0SDO0 |     |      |
+ |      |     | I2S0I1O3 |      |   | 37 || 38 |   |      | I2S0I2O2 |     |      |
+ |      |     |  GND(0V) |      |   | 39 || 40 |   |      | I2S0I3O1 |     |      |
+ +------+-----+----------+------+---+----++----+---+------+----------+-----+------+
+
+
+root@NanoPi-M4:/home/pi/Downloads# gcc -Wall -o pin7 pin7.c -lwiringPi -lwiringPiDev -lpthread -lrt -lm -lcrypt
+root@NanoPi-M4:/home/pi/Downloads# ./pin7
