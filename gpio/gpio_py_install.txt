@@ -1,0 +1,517 @@
+http://wiki.friendlyarm.com/wiki/index.php/WiringPi-Python_for_RK3399
+
+root@NanoPi-M4:~# apt install git python-dev python-setuptools python3-dev python3-setuptools swig  
+                          
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	python-dev is already the newest version (2.7.15~rc1-1).
+	python-setuptools is already the newest version (39.0.1-2).
+	python3-setuptools is already the newest version (39.0.1-2).
+	swig is already the newest version (3.0.12-1).
+	python3-dev is already the newest version (3.6.7-1~18.04).
+	Suggested packages:
+	  git-daemon-run | git-daemon-sysvinit git-doc git-el git-email git-gui gitk gitweb git-cvs git-mediawiki git-svn
+	The following packages will be upgraded:
+	  git
+	1 upgraded, 0 newly installed, 0 to remove and 421 not upgraded.
+	Need to get 2,952 kB of archives.
+	After this operation, 16.4 kB disk space will be freed.
+	Do you want to continue? [Y/n] Y
+	Get:1 http://ports.ubuntu.com bionic-security/main arm64 git arm64 1:2.17.1-1ubuntu0.7 [2,952 kB]
+	Fetched 2,952 kB in 1s (4,490 kB/s)
+	debconf: delaying package configuration, since apt-utils is not installed
+	(Reading database ... 124500 files and directories currently installed.)
+	Preparing to unpack .../git_1%3a2.17.1-1ubuntu0.7_arm64.deb ...
+	Unpacking git (1:2.17.1-1ubuntu0.7) over (1:2.17.1-1ubuntu0.4) ...
+	Setting up git (1:2.17.1-1ubuntu0.7) ...
+
+
+
+
+root@NanoPi-M4:/home/pi/Downloads# wget https://pypi.io/packages/source/s/setuptools/setuptools-33.1.1.zip
+
+	--2020-05-13 16:37:49--  https://pypi.io/packages/source/s/setuptools/setuptools-33.1.1.zip
+	Resolving pypi.io (pypi.io)... 151.101.192.223, 151.101.64.223, 151.101.0.223, ...
+	Connecting to pypi.io (pypi.io)|151.101.192.223|:443... connected.
+	HTTP request sent, awaiting response... 301 Redirect to Primary Domain
+	Location: https://pypi.org/packages/source/s/setuptools/setuptools-33.1.1.zip [following]
+	--2020-05-13 16:37:49--  https://pypi.org/packages/source/s/setuptools/setuptools-33.1.1.zip
+	Resolving pypi.org (pypi.org)... 151.101.192.223, 151.101.128.223, 151.101.64.223, ...
+	Connecting to pypi.org (pypi.org)|151.101.192.223|:443... connected.
+	HTTP request sent, awaiting response... 301 Moved Permanently
+	Location: https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-33.1.1.zip [following]
+	--2020-05-13 16:37:50--  https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-33.1.1.zip
+	Resolving files.pythonhosted.org (files.pythonhosted.org)... 151.101.245.63, 2a04:4e42:3a::319
+	Connecting to files.pythonhosted.org (files.pythonhosted.org)|151.101.245.63|:443... connected.
+	HTTP request sent, awaiting response... 302 Found
+	Location: https://files.pythonhosted.org/packages/dc/8c/7c9869454bdc53e72fb87ace63eac39336879eef6f2bf96e946edbf03e90/setuptools-33.1.1.zip [following]
+	--2020-05-13 16:37:50--  https://files.pythonhosted.org/packages/dc/8c/7c9869454bdc53e72fb87ace63eac39336879eef6f2bf96e946edbf03e90/setuptools-33.1.1.zip
+	Reusing existing connection to files.pythonhosted.org:443.
+	HTTP request sent, awaiting response... 200 OK
+	Length: 702770 (686K) [binary/octet-stream]
+	Saving to: ‘setuptools-33.1.1.zip’
+
+	setuptools-33.1.1.zip           100%[======================================================>] 686.30K  --.-KB/s    in 0.1s
+
+	2020-05-13 16:37:50 (5.43 MB/s) - ‘setuptools-33.1.1.zip’ saved [702770/702770]
+
+
+
+root@NanoPi-M4:/home/pi/Downloads# unzip setuptools-33.1.1.zip
+
+	Archive:  setuptools-33.1.1.zip
+	  inflating: setuptools-33.1.1/CHANGES.rst
+	  inflating: setuptools-33.1.1/LICENSE
+	  inflating: setuptools-33.1.1/MANIFEST.in
+	  inflating: setuptools-33.1.1/README.rst
+	  inflating: setuptools-33.1.1/bootstrap.py
+	  inflating: setuptools-33.1.1/conftest.py
+	  inflating: setuptools-33.1.1/easy_install.py
+	  inflating: setuptools-33.1.1/launcher.c
+	  inflating: setuptools-33.1.1/msvc-build-launcher.cmd
+	  inflating: setuptools-33.1.1/pavement.py
+	  inflating: setuptools-33.1.1/pytest.ini
+	  inflating: setuptools-33.1.1/setup.cfg
+	  inflating: setuptools-33.1.1/setup.py
+	  inflating: setuptools-33.1.1/tox.ini
+	  inflating: setuptools-33.1.1/PKG-INFO
+	  inflating: setuptools-33.1.1/docs/Makefile
+	  inflating: setuptools-33.1.1/docs/conf.py
+	  inflating: setuptools-33.1.1/docs/developer-guide.txt
+	  inflating: setuptools-33.1.1/docs/development.txt
+	  inflating: setuptools-33.1.1/docs/easy_install.txt
+	  inflating: setuptools-33.1.1/docs/formats.txt
+	  inflating: setuptools-33.1.1/docs/history.txt
+	  inflating: setuptools-33.1.1/docs/index.txt
+	  inflating: setuptools-33.1.1/docs/pkg_resources.txt
+	  inflating: setuptools-33.1.1/docs/python3.txt
+	  inflating: setuptools-33.1.1/docs/releases.txt
+	  inflating: setuptools-33.1.1/docs/requirements.txt
+	  inflating: setuptools-33.1.1/docs/roadmap.txt
+	  inflating: setuptools-33.1.1/docs/setuptools.txt
+	  inflating: setuptools-33.1.1/docs/_templates/indexsidebar.html
+	  inflating: setuptools-33.1.1/docs/_theme/nature/theme.conf
+	  inflating: setuptools-33.1.1/docs/_theme/nature/static/nature.css_t
+	  inflating: setuptools-33.1.1/docs/_theme/nature/static/pygments.css
+	  inflating: setuptools-33.1.1/pkg_resources/__init__.py
+	  inflating: setuptools-33.1.1/pkg_resources/api_tests.txt
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/__init__.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/appdirs.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/pyparsing.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/six.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/vendored.txt
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/packaging/__about__.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/packaging/__init__.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/packaging/_compat.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/packaging/_structures.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/packaging/markers.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/packaging/requirements.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/packaging/specifiers.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/packaging/utils.py
+	  inflating: setuptools-33.1.1/pkg_resources/_vendor/packaging/version.py
+	  inflating: setuptools-33.1.1/pkg_resources/extern/__init__.py
+	  inflating: setuptools-33.1.1/pkg_resources/tests/__init__.py
+	  inflating: setuptools-33.1.1/pkg_resources/tests/test_markers.py
+	  inflating: setuptools-33.1.1/pkg_resources/tests/test_pkg_resources.py
+	  inflating: setuptools-33.1.1/pkg_resources/tests/test_resources.py
+	  inflating: setuptools-33.1.1/setuptools/__init__.py
+	  inflating: setuptools-33.1.1/setuptools/archive_util.py
+	  inflating: setuptools-33.1.1/setuptools/cli-32.exe
+	  inflating: setuptools-33.1.1/setuptools/cli-64.exe
+	  inflating: setuptools-33.1.1/setuptools/cli.exe
+	  inflating: setuptools-33.1.1/setuptools/config.py
+	  inflating: setuptools-33.1.1/setuptools/depends.py
+	  inflating: setuptools-33.1.1/setuptools/dist.py
+	  inflating: setuptools-33.1.1/setuptools/extension.py
+	  inflating: setuptools-33.1.1/setuptools/glob.py
+	  inflating: setuptools-33.1.1/setuptools/gui-32.exe
+	  inflating: setuptools-33.1.1/setuptools/gui-64.exe
+	  inflating: setuptools-33.1.1/setuptools/gui.exe
+	  inflating: setuptools-33.1.1/setuptools/launch.py
+	  inflating: setuptools-33.1.1/setuptools/lib2to3_ex.py
+	  inflating: setuptools-33.1.1/setuptools/monkey.py
+	  inflating: setuptools-33.1.1/setuptools/msvc.py
+	  inflating: setuptools-33.1.1/setuptools/namespaces.py
+	  inflating: setuptools-33.1.1/setuptools/package_index.py
+	  inflating: setuptools-33.1.1/setuptools/py26compat.py
+	  inflating: setuptools-33.1.1/setuptools/py27compat.py
+	  inflating: setuptools-33.1.1/setuptools/py31compat.py
+	  inflating: setuptools-33.1.1/setuptools/py33compat.py
+	  inflating: setuptools-33.1.1/setuptools/py36compat.py
+	  inflating: setuptools-33.1.1/setuptools/sandbox.py
+	  inflating: setuptools-33.1.1/setuptools/script (dev).tmpl
+	  inflating: setuptools-33.1.1/setuptools/script.tmpl
+	  inflating: setuptools-33.1.1/setuptools/site-patch.py
+	  inflating: setuptools-33.1.1/setuptools/ssl_support.py
+	  inflating: setuptools-33.1.1/setuptools/unicode_utils.py
+	  inflating: setuptools-33.1.1/setuptools/version.py
+	  inflating: setuptools-33.1.1/setuptools/windows_support.py
+	  inflating: setuptools-33.1.1/setuptools/command/__init__.py
+	  inflating: setuptools-33.1.1/setuptools/command/alias.py
+	  inflating: setuptools-33.1.1/setuptools/command/bdist_egg.py
+	  inflating: setuptools-33.1.1/setuptools/command/bdist_rpm.py
+	  inflating: setuptools-33.1.1/setuptools/command/bdist_wininst.py
+	  inflating: setuptools-33.1.1/setuptools/command/build_ext.py
+	  inflating: setuptools-33.1.1/setuptools/command/build_py.py
+	  inflating: setuptools-33.1.1/setuptools/command/develop.py
+	  inflating: setuptools-33.1.1/setuptools/command/easy_install.py
+	  inflating: setuptools-33.1.1/setuptools/command/egg_info.py
+	  inflating: setuptools-33.1.1/setuptools/command/install.py
+	  inflating: setuptools-33.1.1/setuptools/command/install_egg_info.py
+	  inflating: setuptools-33.1.1/setuptools/command/install_lib.py
+	  inflating: setuptools-33.1.1/setuptools/command/install_scripts.py
+	  inflating: setuptools-33.1.1/setuptools/command/launcher manifest.xml
+	  inflating: setuptools-33.1.1/setuptools/command/py36compat.py
+	  inflating: setuptools-33.1.1/setuptools/command/register.py
+	  inflating: setuptools-33.1.1/setuptools/command/rotate.py
+	  inflating: setuptools-33.1.1/setuptools/command/saveopts.py
+	  inflating: setuptools-33.1.1/setuptools/command/sdist.py
+	  inflating: setuptools-33.1.1/setuptools/command/setopt.py
+	  inflating: setuptools-33.1.1/setuptools/command/test.py
+	  inflating: setuptools-33.1.1/setuptools/command/upload.py
+	  inflating: setuptools-33.1.1/setuptools/command/upload_docs.py
+	  inflating: setuptools-33.1.1/setuptools/extern/__init__.py
+	  inflating: setuptools-33.1.1/setuptools/tests/__init__.py
+	  inflating: setuptools-33.1.1/setuptools/tests/contexts.py
+	  inflating: setuptools-33.1.1/setuptools/tests/environment.py
+	  inflating: setuptools-33.1.1/setuptools/tests/files.py
+	  inflating: setuptools-33.1.1/setuptools/tests/fixtures.py
+	  inflating: setuptools-33.1.1/setuptools/tests/mod_with_constant.py
+	  inflating: setuptools-33.1.1/setuptools/tests/namespaces.py
+	  inflating: setuptools-33.1.1/setuptools/tests/py26compat.py
+	  inflating: setuptools-33.1.1/setuptools/tests/script-with-bom.py
+	  inflating: setuptools-33.1.1/setuptools/tests/server.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_archive_util.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_bdist_egg.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_build_ext.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_build_py.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_config.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_depends.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_develop.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_dist_info.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_easy_install.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_egg_info.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_find_packages.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_install_scripts.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_integration.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_manifest.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_msvc.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_namespaces.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_packageindex.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_sandbox.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_sdist.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_setuptools.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_test.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_unicode_utils.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_upload_docs.py
+	  inflating: setuptools-33.1.1/setuptools/tests/test_windows_wrappers.py
+	  inflating: setuptools-33.1.1/setuptools/tests/textwrap.py
+	  inflating: setuptools-33.1.1/setuptools/tests/indexes/test_links_priority/external.html
+	  inflating: setuptools-33.1.1/setuptools/tests/indexes/test_links_priority/simple/foobar/index.html
+	  inflating: setuptools-33.1.1/setuptools.egg-info/PKG-INFO
+	  inflating: setuptools-33.1.1/setuptools.egg-info/SOURCES.txt
+	  inflating: setuptools-33.1.1/setuptools.egg-info/dependency_links.txt
+	  inflating: setuptools-33.1.1/setuptools.egg-info/entry_points.txt
+	  inflating: setuptools-33.1.1/setuptools.egg-info/requires.txt
+	  inflating: setuptools-33.1.1/setuptools.egg-info/top_level.txt
+	  inflating: setuptools-33.1.1/setuptools.egg-info/zip-safe
+	  inflating: setuptools-33.1.1/tests/manual_test.py
+	  inflating: setuptools-33.1.1/tests/test_pypi.py
+
+
+root@NanoPi-M4:/home/pi/Downloads# cd setuptools-33.1.1
+root@NanoPi-M4:/home/pi/Downloads/setuptools-33.1.1# python3 setup.py install
+
+	running install
+	running bdist_egg
+	running egg_info
+	writing setuptools.egg-info/PKG-INFO
+	writing dependency_links to setuptools.egg-info/dependency_links.txt
+	writing entry points to setuptools.egg-info/entry_points.txt
+	writing requirements to setuptools.egg-info/requires.txt
+	writing top-level names to setuptools.egg-info/top_level.txt
+	reading manifest file 'setuptools.egg-info/SOURCES.txt'
+	reading manifest template 'MANIFEST.in'
+	warning: no files found matching '*' under directory 'setuptools/_vendor'
+	writing manifest file 'setuptools.egg-info/SOURCES.txt'
+	installing library code to build/bdist.linux-aarch64/egg
+	running install_lib
+	running build_py
+	creating build
+	creating build/lib
+	copying easy_install.py -> build/lib
+	creating build/lib/pkg_resources
+	copying pkg_resources/__init__.py -> build/lib/pkg_resources
+	creating build/lib/setuptools
+	copying setuptools/__init__.py -> build/lib/setuptools
+	copying setuptools/archive_util.py -> build/lib/setuptools
+	copying setuptools/config.py -> build/lib/setuptools
+	copying setuptools/depends.py -> build/lib/setuptools
+	copying setuptools/dist.py -> build/lib/setuptools
+	copying setuptools/extension.py -> build/lib/setuptools
+	copying setuptools/glob.py -> build/lib/setuptools
+	copying setuptools/launch.py -> build/lib/setuptools
+	copying setuptools/lib2to3_ex.py -> build/lib/setuptools
+	copying setuptools/monkey.py -> build/lib/setuptools
+	copying setuptools/msvc.py -> build/lib/setuptools
+	copying setuptools/namespaces.py -> build/lib/setuptools
+	copying setuptools/package_index.py -> build/lib/setuptools
+	copying setuptools/py26compat.py -> build/lib/setuptools
+	copying setuptools/py27compat.py -> build/lib/setuptools
+	copying setuptools/py31compat.py -> build/lib/setuptools
+	copying setuptools/py33compat.py -> build/lib/setuptools
+	copying setuptools/py36compat.py -> build/lib/setuptools
+	copying setuptools/sandbox.py -> build/lib/setuptools
+	copying setuptools/site-patch.py -> build/lib/setuptools
+	copying setuptools/ssl_support.py -> build/lib/setuptools
+	copying setuptools/unicode_utils.py -> build/lib/setuptools
+	copying setuptools/version.py -> build/lib/setuptools
+	copying setuptools/windows_support.py -> build/lib/setuptools
+	creating build/lib/pkg_resources/_vendor
+	copying pkg_resources/_vendor/__init__.py -> build/lib/pkg_resources/_vendor
+	copying pkg_resources/_vendor/appdirs.py -> build/lib/pkg_resources/_vendor
+	copying pkg_resources/_vendor/pyparsing.py -> build/lib/pkg_resources/_vendor
+	copying pkg_resources/_vendor/six.py -> build/lib/pkg_resources/_vendor
+	creating build/lib/pkg_resources/extern
+	copying pkg_resources/extern/__init__.py -> build/lib/pkg_resources/extern
+	creating build/lib/pkg_resources/_vendor/packaging
+	copying pkg_resources/_vendor/packaging/__about__.py -> build/lib/pkg_resources/_vendor/packaging
+	copying pkg_resources/_vendor/packaging/__init__.py -> build/lib/pkg_resources/_vendor/packaging
+	copying pkg_resources/_vendor/packaging/_compat.py -> build/lib/pkg_resources/_vendor/packaging
+	copying pkg_resources/_vendor/packaging/_structures.py -> build/lib/pkg_resources/_vendor/packaging
+	copying pkg_resources/_vendor/packaging/markers.py -> build/lib/pkg_resources/_vendor/packaging
+	copying pkg_resources/_vendor/packaging/requirements.py -> build/lib/pkg_resources/_vendor/packaging
+	copying pkg_resources/_vendor/packaging/specifiers.py -> build/lib/pkg_resources/_vendor/packaging
+	copying pkg_resources/_vendor/packaging/utils.py -> build/lib/pkg_resources/_vendor/packaging
+	copying pkg_resources/_vendor/packaging/version.py -> build/lib/pkg_resources/_vendor/packaging
+	creating build/lib/setuptools/command
+	copying setuptools/command/__init__.py -> build/lib/setuptools/command
+	copying setuptools/command/alias.py -> build/lib/setuptools/command
+	copying setuptools/command/bdist_egg.py -> build/lib/setuptools/command
+	copying setuptools/command/bdist_rpm.py -> build/lib/setuptools/command
+	copying setuptools/command/bdist_wininst.py -> build/lib/setuptools/command
+	copying setuptools/command/build_ext.py -> build/lib/setuptools/command
+	copying setuptools/command/build_py.py -> build/lib/setuptools/command
+	copying setuptools/command/develop.py -> build/lib/setuptools/command
+	copying setuptools/command/easy_install.py -> build/lib/setuptools/command
+	copying setuptools/command/egg_info.py -> build/lib/setuptools/command
+	copying setuptools/command/install.py -> build/lib/setuptools/command
+	copying setuptools/command/install_egg_info.py -> build/lib/setuptools/command
+	copying setuptools/command/install_lib.py -> build/lib/setuptools/command
+	copying setuptools/command/install_scripts.py -> build/lib/setuptools/command
+	copying setuptools/command/py36compat.py -> build/lib/setuptools/command
+	copying setuptools/command/register.py -> build/lib/setuptools/command
+	copying setuptools/command/rotate.py -> build/lib/setuptools/command
+	copying setuptools/command/saveopts.py -> build/lib/setuptools/command
+	copying setuptools/command/sdist.py -> build/lib/setuptools/command
+	copying setuptools/command/setopt.py -> build/lib/setuptools/command
+	copying setuptools/command/test.py -> build/lib/setuptools/command
+	copying setuptools/command/upload.py -> build/lib/setuptools/command
+	copying setuptools/command/upload_docs.py -> build/lib/setuptools/command
+	creating build/lib/setuptools/extern
+	copying setuptools/extern/__init__.py -> build/lib/setuptools/extern
+	copying setuptools/script (dev).tmpl -> build/lib/setuptools
+	copying setuptools/script.tmpl -> build/lib/setuptools
+	copying setuptools/cli-32.exe -> build/lib/setuptools
+	copying setuptools/cli-64.exe -> build/lib/setuptools
+	copying setuptools/cli.exe -> build/lib/setuptools
+	copying setuptools/gui-32.exe -> build/lib/setuptools
+	copying setuptools/gui-64.exe -> build/lib/setuptools
+	copying setuptools/gui.exe -> build/lib/setuptools
+	copying setuptools/command/launcher manifest.xml -> build/lib/setuptools/command
+	creating build/bdist.linux-aarch64
+	creating build/bdist.linux-aarch64/egg
+	copying build/lib/easy_install.py -> build/bdist.linux-aarch64/egg
+	creating build/bdist.linux-aarch64/egg/pkg_resources
+	copying build/lib/pkg_resources/__init__.py -> build/bdist.linux-aarch64/egg/pkg_resources
+	creating build/bdist.linux-aarch64/egg/pkg_resources/_vendor
+	copying build/lib/pkg_resources/_vendor/__init__.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor
+	copying build/lib/pkg_resources/_vendor/appdirs.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor
+	copying build/lib/pkg_resources/_vendor/pyparsing.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor
+	copying build/lib/pkg_resources/_vendor/six.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor
+	creating build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	copying build/lib/pkg_resources/_vendor/packaging/__about__.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	copying build/lib/pkg_resources/_vendor/packaging/__init__.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	copying build/lib/pkg_resources/_vendor/packaging/_compat.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	copying build/lib/pkg_resources/_vendor/packaging/_structures.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	copying build/lib/pkg_resources/_vendor/packaging/markers.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	copying build/lib/pkg_resources/_vendor/packaging/requirements.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	copying build/lib/pkg_resources/_vendor/packaging/specifiers.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	copying build/lib/pkg_resources/_vendor/packaging/utils.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	copying build/lib/pkg_resources/_vendor/packaging/version.py -> build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging
+	creating build/bdist.linux-aarch64/egg/pkg_resources/extern
+	copying build/lib/pkg_resources/extern/__init__.py -> build/bdist.linux-aarch64/egg/pkg_resources/extern
+	creating build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/__init__.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/archive_util.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/config.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/depends.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/dist.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/extension.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/glob.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/launch.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/lib2to3_ex.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/monkey.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/msvc.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/namespaces.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/package_index.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/py26compat.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/py27compat.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/py31compat.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/py33compat.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/py36compat.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/sandbox.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/site-patch.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/ssl_support.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/unicode_utils.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/version.py -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/windows_support.py -> build/bdist.linux-aarch64/egg/setuptools
+	creating build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/__init__.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/alias.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/bdist_egg.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/bdist_rpm.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/bdist_wininst.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/build_ext.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/build_py.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/develop.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/easy_install.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/egg_info.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/install.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/install_egg_info.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/install_lib.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/install_scripts.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/py36compat.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/register.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/rotate.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/saveopts.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/sdist.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/setopt.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/test.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/upload.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/upload_docs.py -> build/bdist.linux-aarch64/egg/setuptools/command
+	copying build/lib/setuptools/command/launcher manifest.xml -> build/bdist.linux-aarch64/egg/setuptools/command
+	creating build/bdist.linux-aarch64/egg/setuptools/extern
+	copying build/lib/setuptools/extern/__init__.py -> build/bdist.linux-aarch64/egg/setuptools/extern
+	copying build/lib/setuptools/script (dev).tmpl -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/script.tmpl -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/cli-32.exe -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/cli-64.exe -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/cli.exe -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/gui-32.exe -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/gui-64.exe -> build/bdist.linux-aarch64/egg/setuptools
+	copying build/lib/setuptools/gui.exe -> build/bdist.linux-aarch64/egg/setuptools
+	byte-compiling build/bdist.linux-aarch64/egg/easy_install.py to easy_install.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/__init__.py to __init__.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/__init__.py to __init__.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/appdirs.py to appdirs.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/pyparsing.py to pyparsing.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/six.py to six.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging/__about__.py to __about__.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging/__init__.py to __init__.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging/_compat.py to _compat.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging/_structures.py to _structures.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging/markers.py to markers.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging/requirements.py to requirements.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging/specifiers.py to specifiers.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging/utils.py to utils.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/_vendor/packaging/version.py to version.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/pkg_resources/extern/__init__.py to __init__.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/__init__.py to __init__.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/archive_util.py to archive_util.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/config.py to config.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/depends.py to depends.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/dist.py to dist.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/extension.py to extension.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/glob.py to glob.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/launch.py to launch.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/lib2to3_ex.py to lib2to3_ex.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/monkey.py to monkey.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/msvc.py to msvc.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/namespaces.py to namespaces.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/package_index.py to package_index.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/py26compat.py to py26compat.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/py27compat.py to py27compat.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/py31compat.py to py31compat.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/py33compat.py to py33compat.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/py36compat.py to py36compat.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/sandbox.py to sandbox.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/site-patch.py to site-patch.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/ssl_support.py to ssl_support.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/unicode_utils.py to unicode_utils.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/version.py to version.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/windows_support.py to windows_support.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/__init__.py to __init__.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/alias.py to alias.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/bdist_egg.py to bdist_egg.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/bdist_rpm.py to bdist_rpm.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/bdist_wininst.py to bdist_wininst.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/build_ext.py to build_ext.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/build_py.py to build_py.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/develop.py to develop.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/easy_install.py to easy_install.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/egg_info.py to egg_info.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/install.py to install.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/install_egg_info.py to install_egg_info.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/install_lib.py to install_lib.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/install_scripts.py to install_scripts.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/py36compat.py to py36compat.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/register.py to register.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/rotate.py to rotate.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/saveopts.py to saveopts.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/sdist.py to sdist.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/setopt.py to setopt.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/test.py to test.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/upload.py to upload.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/command/upload_docs.py to upload_docs.cpython-36.pyc
+	byte-compiling build/bdist.linux-aarch64/egg/setuptools/extern/__init__.py to __init__.cpython-36.pyc
+	creating build/bdist.linux-aarch64/egg/EGG-INFO
+	copying setuptools.egg-info/PKG-INFO -> build/bdist.linux-aarch64/egg/EGG-INFO
+	copying setuptools.egg-info/SOURCES.txt -> build/bdist.linux-aarch64/egg/EGG-INFO
+	copying setuptools.egg-info/dependency_links.txt -> build/bdist.linux-aarch64/egg/EGG-INFO
+	copying setuptools.egg-info/entry_points.txt -> build/bdist.linux-aarch64/egg/EGG-INFO
+	copying setuptools.egg-info/requires.txt -> build/bdist.linux-aarch64/egg/EGG-INFO
+	copying setuptools.egg-info/top_level.txt -> build/bdist.linux-aarch64/egg/EGG-INFO
+	copying setuptools.egg-info/zip-safe -> build/bdist.linux-aarch64/egg/EGG-INFO
+	creating dist
+	creating 'dist/setuptools-33.1.1-py3.6.egg' and adding 'build/bdist.linux-aarch64/egg' to it
+	removing 'build/bdist.linux-aarch64/egg' (and everything under it)
+	Processing setuptools-33.1.1-py3.6.egg
+	Removing /usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg
+	Copying setuptools-33.1.1-py3.6.egg to /usr/local/lib/python3.6/dist-packages
+	setuptools 33.1.1 is already the active version in easy-install.pth
+	Installing easy_install script to /usr/local/bin
+	Installing easy_install-3.6 script to /usr/local/bin
+
+	Installed /usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg
+	Processing dependencies for setuptools==33.1.1
+	Finished processing dependencies for setuptools==33.1.1
+	
+	
+
+root@NanoPi-M4:/home/pi/Downloads/setuptools-33.1.1# wget http://112.124.9.243:8888/wiringpi/friendlyelec-rk3399/wiringpi-2.44.4-py3.6-linux-aarch64.egg
+
+	--2020-05-13 16:41:27--  http://112.124.9.243:8888/wiringpi/friendlyelec-rk3399/wiringpi-2.44.4-py3.6-linux-aarch64.egg
+	Connecting to 112.124.9.243:8888... connected.
+	HTTP request sent, awaiting response... 200 OK
+	Length: 287432 (281K)
+	Saving to: ‘wiringpi-2.44.4-py3.6-linux-aarch64.egg’
+
+	wiringpi-2.44.4-py3.6-linux-aar 100%[======================================================>] 280.70K  24.0KB/s    in 17s
+
+	2020-05-13 16:41:47 (17.0 KB/s) - ‘wiringpi-2.44.4-py3.6-linux-aarch64.egg’ saved [287432/287432]
+
+
+
+root@NanoPi-M4:/home/pi/Downloads/setuptools-33.1.1# easy_install wiringpi-2.44.4-py3.6-linux-aarch64.egg
+
+	Processing wiringpi-2.44.4-py3.6-linux-aarch64.egg
+	removing '/usr/local/lib/python3.6/dist-packages/wiringpi-2.44.4-py3.6-linux-aarch64.egg' (and everything under it)
+	creating /usr/local/lib/python3.6/dist-packages/wiringpi-2.44.4-py3.6-linux-aarch64.egg
+	Extracting wiringpi-2.44.4-py3.6-linux-aarch64.egg to /usr/local/lib/python3.6/dist-packages
+	wiringpi 2.44.4 is already the active version in easy-install.pth
+
+	Installed /usr/local/lib/python3.6/dist-packages/wiringpi-2.44.4-py3.6-linux-aarch64.egg
+	Processing dependencies for wiringpi==2.44.4
+	Finished processing dependencies for wiringpi==2.44.4
