@@ -26,6 +26,8 @@ tests:
 	and 70-80 Mb/s if -b 0 (very strange).
 	external server in the Internet 300+ Mb/s TCP (Intenet channel not greater 400 Mb/s),
 	and same small speed with UDP
+	- gpio: toggle freq is 500KHz (state change freq is 1MHz), python lib get greater jitter
+	than C lib, but even with C lib it's not good too (mcu has more better).
 
 stability:
 
