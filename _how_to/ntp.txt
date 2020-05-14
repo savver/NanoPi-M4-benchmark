@@ -1,0 +1,185 @@
+pi@NanoPi-M4:~$ dpkg -l | grep ntp
+ii  ntpdate                              1:4.2.8p10+dfsg-5ubuntu7.1            arm64        client for setting system time from NTP servers
+
+----------------------------------------------------------------------------
+root@NanoPi-M4:~# apt install ntp
+
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	The following additional packages will be installed:
+	  libopts25 sntp
+	Suggested packages:
+	  ntp-doc
+	The following NEW packages will be installed:
+	  libopts25 ntp sntp
+	0 upgraded, 3 newly installed, 0 to remove and 421 not upgraded.
+	Need to get 712 kB of archives.
+	After this operation, 2,279 kB of additional disk space will be used.
+	Do you want to continue? [Y/n] Y
+	Get:1 http://ports.ubuntu.com bionic/universe arm64 libopts25 arm64 1:5.18.12-4 [50.9 kB]
+	Get:2 http://ports.ubuntu.com bionic-security/universe arm64 ntp arm64 1:4.2.8p10+dfsg-5ubuntu7.1 [584 kB]
+	Get:3 http://ports.ubuntu.com bionic-security/universe arm64 sntp arm64 1:4.2.8p10+dfsg-5ubuntu7.1 [77.5 kB]
+	Fetched 712 kB in 1s (637 kB/s)
+	debconf: delaying package configuration, since apt-utils is not installed
+	Selecting previously unselected package libopts25:arm64.
+	(Reading database ... 124514 files and directories currently installed.)
+	Preparing to unpack .../libopts25_1%3a5.18.12-4_arm64.deb ...
+	Unpacking libopts25:arm64 (1:5.18.12-4) ...
+	Selecting previously unselected package ntp.
+	Preparing to unpack .../ntp_1%3a4.2.8p10+dfsg-5ubuntu7.1_arm64.deb ...
+	Unpacking ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+	Selecting previously unselected package sntp.
+	Preparing to unpack .../sntp_1%3a4.2.8p10+dfsg-5ubuntu7.1_arm64.deb ...
+	Unpacking sntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+	Processing triggers for libc-bin (2.27-3ubuntu1) ...
+	Processing triggers for systemd (237-3ubuntu10.21) ...
+	Setting up libopts25:arm64 (1:5.18.12-4) ...
+	Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+	Setting up sntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+	Setting up ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+	Created symlink /etc/systemd/system/network-pre.target.wants/ntp-systemd-netif.path → /lib/systemd/system/ntp-systemd-netif.path.
+	Created symlink /etc/systemd/system/multi-user.target.wants/ntp.service → /lib/systemd/system/ntp.service.
+	ntp-systemd-netif.service is a disabled or a static unit, not starting it.
+	Processing triggers for libc-bin (2.27-3ubuntu1) ...
+	Processing triggers for systemd (237-3ubuntu10.21) ...
+	Error: Timeout was reached
+
+----------------------------------------------------------------------------
+root@NanoPi-M4:~# cat /etc/ntp.conf
+
+	# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+
+	driftfile /var/lib/ntp/ntp.drift
+
+	# Leap seconds definition provided by tzdata
+	leapfile /usr/share/zoneinfo/leap-seconds.list
+
+	# Enable this if you want statistics to be logged.
+	#statsdir /var/log/ntpstats/
+
+	statistics loopstats peerstats clockstats
+	filegen loopstats file loopstats type day enable
+	filegen peerstats file peerstats type day enable
+	filegen clockstats file clockstats type day enable
+
+	# Specify one or more NTP servers.
+
+	# Use servers from the NTP Pool Project. Approved by Ubuntu Technical Board
+	# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.html for
+	# more information.
+	pool 0.ubuntu.pool.ntp.org iburst
+	pool 1.ubuntu.pool.ntp.org iburst
+	pool 2.ubuntu.pool.ntp.org iburst
+	pool 3.ubuntu.pool.ntp.org iburst
+
+	# Use Ubuntu's ntp server as a fallback.
+	pool ntp.ubuntu.com
+
+	# Access control configuration; see /usr/share/doc/ntp-doc/html/accopt.html for
+	# details.  The web page <http://support.ntp.org/bin/view/Support/AccessRestrictions>
+	# might also be helpful.
+	#
+	# Note that "restrict" applies to both servers and clients, so a configuration
+	# that might be intended to block requests from certain clients could also end
+	# up blocking replies from your own upstream servers.
+
+	# By default, exchange time with everybody, but don't allow configuration.
+	restrict -4 default kod notrap nomodify nopeer noquery limited
+	restrict -6 default kod notrap nomodify nopeer noquery limited
+
+	# Local users may interrogate the ntp server more closely.
+	restrict 127.0.0.1
+	restrict ::1
+
+	# Needed for adding pool entries
+	restrict source notrap nomodify noquery
+
+	# Clients from this (example!) subnet have unlimited access, but only if
+	# cryptographically authenticated.
+	#restrict 192.168.123.0 mask 255.255.255.0 notrust
+
+----------------------------------------------------------------------------
+root@NanoPi-M4:~# service ntp status
+
+	● ntp.service - Network Time Service
+	   Loaded: loaded (/lib/systemd/system/ntp.service; enabled; vendor preset: enabled)
+	   Active: active (running) since Thu 2020-05-14 15:38:05 UTC; 3min 7s ago
+		 Docs: man:ntpd(8)
+	 Main PID: 4086 (ntpd)
+		Tasks: 2 (limit: 2342)
+	   CGroup: /system.slice/ntp.service
+			   └─4086 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 116:124
+
+	May 14 15:38:09 NanoPi-M4 ntpd[4086]: Soliciting pool server 185.209.85.222
+	May 14 15:38:10 NanoPi-M4 ntpd[4086]: Soliciting pool server 94.247.111.10
+	May 14 15:38:10 NanoPi-M4 ntpd[4086]: Soliciting pool server 85.21.78.23
+	May 14 15:38:10 NanoPi-M4 ntpd[4086]: Soliciting pool server 185.68.101.10
+	May 14 15:38:10 NanoPi-M4 ntpd[4086]: Soliciting pool server 91.189.94.4
+	May 14 15:38:11 NanoPi-M4 ntpd[4086]: Soliciting pool server 91.189.89.199
+	May 14 15:38:11 NanoPi-M4 ntpd[4086]: Soliciting pool server 88.212.196.95
+	May 14 15:38:12 NanoPi-M4 ntpd[4086]: Soliciting pool server 91.189.91.157
+	May 14 15:38:12 NanoPi-M4 ntpd[4086]: Soliciting pool server 2001:440:1880:5555::2
+	May 14 15:38:13 NanoPi-M4 ntpd[4086]: Soliciting pool server 91.189.89.198
+
+
+----------------------------------------------------------------------------
+root@NanoPi-M4:~# sudo ntpq -p
+
+		 remote           refid      st t when poll reach   delay   offset  jitter
+	==============================================================================
+	 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	 ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	+ftpshare1.corbi 89.109.251.23    2 u   15   64   17   11.455    1.601   2.732
+	+rnis-app2.rnis6 89.109.251.22    2 u   18   64   17   34.996    3.522   2.073
+	+128.0.142.251   89.175.20.7      2 u   11   64   17   13.096    1.417   1.996
+	+193.109.84.119  89.109.251.23    2 u   15   64   17   10.843    1.592   2.348
+	+bagnikita.com   89.109.251.23    2 u   13   64   17   10.545    1.614   2.193
+	+ns2.finenumbers 89.109.251.21    2 u   11   64   17   50.145   -0.259   1.454
+	*ntp3.aas.ru     .GPS.            1 u   13   64   17   10.310    1.204   2.164
+	+78-36-18-184.dy .GPS.            1 u   13   64   17   37.473    0.386   1.175
+	+stratum2-1.ntp. 89.109.251.23    2 u   14   64   17   16.866    0.437   2.198
+	+cello.corbina.n 10.31.129.129    3 u   12   64   17    9.712    1.520   1.223
+	+rnis-app.rnis66 89.109.251.23    2 u   15   64   17   42.652    3.934   1.886
+	+pugot.canonical 17.253.34.253    2 u   22   64   17   60.486    2.046   3.191
+	+host55.rax.ru   88.212.202.5     4 u   12   64   17    9.790   -3.482   1.751
+	 golem.canonical 17.253.34.123    2 u   18   64   15   61.228    0.003   2.540
+	 alphyn.canonica 132.163.96.1     2 u   13   64   15  130.961   -1.834   1.358
+	 chilipepper.can 17.253.108.125   2 u   17   64   15   63.003    3.690   1.139
+
+
+reboot...
+pi@NanoPi-M4:~$ service ntp status
+
+	● ntp.service - Network Time Service
+	   Loaded: loaded (/lib/systemd/system/ntp.service; enabled; vendor preset: enabled)
+	   Active: active (running) since Thu 2020-05-14 15:43:46 UTC; 44s ago
+		 Docs: man:ntpd(8)
+	  Process: 717 ExecStart=/usr/lib/ntp/ntp-systemd-wrapper (code=exited, status=0/SUCCESS)
+	 Main PID: 756 (ntpd)
+		Tasks: 2 (limit: 2342)
+	   CGroup: /system.slice/ntp.service
+			   └─756 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 116:124
+
+	Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+
+pi@NanoPi-M4:~$ sudo ntpq -p
+
+		 remote           refid      st t when poll reach   delay   offset  jitter
+	==============================================================================
+	 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	 ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+	 ftpshare1.corbi 89.109.251.23    2 u    -   64    1    4.232  -383.23   3.074
+	 bagnikita.com   89.109.251.23    2 u    -   64    1    4.526  -382.01   0.000
+	 70.84-54-92.tel 82.199.107.209   2 u    -   64    1   28.585  -382.37   0.000
+	 ns.aksinet.net  192.36.143.151   2 u    -   64    1   17.201  -380.77   0.000
+
+pi@NanoPi-M4:~$ ps aux | grep ntp
+	ntp        756  0.1  0.1  73544  3504 ?        Ssl  15:43   0:00 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 116:124
+	pi        2150  0.0  0.0   7416   632 pts/0    S+   15:45   0:00 grep --color=auto ntp

@@ -1,0 +1,287 @@
+pi@NanoPi-M4:~$ service --status-all
+
+	 [ - ]  adbd.sh
+	 [ - ]  alsa-utils
+	 [ - ]  apparmor
+	 [ + ]  apport
+	 [ + ]  avahi-daemon
+	 [ + ]  binfmt-support
+	 [ + ]  bluetooth
+	 [ - ]  brcm_patchram_plus
+	 [ - ]  console-setup.sh
+	 [ + ]  cpufrequtils
+	 [ + ]  cron
+	 [ + ]  dbus
+	 [ + ]  dnsmasq
+	 [ + ]  hddtemp
+	 [ - ]  hostapd
+	 [ - ]  hwclock.sh
+	 [ - ]  ifplugd
+	 [ - ]  keyboard-setup.dpkg-bak
+	 [ - ]  keyboard-setup.sh
+	 [ + ]  kmod
+	 [ + ]  lightdm
+	 [ + ]  loadcpufreq
+	 [ + ]  network-manager
+	 [ - ]  networking
+	 [ - ]  plymouth
+	 [ - ]  plymouth-log
+	 [ - ]  pppd-dns
+	 [ + ]  procps
+	 [ - ]  saned
+	 [ + ]  ssh
+	 [ + ]  sysstat
+	 [ + ]  transmission-daemon
+	 [ + ]  udev
+	 [ + ]  udhcpd
+	 [ + ]  unattended-upgrades
+	 [ - ]  x11-common
+
+---------------------------------------------------------------
+pi@NanoPi-M4:~$ systemctl list-units --type service
+
+	  UNIT                                          LOAD   ACTIVE SUB     DESCRIPTION
+	  accounts-daemon.service                       loaded active running Accounts Service
+	  alsa-restore.service                          loaded active exited  Save/Restore Sound Card State
+	  apport.service                                loaded active exited  LSB: automatic crash report generation
+	  avahi-daemon.service                          loaded active running Avahi mDNS/DNS-SD Stack
+	  binfmt-support.service                        loaded active exited  Enable support for additional executable binary formats
+	  bluetooth.service                             loaded active running Bluetooth service
+	  brcm_patchram_plus.service                    loaded active exited  brcm_patchram_plus
+	  clean-mount-point@media-pi-userdata.service   loaded active running Clean the /media/pi/userdata mount point
+	  console-setup.service                         loaded active exited  Set console font and keymap
+	  cpufrequtils.service                          loaded active exited  LSB: set CPUFreq kernel parameters
+	  cron.service                                  loaded active running Regular background program processing daemon
+	  dbus.service                                  loaded active running D-Bus System Message Bus
+	  dnsmasq.service                               loaded active running dnsmasq - A lightweight DHCP and caching DNS server
+	  getty@tty1.service                            loaded active running Getty on tty1
+	  hddtemp.service                               loaded active exited  LSB: disk temperature monitoring daemon
+	  ifplugd.service                               loaded active exited  LSB: Brings up/down network automatically
+	  keyboard-setup.service                        loaded active exited  Set the console keyboard layout
+	  kmod-static-nodes.service                     loaded active exited  Create list of required static device nodes for the current kernel
+	  lightdm.service                               loaded active running Light Display Manager
+	  loadcpufreq.service                           loaded active exited  LSB: Load kernel modules needed to enable cpufreq scaling
+	  ModemManager.service                          loaded active running Modem Manager
+	  networkd-dispatcher.service                   loaded active running Dispatcher daemon for systemd-networkd
+	● networking.service                            loaded failed failed  Raise network interfaces
+	  NetworkManager-wait-online.service            loaded active exited  Network Manager Wait Online
+	  NetworkManager.service                        loaded active running Network Manager
+	  polkit.service                                loaded active running Authorization Manager
+	  pulseaudio.service                            loaded active running PulseAudio Daemon
+	  pwm-fan.service                               loaded active running pwm-fan
+	  rc-local.service                              loaded active running /etc/rc.local Compatibility
+	  serial-getty@ttyFIQ0.service                  loaded active running Serial Getty on ttyFIQ0
+	  setvtrgb.service                              loaded active exited  Set console scheme
+	  snapd.seeded.service                          loaded active exited  Wait until snapd is fully seeded
+	  ssh.service                                   loaded active running OpenBSD Secure Shell server
+	  sysstat.service                               loaded active exited  Resets System Activity Data Collector
+	  systemd-backlight@backlight:backlight.service loaded active exited  Load/Save Screen Backlight Brightness of backlight:backlight
+	  systemd-journal-flush.service                 loaded active exited  Flush Journal to Persistent Storage
+	  systemd-journald.service                      loaded active running Journal Service
+	  systemd-logind.service                        loaded active running Login Service
+	  systemd-modules-load.service                  loaded active exited  Load Kernel Modules
+	  systemd-random-seed.service                   loaded active exited  Load/Save Random Seed
+	  systemd-remount-fs.service                    loaded active exited  Remount Root and Kernel File Systems
+	  systemd-resolved.service                      loaded active running Network Name Resolution
+	  systemd-sysctl.service                        loaded active exited  Apply Kernel Variables
+	  systemd-timesyncd.service                     loaded active running Network Time Synchronization
+	  systemd-tmpfiles-setup-dev.service            loaded active exited  Create Static Device Nodes in /dev
+	  systemd-tmpfiles-setup.service                loaded active exited  Create Volatile Files and Directories
+	  systemd-udev-trigger.service                  loaded active exited  udev Coldplug all Devices
+
+
+pi@NanoPi-M4:~$ systemctl list-units --type service -all
+
+	  UNIT                                          LOAD      ACTIVE   SUB     DESCRIPTION
+	  accounts-daemon.service                       loaded    active   running Accounts Service
+	  alsa-restore.service                          loaded    active   exited  Save/Restore Sound Card State
+	  alsa-state.service                            loaded    inactive dead    Manage Sound Card State (restore and store)
+	  apparmor.service                              loaded    inactive dead    AppArmor initialization
+	  apport-autoreport.service                     loaded    inactive dead    Process error reports when automatic reporting is enabled
+	  apport.service                                loaded    active   exited  LSB: automatic crash report generation
+	● auditd.service                                not-found inactive dead    auditd.service
+	  avahi-daemon.service                          loaded    active   running Avahi mDNS/DNS-SD Stack
+	  binfmt-support.service                        loaded    active   exited  Enable support for additional executable binary formats
+	  bluetooth.service                             loaded    active   running Bluetooth service
+	  brcm_patchram_plus.service                    loaded    active   exited  brcm_patchram_plus
+	  clean-mount-point@media-pi-userdata.service   loaded    active   running Clean the /media/pi/userdata mount point
+	● console-screen.service                        not-found inactive dead    console-screen.service
+	  console-setup.service                         loaded    active   exited  Set console font and keymap
+	  cpufrequtils.service                          loaded    active   exited  LSB: set CPUFreq kernel parameters
+	  cron.service                                  loaded    active   running Regular background program processing daemon
+	  dbus.service                                  loaded    active   running D-Bus System Message Bus
+	  dnsmasq.service                               loaded    active   running dnsmasq - A lightweight DHCP and caching DNS server
+	  emergency.service                             loaded    inactive dead    Emergency Shell
+	  fstrim.service                                loaded    inactive dead    Discard unused blocks
+	  getty-static.service                          loaded    inactive dead    getty on tty2-tty6 if dbus and logind are not available
+	  getty@tty1.service                            loaded    active   running Getty on tty1
+	  getty@tty7.service                            loaded    inactive dead    Getty on tty7
+	  hddtemp.service                               loaded    active   exited  LSB: disk temperature monitoring daemon
+	  hdmi-on.service                               loaded    inactive dead    HDMI-force-ON
+	  ifplugd.service                               loaded    active   exited  LSB: Brings up/down network automatically
+	● kbd.service                                   not-found inactive dead    kbd.service
+	  keyboard-setup.service                        loaded    active   exited  Set the console keyboard layout
+	  kmod-static-nodes.service                     loaded    active   exited  Create list of required static device nodes for the current kernel
+	  lightdm.service                               loaded    active   running Light Display Manager
+	  loadcpufreq.service                           loaded    active   exited  LSB: Load kernel modules needed to enable cpufreq scaling
+	  ModemManager.service                          loaded    active   running Modem Manager
+	  motd-news.service                             loaded    inactive dead    Message of the Day
+	  networkd-dispatcher.service                   loaded    active   running Dispatcher daemon for systemd-networkd
+	● networking.service                            loaded    failed   failed  Raise network interfaces
+	  NetworkManager-wait-online.service            loaded    active   exited  Network Manager Wait Online
+	  NetworkManager.service                        loaded    active   running Network Manager
+	  ondemand.service                              loaded    inactive dead    Set the CPU Frequency Scaling governor
+	  plymouth-quit-wait.service                    loaded    inactive dead    Hold until boot process finishes up
+	  plymouth-quit.service                         loaded    inactive dead    Terminate Plymouth Boot Screen
+	  plymouth-read-write.service                   loaded    inactive dead    Tell Plymouth To Write Out Runtime Data
+	  plymouth-start.service                        loaded    inactive dead    Show Plymouth Boot Screen
+	  polkit.service                                loaded    active   running Authorization Manager
+	  pppd-dns.service                              loaded    inactive dead    Restore /etc/resolv.conf if the system crashed before the ppp link was shut down
+	  pulseaudio.service                            loaded    active   running PulseAudio Daemon
+	  pwm-fan.service                               loaded    active   running pwm-fan
+	  rc-local.service                              loaded    active   running /etc/rc.local Compatibility
+	  rescue.service                                loaded    inactive dead    Rescue Shell
+	  serial-getty@ttyFIQ0.service                  loaded    active   running Serial Getty on ttyFIQ0
+	  setvtrgb.service                              loaded    active   exited  Set console scheme
+	  snapd.autoimport.service                      loaded    inactive dead    Auto import assertions from block devices
+	  snapd.core-fixup.service                      loaded    inactive dead    Automatically repair incorrect owner/permissions on core devices
+	  snapd.failure.service                         loaded    inactive dead    Failure handling of the snapd snap
+	  snapd.seeded.service                          loaded    active   exited  Wait until snapd is fully seeded
+	  snapd.service                                 loaded    inactive dead    Snappy daemon
+	  snapd.snap-repair.service                     loaded    inactive dead    Automatically fetch and run repair assertions
+	  ssh.service                                   loaded    active   running OpenBSD Secure Shell server
+	● syslog.service                                not-found inactive dead    syslog.service
+	  sysstat.service                               loaded    active   exited  Resets System Activity Data Collector
+	  systemd-ask-password-console.service          loaded    inactive dead    Dispatch Password Requests to Console
+	  systemd-ask-password-plymouth.service         loaded    inactive dead    Forward Password Requests to Plymouth
+	  systemd-ask-password-wall.service             loaded    inactive dead    Forward Password Requests to Wall
+	  systemd-backlight@backlight:backlight.service loaded    active   exited  Load/Save Screen Backlight Brightness of backlight:backlight
+	  systemd-binfmt.service                        loaded    inactive dead    Set Up Additional Binary Formats
+	  systemd-fsck-root.service                     loaded    inactive dead    File System Check on Root Device
+	  systemd-fsckd.service                         loaded    inactive dead    File System Check Daemon to report status
+	  systemd-hwdb-update.service                   loaded    inactive dead    Rebuild Hardware Database
+	  systemd-initctl.service                       loaded    inactive dead    /dev/initctl Compatibility Daemon
+	  systemd-journal-flush.service                 loaded    active   exited  Flush Journal to Persistent Storage
+	  systemd-journald.service                      loaded    active   running Journal Service
+	  systemd-logind.service                        loaded    active   running Login Service
+	  systemd-machine-id-commit.service             loaded    inactive dead    Commit a transient machine-id on disk
+	  systemd-modules-load.service                  loaded    active   exited  Load Kernel Modules
+	  systemd-networkd.service                      loaded    inactive dead    Network Service
+	  systemd-random-seed.service                   loaded    active   exited  Load/Save Random Seed
+	  systemd-remount-fs.service                    loaded    active   exited  Remount Root and Kernel File Systems
+	  systemd-resolved.service                      loaded    active   running Network Name Resolution
+	  systemd-rfkill.service                        loaded    inactive dead    Load/Save RF Kill Switch Status
+	  systemd-sysctl.service                        loaded    active   exited  Apply Kernel Variables
+	● systemd-sysusers.service                      not-found inactive dead    systemd-sysusers.service
+	  systemd-timesyncd.service                     loaded    active   running Network Time Synchronization
+	  systemd-tmpfiles-clean.service                loaded    inactive dead    Cleanup of Temporary Directories
+	  systemd-tmpfiles-setup-dev.service            loaded    active   exited  Create Static Device Nodes in /dev
+	  systemd-tmpfiles-setup.service                loaded    active   exited  Create Volatile Files and Directories
+	  systemd-udev-trigger.service                  loaded    active   exited  udev Coldplug all Devices
+	  systemd-udevd.service                         loaded    active   running udev Kernel Device Manager
+	● systemd-update-done.service                   not-found inactive dead    systemd-update-done.service
+	  systemd-update-utmp-runlevel.service          loaded    inactive dead    Update UTMP about System Runlevel Changes
+	  systemd-update-utmp.service                   loaded    active   exited  Update UTMP about System Boot/Shutdown
+	  systemd-user-sessions.service                 loaded    active   exited  Permit User Sessions
+	● systemd-vconsole-setup.service                not-found inactive dead    systemd-vconsole-setup.service
+	  transmission-daemon.service                   loaded    active   running Transmission BitTorrent Daemon
+	  udhcpd.service                                loaded    active   exited  LSB: Start busybox udhcpd at boot time
+	  udisks2.service                               loaded    active   running Disk Manager
+	  unattended-upgrades.service                   loaded    active   running Unattended Upgrades Shutdown
+	  user@1000.service                             loaded    active   running User Manager for UID 1000
+	● whoopsie.service                              not-found inactive dead    whoopsie.service
+	  wpa_supplicant.service                        loaded    active   running WPA supplicant
+	● zram-setup@zram0.service                      not-found inactive dead    zram-setup@zram0.service
+
+	LOAD   = Reflects whether the unit definition was properly loaded.
+	ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+	SUB    = The low-level unit activation state, values depend on unit type.
+
+	99 loaded units listed.
+	To show all installed unit files use 'systemctl list-unit-files'.
+
+
+pi@NanoPi-M4:~$ systemctl list-units --type service --state running
+
+	UNIT                                        LOAD   ACTIVE SUB     DESCRIPTION
+	accounts-daemon.service                     loaded active running Accounts Service
+	avahi-daemon.service                        loaded active running Avahi mDNS/DNS-SD Stack
+	bluetooth.service                           loaded active running Bluetooth service
+	clean-mount-point@media-pi-userdata.service loaded active running Clean the /media/pi/userdata mount point
+	cron.service                                loaded active running Regular background program processing daemon
+	dbus.service                                loaded active running D-Bus System Message Bus
+	dnsmasq.service                             loaded active running dnsmasq - A lightweight DHCP and caching DNS server
+	getty@tty1.service                          loaded active running Getty on tty1
+	lightdm.service                             loaded active running Light Display Manager
+	ModemManager.service                        loaded active running Modem Manager
+	networkd-dispatcher.service                 loaded active running Dispatcher daemon for systemd-networkd
+	NetworkManager.service                      loaded active running Network Manager
+	polkit.service                              loaded active running Authorization Manager
+	pulseaudio.service                          loaded active running PulseAudio Daemon
+	pwm-fan.service                             loaded active running pwm-fan
+	rc-local.service                            loaded active running /etc/rc.local Compatibility
+	serial-getty@ttyFIQ0.service                loaded active running Serial Getty on ttyFIQ0
+	ssh.service                                 loaded active running OpenBSD Secure Shell server
+	systemd-journald.service                    loaded active running Journal Service
+	systemd-logind.service                      loaded active running Login Service
+	systemd-resolved.service                    loaded active running Network Name Resolution
+	systemd-timesyncd.service                   loaded active running Network Time Synchronization
+	systemd-udevd.service                       loaded active running udev Kernel Device Manager
+	transmission-daemon.service                 loaded active running Transmission BitTorrent Daemon
+	udisks2.service                             loaded active running Disk Manager
+	unattended-upgrades.service                 loaded active running Unattended Upgrades Shutdown
+	user@1000.service                           loaded active running User Manager for UID 1000
+	wpa_supplicant.service                      loaded active running WPA supplicant
+
+	LOAD   = Reflects whether the unit definition was properly loaded.
+	ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+	SUB    = The low-level unit activation state, values depend on unit type.
+
+	28 loaded units listed. Pass --all to see loaded but inactive units, too.
+	To show all installed unit files use 'systemctl list-unit-files'.
+
+
+
+pi@NanoPi-M4:~$ systemctl list-units --type service --state failed
+
+	  UNIT               LOAD   ACTIVE SUB    DESCRIPTION
+	● networking.service loaded failed failed Raise network interfaces
+
+	LOAD   = Reflects whether the unit definition was properly loaded.
+	ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+	SUB    = The low-level unit activation state, values depend on unit type.
+
+	1 loaded units listed. Pass --all to see loaded but inactive units, too.
+	To show all installed unit files use 'systemctl list-unit-files'.
+
+
+---------------------------------------------------------------
+pi@NanoPi-M4:~$ service bluetooth status
+
+	● bluetooth.service - Bluetooth service
+	   Loaded: loaded (/lib/systemd/system/bluetooth.service; enabled; vendor preset: enabled)
+	   Active: active (running) since Wed 2020-05-13 23:27:05 UTC; 15h ago
+		 Docs: man:bluetoothd(8)
+	 Main PID: 669 (bluetoothd)
+	   Status: "Running"
+		Tasks: 1 (limit: 2342)
+	   CGroup: /system.slice/bluetooth.service
+			   └─669 /usr/lib/bluetooth/bluetoothd
+
+	Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+	
+---------------------------------------------------------------	
+pi@NanoPi-M4:~$ systemctl status bluetooth
+
+	● bluetooth.service - Bluetooth service
+	   Loaded: loaded (/lib/systemd/system/bluetooth.service; enabled; vendor preset: enabled)
+	   Active: active (running) since Wed 2020-05-13 23:27:05 UTC; 16h ago
+		 Docs: man:bluetoothd(8)
+	 Main PID: 669 (bluetoothd)
+	   Status: "Running"
+		Tasks: 1 (limit: 2342)
+	   CGroup: /system.slice/bluetooth.service
+			   └─669 /usr/lib/bluetooth/bluetoothd
+
+	Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+

@@ -1,0 +1,99 @@
+pi@NanoPi-M4:~$ date
+	Thu May 14 15:46:05 UTC 2020
+	
+pi@NanoPi-M4:~$ timedatectl
+
+						  Local time: Thu 2020-05-14 15:46:19 UTC
+					  Universal time: Thu 2020-05-14 15:46:19 UTC
+							RTC time: Thu 2020-05-14 15:46:20
+						   Time zone: Etc/UTC (UTC, +0000)
+		   System clock synchronized: no
+	systemd-timesyncd.service active: yes
+					 RTC in local TZ: no
+					 
+pi@NanoPi-M4:~$ ls -lh /etc/localtime
+	lrwxrwxrwx 1 root root 27 Apr 30  2019 /etc/localtime -> /usr/share/zoneinfo/Etc/UTC
+
+------------------------------------------------------------------
+pi@NanoPi-M4:~$ tzselect
+
+	Please identify a location so that time zone rules can be set correctly.
+	Please select a continent, ocean, "coord", or "TZ".
+	 1) Africa
+	 2) Americas
+	 3) Antarctica
+	 4) Asia
+	 5) Atlantic Ocean
+	 6) Australia
+	 7) Europe
+	 8) Indian Ocean
+	 9) Pacific Ocean
+	10) coord - I want to use geographical coordinates.
+	11) TZ - I want to specify the time zone using the Posix TZ format.
+	#? 7
+	Please select a country whose clocks agree with yours.
+	 1) Åland Islands         18) Greece                35) Norway
+	 2) Albania               19) Guernsey              36) Poland
+	 3) Andorra               20) Hungary               37) Portugal
+	 4) Austria               21) Ireland               38) Romania
+	 5) Belarus               22) Isle of Man           39) Russia
+	 6) Belgium               23) Italy                 40) San Marino
+	 7) Bosnia & Herzegovina  24) Jersey                41) Serbia
+	 8) Britain (UK)          25) Latvia                42) Slovakia
+	 9) Bulgaria              26) Liechtenstein         43) Slovenia
+	10) Croatia               27) Lithuania             44) Spain
+	11) Czech Republic        28) Luxembourg            45) Svalbard & Jan Mayen
+	12) Denmark               29) Malta                 46) Sweden
+	13) Estonia               30) Moldova               47) Switzerland
+	14) Finland               31) Monaco                48) Turkey
+	15) France                32) Montenegro            49) Ukraine
+	16) Germany               33) Netherlands           50) Vatican City
+	17) Gibraltar             34) North Macedonia
+	#? 39
+	Please select one of the following time zone regions.
+	 1) MSK-01 - Kaliningrad                15) MSK+04 - Kemerovo
+	 2) MSK+00 - Moscow area                16) MSK+04 - Krasnoyarsk area
+	 3) MSK+00 - Crimea                     17) MSK+05 - Irkutsk, Buryatia
+	 4) MSK+00 - Kirov                      18) MSK+06 - Zabaykalsky
+	 5) MSK+01 - Astrakhan                  19) MSK+06 - Lena River
+	 6) MSK+01 - Volgograd                  20) MSK+06 - Tomponsky, Ust-Maysky
+	 7) MSK+01 - Saratov                    21) MSK+07 - Amur River
+	 8) MSK+01 - Ulyanovsk                  22) MSK+07 - Oymyakonsky
+	 9) MSK+01 - Samara, Udmurtia           23) MSK+08 - Magadan
+	10) MSK+02 - Urals                      24) MSK+08 - Sakhalin Island
+	11) MSK+03 - Omsk                       25) MSK+08 - Sakha (E); North Kuril Is
+	12) MSK+04 - Novosibirsk                26) MSK+09 - Kamchatka
+	13) MSK+04 - Altai                      27) MSK+09 - Bering Sea
+	14) MSK+04 - Tomsk
+	#? 2
+
+	The following information has been given:
+
+			Russia
+			MSK+00 - Moscow area
+
+	Therefore TZ='Europe/Moscow' will be used.
+	Selected time is now:   Thu May 14 18:47:37 MSK 2020.
+	Universal Time is now:  Thu May 14 15:47:37 UTC 2020.
+	Is the above information OK?
+	1) Yes
+	2) No
+	#? 1
+
+	You can make this change permanent for yourself by appending the line
+			TZ='Europe/Moscow'; export TZ
+	to the file '.profile' in your home directory; then log out and log in again.
+
+	Here is that TZ value again, this time on standard output so that you
+	can use the /usr/bin/tzselect command in shell scripts:
+	Europe/Moscow
+
+------------------------------------------------------------------
+alternative:
+pi@NanoPi-M4:~$ timedatectl set-timezone Europe/Moscow
+
+	==== AUTHENTICATING FOR org.freedesktop.timedate1.set-timezone ===
+	Authentication is required to set the system timezone.
+	Authenticating as: pi
+	Password:
+	==== AUTHENTICATION COMPLETE ===
