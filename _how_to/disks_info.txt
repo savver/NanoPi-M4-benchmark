@@ -161,3 +161,16 @@ root@NanoPi-M4:~# parted -l
 	 1      101MB   6820MB  6719MB  primary  ext4
 	 2      6820MB  15.8GB  9017MB  primary  ext4
 
+=================================================================
+root@NanoPi-M4:~# badblocks -v /dev/mmcblk0p1 > bsector.txt
+
+	Checking blocks 0 to 6561791
+	Checking for bad blocks (read-only test): done
+	Pass completed, 0 bad blocks found. (0/0/0 errors)
+
+root@NanoPi-M4:~# badblocks -v /dev/mmcblk0p2 > bsector.txt
+
+	Checking blocks 0 to 8805375
+	Checking for bad blocks (read-only test): done
+	Pass completed, 0 bad blocks found. (0/0/0 errors)
+
