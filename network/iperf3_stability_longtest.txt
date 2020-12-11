@@ -1,0 +1,13 @@
+iperf3 -cV 192.168.1.49 -t15000
+
+	Test Complete. Summary Results:
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-15000.00 sec   519 GBytes   297 Mbits/sec  2094             sender
+	[  4]   0.00-15000.00 sec   519 GBytes   297 Mbits/sec                  receiver
+	CPU Utilization: local/sender 37.9% (0.3%u/37.6%s), remote/receiver 20.4% (2.5%u/17.9%s)
+	
+	Test Complete. Summary Results:
+	[ ID] Interval           Transfer     Bandwidth       Retr
+	[  4]   0.00-15000.01 sec   538 GBytes   308 Mbits/sec  2228             sender
+	[  4]   0.00-15000.01 sec   538 GBytes   308 Mbits/sec                  receiver
+	CPU Utilization: local/sender 38.9% (0.3%u/38.6%s), remote/receiver 16.8% (1.9%u/14.8%s)
