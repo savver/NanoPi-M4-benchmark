@@ -2,12 +2,60 @@ stress-ng, version 0.09.25
 
 short description:
 	cpu_freq --> see cpu temperature
+	
 	stress-ng --cpu 6 --cpu-method all --verify --metrics-brief --timeout 60
+		stress-ng: info:  [2064] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [2064]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [2064] cpu               10955     60.00    357.60      0.06       182.58        30.63
+		stress-ng: info:  [2458] cpu               11226     60.06    357.71      0.05       186.92        31.38
+		stress-ng: info:  [2717] cpu               11200     60.12    357.80      0.04       186.30        31.30		
+		
 	stress-ng --cpu 6 --cpu-method all --verify --metrics-brief --timeout 5m
+		stress-ng: info:  [3217] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [3217]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [3217] cpu               55925    300.02   1791.10      0.16       186.40        31.22
+		stress-ng: info:  [4309] cpu               57917    300.17   1792.03      0.15       192.95        32.32
+		stress-ng: info:  [2871] cpu               11676     60.11    358.17      0.00       194.23        32.60
+		
 	stress-ng --cpu 2 --cpu-method all --verify --metrics-brief --timeout 60
+		stress-ng: info:  [5643] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [5643]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [5643] cpu                5850     60.06    119.85      0.00        97.40        48.81
+		stress-ng: info:  [5933] cpu                5850     60.02    119.95      0.02        97.47        48.76
+	
 	stress-ng --cpu 2 --cpu-method all --verify --metrics-brief --timeout 5m
+		stress-ng: info:  [6804] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [6804]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [6804] cpu               29294    300.15    600.03      0.00        97.60        48.82
 
-
+	stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 60;
+		stress-ng: info:  [6229] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [6229]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [6229] cpu             4815337     60.00    359.33      0.04     80255.80     13399.39
+		stress-ng: info:  [6456] cpu             4865352     60.00    359.02      0.02     81089.34     13551.00
+		stress-ng: info:  [6636] cpu             4744527     60.00    359.05      0.02     79076.37     13213.38
+		
+	stress-ng --cpu 6 --cpu-method=float  --verify --metrics-brief --timeout 5m;
+		stress-ng: info:  [6789] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [6789]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		// no cooler, heater only
+		stress-ng: info:  [6789] cpu            22570410    300.00   1793.50      0.13     75234.65     12583.65
+		stress-ng: info:  [7491] cpu            23088886    300.00   1794.27      0.14     76962.97     12867.12
+		stress-ng: info:  [7991] cpu            21682363    300.00   1788.00      0.47     72274.60     12123.41
+		// cooler + heater
+		stress-ng: info:  [12373] cpu            24361011    300.00   1797.02      0.10     81203.42     13555.58
+		stress-ng: info:  [12767] cpu            22673419    299.98   1796.69      0.28     75582.82     12617.58
+	
+	stress-ng --cpu 2 --cpu-method=float  --verify --metrics-brief --timeout 60;
+		stress-ng: info:  [7588] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [7588]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		// cooler + heater
+		stress-ng: info:  [7588] cpu             3031917     60.00    119.63      0.02     50532.22     25339.88
+		
+	stress-ng --cpu 6 --cpu-method=double  --verify --metrics-brief --timeout 60;
+		stress-ng: info:  [14392] stressor       bogo ops real time  usr time  sys time   bogo ops/s   bogo ops/s
+		stress-ng: info:  [14392]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+		stress-ng: info:  [14392] cpu              954318     60.00    358.73      0.12     15905.28      2659.38
 --------------------------------------------------------------------------------------
 root@NanoPi-M4:~# ip link set eth0 down
 root@NanoPi-M4:~# ip link set wlan0 down
